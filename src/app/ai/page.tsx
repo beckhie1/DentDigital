@@ -1,11 +1,30 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
+import { Reveal, RevealLines } from "@/components/motion/Reveal";
+import Magnetic from "@/components/shell/Magnetic";
 
-const icons = ["💬", "📚", "🔎", "📨", "📈"];
+const heroLines = {
+  no: ["AI for", "tannklinikker."],
+  en: ["AI for", "dental clinics."],
+};
+
+const chatDemo = {
+  no: [
+    { from: "patient", text: "Hei! Har dere ledig time til undersøkelse denne uken?" },
+    { from: "ai", text: "Hei! Ja, vi har ledige timer torsdag kl. 10:15 og fredag kl. 14:30. Hvilken passer best?" },
+    { from: "patient", text: "Torsdag 10:15." },
+    { from: "ai", text: "Booket! Du får SMS-bekreftelse straks, og en påminnelse dagen før. Velkommen! 🦷" },
+  ],
+  en: [
+    { from: "patient", text: "Hi! Do you have an opening for a check-up this week?" },
+    { from: "ai", text: "Hi! Yes, we have openings Thursday at 10:15 and Friday at 14:30. Which works best?" },
+    { from: "patient", text: "Thursday 10:15." },
+    { from: "ai", text: "Booked! You'll receive an SMS confirmation right away, and a reminder the day before. Welcome! 🦷" },
+  ],
+};
 
 export default function AiPage() {
   const { lang } = useLang();
@@ -13,59 +32,110 @@ export default function AiPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-teal-50 via-white to-cyan-50 py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      {/* Hero with chat demo */}
+      <section className="border-b border-line py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.2fr_1fr] lg:px-8">
           <div>
-            <p className="mb-3 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-700">
-              AI
-            </p>
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-              {t.title[lang]}
+            <Reveal className="reveal-fade">
+              <p className="section-num">AI</p>
+            </Reveal>
+            <h1 className="mt-4 font-display text-[length:var(--text-display-lg)] font-semibold leading-[1.05] text-ink">
+              <RevealLines lines={heroLines[lang]} />
             </h1>
-            <p className="mt-5 text-lg text-slate-600">{t.sub[lang]}</p>
-            <Link href="/kontakt" className="mt-8 inline-block rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-teal-600/20 transition-colors hover:bg-teal-700">
-              {ui.nav.contactCta[lang]}
-            </Link>
+            <Reveal className="reveal-fade mt-6 max-w-xl text-lg leading-relaxed text-ink-60" delay={250}>
+              {t.sub[lang]}
+            </Reveal>
+            <Reveal className="reveal-fade mt-8" delay={370}>
+              <Magnetic>
+                <Link
+                  href="/kontakt"
+                  className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-canvas transition-colors hover:bg-accent-ink"
+                >
+                  {ui.nav.contactCta[lang]}
+                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
+              </Magnetic>
+            </Reveal>
           </div>
-          <div className="relative hidden lg:block">
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-teal-200/40 to-cyan-200/40 blur-2xl" />
-            <Image
-              src="/dental-software-dashboard.png"
-              alt={t.title[lang]}
-              width={620}
-              height={460}
-              className="relative rounded-2xl shadow-2xl ring-1 ring-slate-900/10"
-              priority
-            />
-          </div>
+
+          {/* Demo-feel chat mock */}
+          <Reveal className="reveal-fade" delay={200}>
+            <div className="rounded-[--radius-card] border border-line bg-white p-6 shadow-xl shadow-ink/5">
+              <div className="hairline flex items-center gap-2 pb-4 pt-0" style={{ borderTop: "none", borderBottom: "1px solid var(--color-line)" }}>
+                <span className="h-2 w-2 rounded-full bg-accent" />
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-60">
+                  {lang === "no" ? "AI-resepsjonist · demo" : "AI receptionist · demo"}
+                </p>
+              </div>
+              <div className="mt-5 space-y-3">
+                {chatDemo[lang].map((m, i) => (
+                  <Reveal
+                    key={m.text}
+                    className={`reveal-fade flex ${m.from === "patient" ? "justify-end" : "justify-start"}`}
+                    delay={300 + i * 250}
+                  >
+                    <p
+                      className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                        m.from === "patient"
+                          ? "rounded-br-sm bg-ink text-canvas"
+                          : "rounded-bl-sm bg-canvas text-ink border border-line"
+                      }`}
+                    >
+                      {m.text}
+                    </p>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="py-16 lg:py-20">
+      {/* AI services */}
+      <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900">{t.servicesTitle[lang]}</h2>
-            <p className="mt-4 text-slate-600">{t.servicesSub[lang]}</p>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal className="reveal-fade max-w-2xl">
+            <p className="section-num">{lang === "no" ? "Kapabiliteter" : "Capabilities"}</p>
+            <h2 className="mt-3 font-display text-[length:var(--text-display-md)] font-semibold text-ink">
+              {t.servicesTitle[lang]}
+            </h2>
+            <p className="mt-4 text-lg text-ink-60">{t.servicesSub[lang]}</p>
+          </Reveal>
+          <div className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {t.services[lang].map((s, i) => (
-              <div key={s.title} className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-shadow hover:shadow-lg">
-                <span className="text-3xl" aria-hidden>{icons[i]}</span>
-                <h3 className="mt-3 text-lg font-semibold text-slate-900">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{s.desc}</p>
-              </div>
+              <Reveal key={s.title} className="reveal-fade" delay={(i % 3) * 100}>
+                <p className="section-num">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="hairline mt-4 pt-4 font-display text-lg font-semibold text-ink">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-60">{s.desc}</p>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-teal-700 to-cyan-800 py-16 text-center text-white">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold">{t.ctaTitle[lang]}</h2>
-          <p className="mt-4 text-teal-100">{t.ctaSub[lang]}</p>
-          <Link href="/kontakt" className="mt-8 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-teal-800 shadow-md transition-transform hover:scale-105">
-            {ui.nav.contactCta[lang]}
-          </Link>
+      {/* CTA band */}
+      <section className="dark-section bg-dark py-20 text-canvas">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal className="reveal-fade flex flex-wrap items-end justify-between gap-8">
+            <div className="max-w-2xl">
+              <p className="section-num">→</p>
+              <h2 className="mt-3 font-display text-[length:var(--text-display-md)] font-semibold">
+                {t.ctaTitle[lang]}
+              </h2>
+              <p className="mt-4 text-canvas/60">{t.ctaSub[lang]}</p>
+            </div>
+            <Magnetic>
+              <Link
+                href="/kontakt"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent-bright px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-canvas"
+              >
+                {ui.nav.bookCta[lang]}
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </Link>
+            </Magnetic>
+          </Reveal>
         </div>
       </section>
     </>

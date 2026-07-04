@@ -4,8 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
+import { Reveal, RevealLines } from "@/components/motion/Reveal";
 
-const valueIcons = ["🌍", "🔒", "💡"];
+const heroLines = {
+  no: ["Din digitale", "partner."],
+  en: ["Your digital", "partner."],
+};
+
+const stack = ["Next.js", "React", "Microsoft Azure", "Cisco Meraki", "Opus", "Office 365", "Resend", "Vercel"];
 
 export default function AboutPage() {
   const { lang } = useLang();
@@ -13,67 +19,111 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-teal-50 via-white to-cyan-50 py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      {/* Hero */}
+      <section className="border-b border-line py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl items-end gap-12 px-4 sm:px-6 lg:grid-cols-[1.2fr_1fr] lg:px-8">
           <div>
-            <p className="mb-3 inline-block rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-teal-700">
-              {t.kicker[lang]}
-            </p>
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-              {t.title[lang]}
+            <Reveal className="reveal-fade">
+              <p className="section-num">{t.kicker[lang]}</p>
+            </Reveal>
+            <h1 className="mt-4 font-display text-[length:var(--text-display-lg)] font-semibold leading-[1.05] text-ink">
+              <RevealLines lines={heroLines[lang]} />
             </h1>
-            <p className="mt-5 text-lg text-slate-600">{t.sub[lang]}</p>
+            <Reveal className="reveal-fade mt-6 max-w-xl text-lg leading-relaxed text-ink-60" delay={250}>
+              {t.sub[lang]}
+            </Reveal>
           </div>
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-teal-200/40 to-cyan-200/40 blur-2xl" />
-            <Image
-              src="/dental-technology-team.png"
-              alt="DentDigital team"
-              width={620}
-              height={460}
-              className="relative rounded-2xl shadow-2xl ring-1 ring-slate-900/10"
-              priority
-            />
-          </div>
+          <Reveal className="reveal-fade" delay={200}>
+            <div className="relative h-64 overflow-hidden rounded-[--radius-card] lg:h-80">
+              <Image
+                src="/dental-technology-team.png"
+                alt="DentDigital"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="py-16 lg:py-20">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-slate-900">{t.historyTitle[lang]}</h2>
-          <div className="mt-6 space-y-5 text-lg leading-relaxed text-slate-600">
-            {t.history[lang].map((p) => (
-              <p key={p.slice(0, 30)}>{p}</p>
+      {/* Story */}
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_1.5fr] lg:px-8">
+          <Reveal className="reveal-fade">
+            <p className="section-num">01 — {lang === "no" ? "Historien" : "The Story"}</p>
+            <h2 className="mt-3 font-display text-[length:var(--text-display-md)] font-semibold text-ink">
+              {t.historyTitle[lang]}
+            </h2>
+          </Reveal>
+          <div className="space-y-6">
+            {t.history[lang].map((p, i) => (
+              <Reveal key={p.slice(0, 24)} className="reveal-fade" delay={i * 120}>
+                <p className="hairline pt-6 text-lg leading-relaxed text-ink-60 first:border-t-0 first:pt-0">
+                  {p}
+                </p>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-50 py-16 lg:py-20">
+      {/* Values */}
+      <section className="dark-section bg-dark py-20 text-canvas lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">{t.valuesTitle[lang]}</h2>
-            <p className="mt-3 text-slate-600">{t.valuesSub[lang]}</p>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <Reveal className="reveal-fade max-w-2xl">
+            <p className="section-num">02 — {lang === "no" ? "Verdier" : "Values"}</p>
+            <h2 className="mt-3 font-display text-[length:var(--text-display-md)] font-semibold">
+              {t.valuesTitle[lang]}
+            </h2>
+            <p className="mt-4 text-lg text-canvas/60">{t.valuesSub[lang]}</p>
+          </Reveal>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-[--radius-card] border border-line-dark bg-line-dark md:grid-cols-3">
             {t.values[lang].map((v, i) => (
-              <div key={v.title} className="rounded-2xl border border-slate-200 bg-white p-7 text-center shadow-sm">
-                <span className="text-3xl" aria-hidden>{valueIcons[i]}</span>
-                <h3 className="mt-3 font-semibold text-slate-900">{v.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{v.desc}</p>
-              </div>
+              <Reveal key={v.title} className="reveal-fade bg-dark-soft p-8" delay={i * 100}>
+                <p className="section-num">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="mt-5 font-display text-lg font-semibold">{v.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-canvas/60">{v.desc}</p>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-teal-700 to-cyan-800 py-16 text-center text-white">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold">{t.ctaTitle[lang]}</h2>
-          <p className="mt-4 text-teal-100">{t.ctaSub[lang]}</p>
-          <Link href="/kontakt" className="mt-8 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-teal-800 shadow-md transition-transform hover:scale-105">
-            {t.ctaButton[lang]}
-          </Link>
+      {/* Tech stack + presence */}
+      <section className="py-20 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <Reveal className="reveal-fade">
+            <p className="section-num">03 — {lang === "no" ? "Teknologi" : "Technology"}</p>
+            <h2 className="mt-3 font-display text-[length:var(--text-display-md)] font-semibold text-ink">
+              {lang === "no" ? "Verktøyene vi stoler på" : "The tools we trust"}
+            </h2>
+            <ul className="mt-8 flex flex-wrap gap-3">
+              {stack.map((item) => (
+                <li key={item} className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink-60">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal className="reveal-fade" delay={150}>
+            <p className="section-num">04 — {lang === "no" ? "Tilstedeværelse" : "Presence"}</p>
+            <h2 className="mt-3 font-display text-[length:var(--text-display-md)] font-semibold text-ink">
+              {lang === "no" ? "Oslo-basert, landsdekkende" : "Oslo-based, nationwide"}
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-ink-60">
+              {lang === "no"
+                ? "Fra kontoret på Rødtvet i Oslo betjener vi klinikker i hele Norge – fjernstyrt når det er raskest, på stedet når det trengs."
+                : "From our office at Rødtvet in Oslo we serve clinics across Norway – remotely when that's fastest, on-site when needed."}
+            </p>
+            <p className="hairline mt-6 pt-6 text-sm text-ink-60">
+              DentDigital AS · Rødtvetveien 5, 0955 Oslo ·{" "}
+              <a href="mailto:post@dentdigital.no" className="link-sweep font-medium text-ink">
+                post@dentdigital.no
+              </a>
+            </p>
+          </Reveal>
         </div>
       </section>
     </>
