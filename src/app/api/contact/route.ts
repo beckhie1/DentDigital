@@ -14,6 +14,7 @@ export async function POST(request: Request) {
   const email = String(body.email ?? "").trim().slice(0, 200);
   const phone = String(body.phone ?? "").trim().slice(0, 30);
   const clinic = String(body.clinic ?? "").trim().slice(0, 200);
+  const service = String(body.service ?? "").trim().slice(0, 200);
   const message = String(body.message ?? "").trim().slice(0, 5000);
 
   if (!firstName || !lastName || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -42,6 +43,7 @@ export async function POST(request: Request) {
         <p><strong>E-post:</strong> ${esc(email)}</p>
         ${phone ? `<p><strong>Telefon:</strong> ${esc(phone)}</p>` : ""}
         ${clinic ? `<p><strong>Klinikk:</strong> ${esc(clinic)}</p>` : ""}
+        ${service ? `<p><strong>Tjeneste:</strong> ${esc(service)}</p>` : ""}
         <p><strong>Melding:</strong></p>
         <p>${esc(message).replace(/\n/g, "<br/>")}</p>
       `,
