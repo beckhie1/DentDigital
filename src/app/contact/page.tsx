@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact – DentDigital",
@@ -87,111 +88,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Form */}
-          <div>
-            <form className="space-y-6" action="#" method="POST">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-                    First Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-                    placeholder="Jane"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-                    Last Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-                    placeholder="Smith"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-                  placeholder="jane@company.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                  Company
-                </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-                  placeholder="Acme Ltd"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-                  Service Interested In
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm bg-white"
-                >
-                  <option value="">Select a service…</option>
-                  <option value="seo">SEO & Content Marketing</option>
-                  <option value="social">Social Media Marketing</option>
-                  <option value="ppc">PPC & Paid Advertising</option>
-                  <option value="web">Web Design & Development</option>
-                  <option value="email">Email Marketing</option>
-                  <option value="analytics">Analytics & Reporting</option>
-                  <option value="full">Full-Service Package</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Tell Us About Your Project <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm resize-none"
-                  placeholder="What are your goals? What's your timeline and budget range?"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full px-6 py-4 rounded-xl bg-indigo-600 text-white font-bold text-sm hover:bg-indigo-700 transition-colors"
-              >
-                Send Message →
-              </button>
-
-              <p className="text-xs text-gray-400 text-center">
-                By submitting this form you agree to our Privacy Policy. We never share your data.
-              </p>
-            </form>
-          </div>
+          {/* Client component form */}
+          <ContactForm />
         </div>
       </section>
     </>
