@@ -161,6 +161,29 @@ html {
   border-radius: 2px;
 }
 
+/* page transitions (View Transitions API) */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) {
+  animation: 220ms var(--ease-out-expo) both vt-fade-out;
+}
+::view-transition-new(root) {
+  animation: 320ms var(--ease-out-expo) both vt-fade-in;
+}
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
 /* ── reduced motion: complete static experience ── */
 @media (prefers-reduced-motion: reduce) {
   html {

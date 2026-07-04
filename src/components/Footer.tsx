@@ -45,7 +45,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-canvas/40">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-canvas/60">
               {ui.footer.quickLinks[lang]}
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm">
@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-canvas/40">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-canvas/60">
               {ui.footer.servicesCol[lang]}
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm">
@@ -75,7 +75,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-canvas/40">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-canvas/60">
               {ui.footer.contactCol[lang]}
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-canvas/80">
@@ -89,7 +89,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="hairline-dark mt-12 flex flex-col items-center justify-between gap-4 pt-6 text-xs text-canvas/40 sm:flex-row">
+        <div className="hairline-dark mt-12 flex flex-col items-center justify-between gap-4 pt-6 text-xs text-canvas/60 sm:flex-row">
           <p>© {year} DentDigital AS. {ui.footer.rights[lang]}</p>
           <div className="flex gap-5">
             <Link href="/personvern" className="link-sweep hover:text-canvas">{ui.footer.privacy[lang]}</Link>

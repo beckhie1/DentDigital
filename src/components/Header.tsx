@@ -69,7 +69,7 @@ export default function Header() {
         <div className="relative z-[60] flex items-center gap-3">
           <button
             onClick={() => setLang(lang === "no" ? "en" : "no")}
-            className={`text-xs font-semibold tracking-wider transition-colors ${
+            className={`flex h-10 min-w-10 items-center justify-center px-2 text-xs font-semibold tracking-wider transition-colors ${
               open ? "text-canvas/70 hover:text-canvas" : "text-ink-60 hover:text-ink"
             }`}
             aria-label={lang === "no" ? "Switch to English" : "Bytt til norsk"}

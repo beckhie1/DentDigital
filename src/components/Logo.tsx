@@ -12,7 +12,7 @@ export default function Logo({ dark = false }: { dark?: boolean }) {
           dark ? "text-canvas" : "text-ink"
         }`}
       >
-        Dent<span className="text-accent-ink">Digital</span>
+        Dent<span className={dark ? "text-accent-bright" : "text-accent-ink"}>Digital</span>
       </span>
     </span>
   );
