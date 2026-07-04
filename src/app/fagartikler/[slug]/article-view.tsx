@@ -5,78 +5,118 @@ import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
 import { articles, getArticle } from "@/lib/articles";
+import { Reveal } from "@/components/motion/Reveal";
+import Magnetic from "@/components/shell/Magnetic";
 
 export default function ArticleView({ slug }: { slug: string }) {
   const { lang } = useLang();
   const article = getArticle(slug)!;
-  const related = articles.filter((a) => a.slug !== slug).slice(0, 3);
+  const related = [...articles]
+    .filter((a) => a.slug !== slug)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 3);
 
   return (
     <>
-      <article className="py-16">
+      <article className="py-16 lg:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <Link href="/fagartikler" className="text-sm font-semibold text-teal-700 hover:underline">
-            ← {ui.articlesPage.backToArticles[lang]}
-          </Link>
-          <div className="mt-6 flex items-center gap-3 text-sm">
-            <span className="rounded-full bg-teal-50 px-3 py-1 font-semibold text-teal-700">
+          <Reveal className="reveal-fade">
+            <Link href="/fagartikler" className="link-sweep text-sm font-semibold text-accent-ink">
+              ← {ui.articlesPage.backToArticles[lang]}
+            </Link>
+          </Reveal>
+          <Reveal className="reveal-fade mt-8 flex items-center gap-3 text-xs" delay={80}>
+            <span className="font-semibold uppercase tracking-[0.14em] text-accent-ink">
               {article.category[lang]}
             </span>
-            <time className="text-slate-500" dateTime={article.date}>
+            <time className="text-ink-40" dateTime={article.date}>
               {new Date(article.date).toLocaleDateString(lang === "no" ? "nb-NO" : "en-GB", { day: "numeric", month: "long", year: "numeric" })}
             </time>
-          </div>
-          <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            {article.title[lang]}
-          </h1>
-          <p className="mt-4 text-lg text-slate-600">{article.excerpt[lang]}</p>
-          <div className="relative mt-8 h-72 overflow-hidden rounded-2xl sm:h-96">
-            <Image
-              src={article.image}
-              alt={article.title[lang]}
-              fill
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
-              priority
-            />
-          </div>
-          <div className="mt-10 space-y-8">
-            {article.body[lang].map((s) => (
-              <section key={s.heading}>
-                <h2 className="text-xl font-bold text-slate-900">{s.heading}</h2>
-                <p className="mt-3 leading-relaxed text-slate-600">{s.text}</p>
-              </section>
+          </Reveal>
+          <Reveal className="reveal-fade mt-4" delay={160}>
+            <h1 className="font-display text-[length:var(--text-display-md)] font-semibold leading-[1.1] text-ink lg:text-[length:var(--text-display-lg)]">
+              {article.title[lang]}
+            </h1>
+          </Reveal>
+          <Reveal className="reveal-fade mt-5 text-xl leading-relaxed text-ink-60" delay={240}>
+            {article.excerpt[lang]}
+          </Reveal>
+
+          <Reveal className="reveal-fade mt-10" delay={300}>
+            <div className="relative h-72 overflow-hidden rounded-[--radius-card] sm:h-96">
+              <Image
+                src={article.image}
+                alt={article.title[lang]}
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </Reveal>
+
+          <div className="mt-14 space-y-12">
+            {article.body[lang].map((s, i) => (
+              <Reveal key={s.heading} as="section" className="reveal-fade">
+                <div className="flex items-baseline gap-4">
+                  <span className="section-num">{String(i + 1).padStart(2, "0")}</span>
+                  <h2 className="font-display text-xl font-semibold text-ink sm:text-2xl">
+                    {s.heading}
+                  </h2>
+                </div>
+                <p className="hairline mt-4 pt-4 text-lg leading-relaxed text-ink-60">
+                  {s.text}
+                </p>
+              </Reveal>
             ))}
           </div>
+
+          {/* Inline CTA */}
+          <Reveal className="reveal-fade mt-16 rounded-[--radius-card] border border-line bg-white p-8">
+            <p className="section-num">→</p>
+            <p className="mt-3 font-display text-xl font-semibold text-ink">
+              {lang === "no"
+                ? "Vil du ha hjelp med dette i din klinikk?"
+                : "Want help with this in your clinic?"}
+            </p>
+            <Magnetic className="mt-5">
+              <Link
+                href="/kontakt"
+                className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-canvas transition-colors hover:bg-accent-ink"
+              >
+                {ui.nav.bookCta[lang]}
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </Link>
+            </Magnetic>
+          </Reveal>
         </div>
       </article>
 
-      <section className="bg-slate-50 py-16">
+      {/* Related */}
+      <section className="border-t border-line py-20 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-2xl font-bold text-slate-900">
-            {lang === "no" ? "Flere fagartikler" : "More articles"}
-          </h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {related.map((a) => (
-              <Link key={a.slug} href={`/fagartikler/${a.slug}`} className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-                <span className="text-xs font-semibold text-teal-700">{a.category[lang]}</span>
-                <h3 className="mt-2 font-semibold text-slate-900 group-hover:text-teal-700">
-                  {a.title[lang]}
-                </h3>
-                <p className="mt-2 line-clamp-2 text-sm text-slate-600">{a.excerpt[lang]}</p>
-              </Link>
+          <Reveal className="reveal-fade">
+            <h2 className="font-display text-[length:var(--text-display-md)] font-semibold text-ink">
+              {lang === "no" ? "Flere fagartikler" : "More articles"}
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
+            {related.map((a, i) => (
+              <Reveal key={a.slug} className="reveal-fade" delay={i * 100}>
+                <Link href={`/fagartikler/${a.slug}`} className="group block">
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-ink">
+                    {a.category[lang]}
+                  </span>
+                  <h3 className="hairline mt-3 pt-3 font-display text-lg font-semibold leading-snug text-ink group-hover:text-accent-ink">
+                    {a.title[lang]}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-ink-60">
+                    {a.excerpt[lang]}
+                  </p>
+                </Link>
+              </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-gradient-to-br from-teal-700 to-cyan-800 py-16 text-center text-white">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold">{ui.home.ctaTitle[lang]}</h2>
-          <p className="mt-4 text-teal-100">{ui.home.ctaSub[lang]}</p>
-          <Link href="/kontakt" className="mt-8 inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-teal-800 shadow-md transition-transform hover:scale-105">
-            {ui.nav.contactCta[lang]}
-          </Link>
         </div>
       </section>
     </>

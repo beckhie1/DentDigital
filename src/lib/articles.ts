@@ -15,9 +15,93 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "ai-resepsjonist-tannklinikker",
+    image: "/digital-patient-experience.png",
+    date: "2026-05-12",
+    category: { no: "Teknologi", en: "Technology" },
+    title: {
+      no: "AI-resepsjonist for Tannklinikker: Slik Fungerer Det",
+      en: "AI Receptionist for Dental Clinics: How It Works",
+    },
+    excerpt: {
+      no: "AI-drevne resepsjonister svarer på henvendelser, booker timer og avlaster teamet – døgnet rundt. Her er hva du bør vite før du tar i bruk teknologien.",
+      en: "AI-powered receptionists answer inquiries, book appointments and relieve your team – around the clock. Here's what to know before adopting the technology.",
+    },
+    body: {
+      no: [
+        { heading: "Hva gjør en AI-resepsjonist?", text: "En AI-resepsjonist håndterer henvendelser på nettsiden, SMS og telefon: den svarer på vanlige spørsmål om priser, åpningstider og behandlinger, foreslår ledige timer og booker direkte i kalenderen. De beste løsningene eskalerer sømløst til et menneske når spørsmålet krever det." },
+        { heading: "Gevinsten er konkret", text: "Klinikker mister bookinger hver eneste dag fordi telefonen er opptatt eller henvendelsen kommer etter stengetid. En AI-resepsjonist svarer umiddelbart, hele døgnet. Kombinert med automatiske påminnelser reduseres både tapte henvendelser og uteblivelser målbart." },
+        { heading: "Personvern må på plass først", text: "Pasientdialog er helseopplysninger. Løsningen må ha databehandleravtale, EU/EØS-datalagring og tydelige rutiner for hva AI-en får og ikke får svare på. Diagnostiske råd skal alltid til behandler – AI-en skal kjenne sin grense." },
+        { heading: "Slik kommer du i gang", text: "Start med én kanal – for eksempel chat på nettsiden – og et avgrenset oppgavesett: booking, priser, åpningstider. Mål svarkvalitet og konvertering i fire uker, juster kunnskapsbasen, og utvid deretter til SMS og telefon. DentDigital setter opp hele løsningen GDPR-sikkert." },
+      ],
+      en: [
+        { heading: "What does an AI receptionist do?", text: "An AI receptionist handles inquiries on your website, SMS and phone: it answers common questions about prices, opening hours and treatments, suggests available slots and books directly into the calendar. The best solutions escalate seamlessly to a human when the question requires it." },
+        { heading: "The gains are concrete", text: "Clinics lose bookings every single day because the phone is busy or the inquiry arrives after closing. An AI receptionist responds instantly, around the clock. Combined with automatic reminders, both lost inquiries and no-shows drop measurably." },
+        { heading: "Privacy must come first", text: "Patient dialogue is health data. The solution must have a data processing agreement, EU/EEA data storage and clear rules for what the AI may and may not answer. Diagnostic advice always goes to the clinician – the AI must know its limits." },
+        { heading: "How to get started", text: "Start with one channel – for example website chat – and a limited task set: booking, prices, opening hours. Measure answer quality and conversion for four weeks, tune the knowledge base, then expand to SMS and phone. DentDigital sets up the entire solution GDPR-safely." },
+      ],
+    },
+  },
+  {
+    slug: "google-annonsering-tannleger-2026",
+    image: "/dental-seo.png",
+    date: "2026-03-18",
+    category: { no: "Markedsføring", en: "Marketing" },
+    title: {
+      no: "Google-annonsering for Tannleger i 2026",
+      en: "Google Advertising for Dentists in 2026",
+    },
+    excerpt: {
+      no: "Søkeannonser er fortsatt den raskeste veien til nye pasienter – men spillereglene har endret seg. Slik får du mest ut av annonsebudsjettet i 2026.",
+      en: "Search ads are still the fastest route to new patients – but the rules have changed. Here's how to get the most from your ad budget in 2026.",
+    },
+    body: {
+      no: [
+        { heading: "AI-oversikter endrer søket", text: "Googles AI-genererte svar tar stadig mer plass i søkeresultatene. For klinikker betyr det at organisk synlighet under AI-oversikten blir tøffere – og at betalt plassering øverst, kombinert med sterk Google Business-profil, blir viktigere for lokale søk som «tannlege nær meg»." },
+        { heading: "Performance Max med lokale mål", text: "Kampanjetypene er blitt mer automatiserte. Performance Max fungerer godt for klinikker når den mates med riktige konverteringsmål: fullførte bookinger – ikke bare klikk. Koble annonsekontoen til bookingsystemet slik at Google optimaliserer mot faktiske timebestillinger." },
+        { heading: "Landingssiden avgjør prisen", text: "Kvalitetsscore styrer hva du betaler per klikk. En rask, mobiloptimalisert side med synlig booking, priser og omtaler kan halvere kostnaden per pasient sammenlignet med å sende trafikk til forsiden." },
+        { heading: "Mål det som teller", text: "Med samtykkebasert sporing (Consent Mode v2) må målingen settes opp riktig for å være både lovlig og presis. Følg kostnad per ny pasient – ikke kostnad per klikk – og flytt budsjett til behandlingene med best livstidsverdi, som implantat og ortodonti." },
+      ],
+      en: [
+        { heading: "AI overviews change search", text: "Google's AI-generated answers take up ever more space in results. For clinics this means organic visibility below the AI overview gets tougher – and paid placement at the top, combined with a strong Google Business profile, matters more for local searches like 'dentist near me'." },
+        { heading: "Performance Max with local goals", text: "Campaign types have become more automated. Performance Max works well for clinics when fed the right conversion goals: completed bookings – not just clicks. Connect your ad account to the booking system so Google optimizes toward actual appointments." },
+        { heading: "The landing page sets your price", text: "Quality Score drives what you pay per click. A fast, mobile-optimized page with visible booking, prices and reviews can halve the cost per patient compared to sending traffic to your homepage." },
+        { heading: "Measure what counts", text: "With consent-based tracking (Consent Mode v2), measurement must be set up correctly to be both legal and precise. Track cost per new patient – not cost per click – and shift budget to treatments with the best lifetime value, like implants and orthodontics." },
+      ],
+    },
+  },
+  {
+    slug: "journalsystem-integrasjoner-2026",
+    image: "/dental-imaging-software.png",
+    date: "2026-01-22",
+    category: { no: "Programvare", en: "Software" },
+    title: {
+      no: "Journalsystem-integrasjoner: Slutt på Dobbeltregistrering",
+      en: "Record System Integrations: The End of Duplicate Data Entry",
+    },
+    excerpt: {
+      no: "Booking, bildediagnostikk, regnskap og journal som snakker sammen sparer klinikken timer hver uke. Slik bygger du en integrert systemflyt.",
+      en: "Booking, imaging, accounting and records that talk to each other save the clinic hours every week. Here's how to build an integrated system flow.",
+    },
+    body: {
+      no: [
+        { heading: "Kostnaden ved datasiloer", text: "Når booking, journal, Opus og regnskap lever hver for seg, betaler klinikken med tid: samme pasientdata registreres to–tre ganger, feil sniker seg inn, og ingen har full oversikt. En gjennomsnittsklinikk bruker flere timeverk i uken på ren dobbeltregistrering." },
+        { heading: "Start med pasientreisen", text: "Kartlegg flyten fra henvendelse til betalt behandling: hvor tastes samme informasjon inn flere ganger? De vanligste gevinstene ligger i booking → journal, journal → faktura, og bildesystem → journal." },
+        { heading: "API-er og mellomvare", text: "Moderne journalsystemer tilbyr API-er, men kvaliteten varierer. Der direkteintegrasjon mangler, kan sikker mellomvare bygge broen – med kryptert dataflyt og full sporbarhet. Krev alltid databehandleravtale og EU/EØS-behandling i alle ledd." },
+        { heading: "Tenk stort, start smått", text: "Velg den ene integrasjonen som fjerner mest manuelt arbeid, sett den i drift, og mål tidsbesparelsen. Suksess i første ledd gjør resten av systemkartet både enklere å prioritere og lettere å finansiere." },
+      ],
+      en: [
+        { heading: "The cost of data silos", text: "When booking, records, Opus and accounting live separately, the clinic pays with time: the same patient data is entered two or three times, errors creep in, and no one has the full picture. An average clinic spends several man-hours a week on pure duplicate entry." },
+        { heading: "Start with the patient journey", text: "Map the flow from inquiry to paid treatment: where is the same information typed more than once? The most common wins are booking → records, records → invoice, and imaging → records." },
+        { heading: "APIs and middleware", text: "Modern record systems offer APIs, but quality varies. Where direct integration is missing, secure middleware can bridge the gap – with encrypted data flow and full traceability. Always require a data processing agreement and EU/EEA processing at every step." },
+        { heading: "Think big, start small", text: "Pick the one integration that removes the most manual work, put it into production, and measure the time saved. Success in the first step makes the rest of the system map both easier to prioritize and easier to fund." },
+      ],
+    },
+  },
+  {
     slug: "ai-i-tanndiagnostikk",
     image: "/dental-software-dashboard.png",
-    date: "2023-06-10",
+    date: "2025-06-10",
     category: { no: "Teknologi", en: "Technology" },
     title: {
       no: "AI i Tanndiagnostikk: Fremtiden er Her",
@@ -45,7 +129,7 @@ export const articles: Article[] = [
   {
     slug: "gdpr-for-tannklinikker",
     image: "/gdpr-compliance.png",
-    date: "2023-04-03",
+    date: "2025-04-03",
     category: { no: "Sikkerhet", en: "Security" },
     title: {
       no: "5 Ting Du Må Vite Om GDPR for Tannklinikker",
@@ -75,7 +159,7 @@ export const articles: Article[] = [
   {
     slug: "digital-transformasjon-guide",
     image: "/digital-dental-partnership.png",
-    date: "2023-05-28",
+    date: "2025-05-28",
     category: { no: "Strategi", en: "Strategy" },
     title: {
       no: "Digital Transformasjon: En Steg-for-Steg Guide for Tannklinikker",
@@ -105,7 +189,7 @@ export const articles: Article[] = [
   {
     slug: "oke-pasienttilstromning-med-seo",
     image: "/dental-seo.png",
-    date: "2023-05-15",
+    date: "2025-05-15",
     category: { no: "Markedsføring", en: "Marketing" },
     title: {
       no: "Hvordan Øke Pasienttilstrømningen med SEO",
@@ -133,7 +217,7 @@ export const articles: Article[] = [
   {
     slug: "opus-bildeprogram",
     image: "/dental-imaging-software.png",
-    date: "2023-03-21",
+    date: "2025-03-21",
     category: { no: "Programvare", en: "Software" },
     title: {
       no: "Hvorfor Opus Er det Beste Bildeprogrammet for Norske Klinikker",
@@ -161,7 +245,7 @@ export const articles: Article[] = [
   {
     slug: "sikre-data-mot-cyberangrep",
     image: "/cybersecurity-healthcare.png",
-    date: "2023-02-08",
+    date: "2025-02-08",
     category: { no: "Sikkerhet", en: "Security" },
     title: {
       no: "Slik Sikrer Du Tannklinikkens Data mot Cyberangrep",
@@ -191,7 +275,7 @@ export const articles: Article[] = [
   {
     slug: "digitale-verktoy-pasientopplevelse",
     image: "/digital-patient-experience.png",
-    date: "2023-01-17",
+    date: "2025-01-17",
     category: { no: "Pasientbehandling", en: "Patient Care" },
     title: {
       no: "Digitale Verktøy som Forbedrer Pasientopplevelsen",
@@ -219,7 +303,7 @@ export const articles: Article[] = [
   {
     slug: "velge-it-leverandor",
     image: "/it-support-dental.png",
-    date: "2022-12-05",
+    date: "2024-12-05",
     category: { no: "IT-infrastruktur", en: "IT Infrastructure" },
     title: {
       no: "Slik Velger Du Riktig IT-Leverandør for Din Tannklinikk",
@@ -247,7 +331,7 @@ export const articles: Article[] = [
   {
     slug: "teledentistry-fjernkonsultasjoner",
     image: "/digital-patient-experience.png",
-    date: "2023-05-02",
+    date: "2025-05-02",
     category: { no: "Teknologi", en: "Technology" },
     title: {
       no: "Teledentistry: Fjernkonsultasjoner i Tannhelsesektoren",
