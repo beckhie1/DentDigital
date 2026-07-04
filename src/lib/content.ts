@@ -4,16 +4,31 @@ export const ui = {
   nav: {
     home: { no: "Hjem", en: "Home" },
     services: { no: "Tjenester", en: "Services" },
+    results: { no: "Resultater", en: "Results" },
     about: { no: "Om Oss", en: "About Us" },
     articles: { no: "Fagartikler", en: "Articles" },
     ai: { no: "AI", en: "AI" },
     contact: { no: "Kontakt", en: "Contact" },
     contactCta: { no: "Kontakt Oss", en: "Contact Us" },
+    bookCta: { no: "Book gratis behovsanalyse", en: "Book a free needs analysis" },
+  },
+  consent: {
+    text: {
+      no: "Vi bruker kun nødvendige informasjonskapsler for at nettsiden skal fungere. Ingen sporing uten ditt samtykke.",
+      en: "We only use necessary cookies for the website to function. No tracking without your consent.",
+    },
+    accept: { no: "Godta alle", en: "Accept all" },
+    necessary: { no: "Kun nødvendige", en: "Necessary only" },
+    more: { no: "Les mer", en: "Read more" },
   },
   footer: {
     blurb: {
       no: "Vi er din digitale partner som forstår de unike behovene til norske tannklinikker – både teknologisk og regulativt.",
       en: "We are your digital partner who understands the unique needs of Norwegian dental clinics – both technologically and regulatorily.",
+    },
+    ctaLine: {
+      no: "Klar for å digitalisere klinikken?",
+      en: "Ready to digitalize your clinic?",
     },
     quickLinks: { no: "Hurtiglenker", en: "Quick Links" },
     servicesCol: { no: "Tjenester", en: "Services" },

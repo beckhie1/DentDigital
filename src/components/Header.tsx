@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
 import Logo from "@/components/Logo";
+import Magnetic from "@/components/shell/Magnetic";
 
 const links = [
-  { href: "/", key: "home" },
   { href: "/tjenester", key: "services" },
+  { href: "/resultater", key: "results" },
   { href: "/om-oss", key: "about" },
   { href: "/fagartikler", key: "articles" },
   { href: "/ai", key: "ai" },
@@ -31,28 +32,33 @@ export default function Header() {
 
   useEffect(() => setOpen(false), [pathname]);
 
+  useEffect(() => {
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all ${
-        scrolled || open
-          ? "bg-white/90 shadow-sm backdrop-blur-md"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled && !open
+          ? "border-b border-line bg-canvas/85 backdrop-blur-md"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2" aria-label="DentDigital">
-          <Logo />
+        <Link href="/" aria-label="DentDigital" className="relative z-[60]">
+          <Logo dark={open} />
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                pathname === l.href
-                  ? "text-teal-700"
-                  : "text-slate-700 hover:bg-teal-50 hover:text-teal-700"
+              className={`link-sweep text-sm font-medium transition-colors ${
+                pathname.startsWith(l.href) ? "text-accent-ink" : "text-ink"
               }`}
             >
               {ui.nav[l.key][lang]}
@@ -60,52 +66,72 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="relative z-[60] flex items-center gap-3">
           <button
             onClick={() => setLang(lang === "no" ? "en" : "no")}
-            className="rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:border-teal-300 hover:text-teal-700"
+            className={`text-xs font-semibold tracking-wider transition-colors ${
+              open ? "text-canvas/70 hover:text-canvas" : "text-ink-60 hover:text-ink"
+            }`}
             aria-label={lang === "no" ? "Switch to English" : "Bytt til norsk"}
           >
             {lang === "no" ? "EN" : "NO"}
           </button>
-          <Link
-            href="/kontakt"
-            className="hidden rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-teal-700 sm:block"
-          >
-            {ui.nav.contactCta[lang]}
-          </Link>
+          <Magnetic className="hidden sm:block">
+            <Link
+              href="/kontakt"
+              className={`inline-block rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
+                open
+                  ? "bg-canvas text-ink hover:bg-accent-bright"
+                  : "bg-ink text-canvas hover:bg-accent-ink"
+              }`}
+            >
+              {ui.nav.bookCta[lang]}
+            </Link>
+          </Magnetic>
           <button
             onClick={() => setOpen(!open)}
-            className="rounded-lg p-2 text-slate-700 hover:bg-slate-100 lg:hidden"
+            className={`flex h-10 w-10 items-center justify-center lg:hidden ${
+              open ? "text-canvas" : "text-ink"
+            }`}
             aria-label="Menu"
             aria-expanded={open}
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               {open ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" d="M4 8h16M4 16h16" />
               )}
             </svg>
           </button>
         </div>
       </div>
 
-      {open && (
-        <nav className="border-t border-slate-100 bg-white px-4 pb-4 pt-2 lg:hidden" aria-label="Mobile">
-          {links.map((l) => (
+      {/* Full-screen mobile menu */}
+      <div
+        className={`dark-section fixed inset-0 z-50 flex flex-col justify-center bg-dark px-8 transition-opacity duration-300 lg:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      >
+        <nav aria-label="Mobile" className="space-y-2">
+          {links.map((l, i) => (
             <Link
               key={l.href}
               href={l.href}
-              className={`block rounded-lg px-3 py-2.5 text-sm font-medium ${
-                pathname === l.href ? "bg-teal-50 text-teal-700" : "text-slate-700 hover:bg-slate-50"
-              }`}
+              className="group flex items-baseline gap-4 py-2"
+              style={{ transitionDelay: `${i * 40}ms` }}
             >
-              {ui.nav[l.key][lang]}
+              <span className="section-num">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-display text-4xl font-semibold text-canvas transition-colors group-hover:text-accent-bright">
+                {ui.nav[l.key][lang]}
+              </span>
             </Link>
           ))}
         </nav>
-      )}
+        <p className="hairline-dark mt-10 pt-6 text-sm text-canvas/50">
+          post@dentdigital.no · Rødtvetveien 5, 0955 Oslo
+        </p>
+      </div>
     </header>
   );
 }
