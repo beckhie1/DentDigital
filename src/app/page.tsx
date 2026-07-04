@@ -6,6 +6,18 @@ import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
 import { services } from "@/lib/services";
 import { articles } from "@/lib/articles";
+import { Reveal, RevealLines, CountUp } from "@/components/motion/Reveal";
+import ParticleField from "@/components/home/ParticleField";
+
+const heroLines = {
+  no: ["Digitalt partnerskap", "for norske", "tannklinikker."],
+  en: ["Digital partnership", "for Norwegian", "dental clinics."],
+};
+
+const marqueeItems = {
+  no: ["Nettsider", "Lokal SEO", "IT-drift", "Opus-integrasjon", "Sikkerhetskopi", "GDPR", "Datainnsikt", "AI-løsninger"],
+  en: ["Websites", "Local SEO", "IT Operations", "Opus Integration", "Backup", "GDPR", "Data Insight", "AI Solutions"],
+};
 
 function Kicker({ children }: { children: React.ReactNode }) {
   return (
@@ -32,49 +44,64 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-teal-50 via-white to-cyan-50">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-28">
-          <div className="animate-fade-up">
-            <Kicker>{t.badge[lang]}</Kicker>
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.4rem] lg:leading-[1.1]">
-              {t.heroTitle[lang]}
+      {/* Hero — signature section */}
+      <section className="relative flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden">
+        <ParticleField className="absolute inset-0 h-full w-full" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas via-canvas/60 to-transparent" />
+
+        <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-4 pb-10 pt-14 sm:px-6 lg:px-8">
+          <Reveal className="reveal-fade flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-60">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            {t.badge[lang]}
+          </Reveal>
+
+          <div className="max-w-4xl">
+            <h1 className="font-display text-[length:var(--text-display-xl)] font-semibold leading-[1.02] text-ink">
+              <RevealLines lines={heroLines[lang]} />
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-slate-600">{t.heroSub[lang]}</p>
-            <ul className="mt-6 space-y-2.5">
-              {t.heroPoints[lang].map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-sm font-medium text-slate-700">
-                  {check}
-                  {p}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/kontakt" className="rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-teal-600/20 transition-all hover:bg-teal-700 hover:shadow-lg">
+            <Reveal className="reveal-fade mt-6 max-w-xl text-lg leading-relaxed text-ink-60" delay={350}>
+              {t.heroSub[lang]}
+            </Reveal>
+            <Reveal className="reveal-fade mt-8 flex flex-wrap items-center gap-4" delay={500}>
+              <Link
+                href="/kontakt"
+                className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-canvas transition-colors duration-300 hover:bg-accent-ink"
+              >
                 {c.startToday[lang]}
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </Link>
-              <Link href="/tjenester" className="rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-teal-400 hover:text-teal-700">
+              <Link href="/tjenester" className="link-sweep text-sm font-semibold text-ink">
                 {c.exploreServices[lang]}
               </Link>
-            </div>
-            <p className="mt-6 text-sm text-slate-500">
-              <span className="text-2xl font-extrabold text-teal-700">50+</span>{" "}
-              {t.heroStat[lang]}
-            </p>
+            </Reveal>
           </div>
-          <div className="relative hidden lg:block">
-            <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-teal-200/40 to-cyan-200/40 blur-2xl" />
-            <Image
-              src="/dental-software-dashboard.png"
-              alt="DentDigital dashboard"
-              width={640}
-              height={480}
-              className="relative rounded-2xl shadow-2xl ring-1 ring-slate-900/10"
-              priority
-            />
-          </div>
+
+          <Reveal className="reveal-fade hairline flex flex-wrap items-center gap-x-10 gap-y-3 pt-5 text-sm text-ink-60" delay={650}>
+            {t.heroPoints[lang].map((p, i) => (
+              <span key={p} className="flex items-center gap-2">
+                <span className="section-num">{String(i + 1).padStart(2, "0")}</span>
+                {p}
+              </span>
+            ))}
+          </Reveal>
         </div>
       </section>
+
+      {/* Marquee strip */}
+      <div className="dark-section overflow-hidden border-y border-line-dark bg-dark py-4" aria-hidden>
+        <div className="marquee-track gap-0">
+          {[0, 1].map((dup) => (
+            <div key={dup} className="flex shrink-0 items-center">
+              {marqueeItems[lang].map((item) => (
+                <span key={item + dup} className="flex items-center gap-6 pr-6 font-display text-sm font-medium uppercase tracking-[0.18em] text-canvas/70">
+                  {item}
+                  <span className="h-1 w-1 rounded-full bg-accent-bright" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Services */}
       <section className="py-20 lg:py-24">

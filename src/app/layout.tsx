@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const clash = localFont({
+  src: "../fonts/ClashDisplay-Variable.woff2",
+  variable: "--font-clash",
+  display: "swap",
+  weight: "200 700",
+});
+
+const generalSans = localFont({
+  src: "../fonts/GeneralSans-Variable.woff2",
+  variable: "--font-general-sans",
+  display: "swap",
+  weight: "200 700",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.dentdigital.no"),
@@ -27,7 +39,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="nb">
-      <body className={`${inter.variable} font-sans antialiased text-slate-800`}>
+      <body className={`${clash.variable} ${generalSans.variable} grain bg-canvas font-sans text-ink antialiased`}>
         <LanguageProvider>
           <Header />
           <main className="pt-16">{children}</main>
