@@ -129,7 +129,7 @@ export const ui = {
         { title: "24/7 support og personlig service", desc: "Vår dedikerte supporttjeneste er tilgjengelig døgnet rundt for å sikre at din klinikk alltid har den tekniske støtten den trenger." },
         { title: "GDPR- og Personvernsikre systemer", desc: "Alle våre løsninger er utviklet med personvern i fokus og oppfyller kravene fra både GDPR og Helsedirektoratet." },
         { title: "Tidsbesparende løsninger", desc: "Våre digitale verktøy automatiserer rutineoppgaver og frigjør verdifull tid som kan brukes på pasientbehandling." },
-        { title: "Lokal tilstedeværelse", desc: "Med kontorer i flere norske byer kan vi tilby rask responstid og personlig oppfølging når du trenger det." },
+        { title: "Basert i Oslo – kunder i hele Norge", desc: "Vi jobber fjernstyrt og på stedet, med rask responstid og personlig oppfølging uansett hvor klinikken din ligger." },
         { title: "Dokumenterte resultater", desc: "Våre kunder rapporterer i gjennomsnitt 30% økt effektivitet og 20% vekst etter implementering av våre løsninger." },
       ],
       en: [
@@ -137,13 +137,46 @@ export const ui = {
         { title: "24/7 support and personal service", desc: "Our dedicated support team is available around the clock to ensure your clinic always has the technical support it needs." },
         { title: "GDPR- and privacy-compliant systems", desc: "All our solutions are built with privacy in focus and meet the requirements of both GDPR and the Norwegian Directorate of Health." },
         { title: "Time-saving solutions", desc: "Our digital tools automate routine tasks and free up valuable time that can be spent on patient care." },
-        { title: "Local presence", desc: "With offices in several Norwegian cities, we offer fast response times and personal follow-up when you need it." },
+        { title: "Based in Oslo – clients across Norway", desc: "We work remotely and on-site, with fast response times and personal follow-up wherever your clinic is located." },
         { title: "Documented results", desc: "Our customers report an average 30% increase in efficiency and 20% growth after implementing our solutions." },
       ],
     },
     whyLink: {
       no: "Les mer om hvorfor kunder velger oss",
       en: "Read more about why customers choose us",
+    },
+    resultsKicker: { no: "Resultater", en: "Results" },
+    resultsTitle: {
+      no: "Dokumenterte resultater",
+      en: "Documented results",
+    },
+    resultsSub: {
+      no: "Ekte prosjekter, målbare tall. Se hva vi har levert for klinikker som din.",
+      en: "Real projects, measurable numbers. See what we have delivered for clinics like yours.",
+    },
+    resultsLink: { no: "Se alle resultater", en: "See all results" },
+    processKicker: { no: "Prosessen", en: "The Process" },
+    processTitle: {
+      no: "Slik jobber vi",
+      en: "How we work",
+    },
+    processSub: {
+      no: "Fire steg fra første samtale til løpende partnerskap.",
+      en: "Four steps from first conversation to ongoing partnership.",
+    },
+    processSteps: {
+      no: [
+        { title: "Behovsanalyse", desc: "Gratis kartlegging av klinikkens systemer, synlighet og flaskehalser. Du får en konkret anbefaling – uansett om du velger oss." },
+        { title: "Plan og prioritering", desc: "Vi foreslår tiltakene med størst effekt først, med tydelig pris, tidslinje og målbare mål." },
+        { title: "Implementering", desc: "Vi bygger, migrerer og konfigurerer – med minimal forstyrrelse av klinikkdriften og opplæring av teamet." },
+        { title: "Drift og optimalisering", desc: "Løpende overvåking, support og månedlig rapportering. Vi justerer etter tallene, ikke magefølelsen." },
+      ],
+      en: [
+        { title: "Needs analysis", desc: "Free mapping of your clinic's systems, visibility and bottlenecks. You get a concrete recommendation – whether or not you choose us." },
+        { title: "Plan and priorities", desc: "We propose the highest-impact measures first, with clear pricing, timeline and measurable goals." },
+        { title: "Implementation", desc: "We build, migrate and configure – with minimal disruption to clinic operations and training for the team." },
+        { title: "Operations and optimization", desc: "Continuous monitoring, support and monthly reporting. We adjust based on the numbers, not gut feeling." },
+      ],
     },
     articlesKicker: { no: "Fagartikler", en: "Articles" },
     articlesTitle: {
