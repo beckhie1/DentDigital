@@ -91,7 +91,6 @@ async function sendLeadEmail(
   const { error } = await resend.emails.send({
     from: "DentDigital <post@dentdigital.no>",
     to: [to],
-    bcc: ["post@dentdigital.no"],
     replyTo: d.epost,
     subject: `Ny pasienthenvendelse – ${d.navn} (${d.kilde})`,
     html: `

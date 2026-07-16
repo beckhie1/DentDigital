@@ -60,7 +60,6 @@ async function sendFeedbackAlert(
   const { error } = await resend.emails.send({
     from: "DentDigital <post@dentdigital.no>",
     to: [to],
-    bcc: ["post@dentdigital.no"],
     subject: `⚠️ Tilbakemelding ${emoji} ${d.rating}/5 – ${d.name || "anonym pasient"}`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px;border:1px solid #e4e4de;border-radius:12px;color:#111110;">
