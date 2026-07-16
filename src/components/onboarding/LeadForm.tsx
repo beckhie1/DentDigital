@@ -24,6 +24,7 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
     epost: "",
     telefon: "",
     onsketDato: "",
+    tannbleking: "",
     kommentar: "",
   });
   const [utm, setUtm] = useState({
@@ -105,6 +106,27 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
         <label htmlFor="onsketDato" className="mb-1.5 block text-sm font-medium">Ønsket dato og tid</label>
         <input id="onsketDato" placeholder="F.eks. mandag 20. juli kl. 10:00" value={form.onsketDato} onChange={set("onsketDato")} className={inputCls} />
       </div>
+
+      {kilde === "tilbud" && (
+        <fieldset>
+          <legend className="mb-1.5 block text-sm font-medium">Ønsker du tannbleking?</legend>
+          <div className="flex gap-6">
+            {["Ja", "Nei", "Usikker"].map((v) => (
+              <label key={v} className="flex cursor-pointer items-center gap-2 text-sm">
+                <input
+                  type="radio"
+                  name="tannbleking"
+                  value={v}
+                  checked={form.tannbleking === v}
+                  onChange={() => setForm((f) => ({ ...f, tannbleking: v }))}
+                  className="h-4 w-4 accent-[var(--l-cta)]"
+                />
+                {v}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )}
 
       <div>
         <label htmlFor="kommentar" className="mb-1.5 block text-sm font-medium">Kommentar</label>

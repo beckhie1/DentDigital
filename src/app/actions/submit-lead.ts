@@ -10,6 +10,7 @@ export interface LeadInput {
   epost: string;
   telefon: string;
   onsketDato: string;
+  tannbleking?: string;
   kommentar: string;
   utmSource?: string;
   utmMedium?: string;
@@ -31,6 +32,7 @@ export async function submitLead(input: LeadInput) {
   const epost = String(input.epost ?? "").trim().slice(0, 200);
   const telefon = String(input.telefon ?? "").trim().slice(0, 30);
   const onsketDato = String(input.onsketDato ?? "").trim().slice(0, 200);
+  const tannbleking = ["Ja", "Nei", "Usikker"].includes(String(input.tannbleking)) ? String(input.tannbleking) : "";
   const kommentar = String(input.kommentar ?? "").trim().slice(0, 2000);
   const kilde = input.kilde === "tannlegevakt" ? "Tannlegevakt" : "Tilbud";
 
@@ -46,7 +48,7 @@ export async function submitLead(input: LeadInput) {
   const [dato, tid] = osloTimestamp();
 
   // Standard layout (sheet created by scripts/onboard-clinic.mjs):
-  // Dato | Tidspunkt | Navn | E-post | Telefon | Ønsket tidspunkt | Kilde | Status | Antall kontaktpunkt | Kommentar | UTM
+  // Dato | Tidspunkt | Navn | E-post | Telefon | Ønsket tidspunkt | Tannbleking | Kilde | Status | Antall kontaktpunkt | Kommentar | UTM
   // "gdts-us" layout (clinic's own US tab):
   // Dato | TId | Navn | E-post | Telefon | Ønsket dato | Tannbleking? | Status | Antall kontaktpunkt | Kommentar | (blank) | Source | Ad Name | Ad ID
   const utmSource = String(input.utmSource ?? "").trim().slice(0, 100);
@@ -54,16 +56,16 @@ export async function submitLead(input: LeadInput) {
   const sheetWrite =
     clinic.leadsLayout === "gdts-us"
       ? appendRow(clinic.spreadsheetId, "US!A:N", [
-          dato, tid, navn, epost, telefon, onsketDato, "", "Ny", "", kommentar, "", utmSource || kilde, utmContent, "",
+          dato, tid, navn, epost, telefon, onsketDato, tannbleking, "Ny", "", kommentar, "", utmSource || kilde, utmContent, "",
         ])
-      : appendRow(clinic.spreadsheetId, "Leads!A:K", [
-          dato, tid, navn, epost, telefon, onsketDato, kilde, "Ny", "", kommentar, utm,
+      : appendRow(clinic.spreadsheetId, "Leads!A:L", [
+          dato, tid, navn, epost, telefon, onsketDato, tannbleking, kilde, "Ny", "", kommentar, utm,
         ]);
 
   const results = await Promise.allSettled([
     sheetWrite,
     sendLeadEmail(clinic.email, clinic.name, {
-      navn, epost, telefon, onsketDato, kommentar, kilde,
+      navn, epost, telefon, onsketDato, tannbleking, kommentar, kilde,
     }),
   ]);
 
@@ -80,7 +82,7 @@ export async function submitLead(input: LeadInput) {
 async function sendLeadEmail(
   to: string,
   clinicName: string,
-  d: { navn: string; epost: string; telefon: string; onsketDato: string; kommentar: string; kilde: string },
+  d: { navn: string; epost: string; telefon: string; onsketDato: string; tannbleking: string; kommentar: string; kilde: string },
 ) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) throw new Error("RESEND_API_KEY is not configured");
@@ -99,6 +101,7 @@ async function sendLeadEmail(
         <p><strong>Telefon:</strong> <a href="tel:${esc(d.telefon)}">${esc(d.telefon)}</a></p>
         <p><strong>E-post:</strong> ${esc(d.epost)}</p>
         ${d.onsketDato ? `<p><strong>Ønsket tidspunkt:</strong> ${esc(d.onsketDato)}</p>` : ""}
+        ${d.tannbleking ? `<p><strong>Ønsker tannbleking:</strong> ${esc(d.tannbleking)}</p>` : ""}
         ${d.kommentar ? `<p><strong>Kommentar:</strong><br/>${esc(d.kommentar).replace(/\n/g, "<br/>")}</p>` : ""}
         <p style="margin-top:16px;"><strong>Kilde:</strong> ${esc(d.kilde)}-landingsside</p>
         <hr style="border:none;border-top:1px solid #e4e4de;margin:20px 0;"/>

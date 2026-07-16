@@ -157,7 +157,7 @@ async function api(url, method, token, body) {
 /* ── create + share the sheet ─────────────────────────────── */
 const LEAD_HEADERS = [
   "Dato", "Tidspunkt", "Navn", "E-post", "Telefon", "Ønsket tidspunkt",
-  "Kilde", "Status", "Antall kontaktpunkt", "Kommentar", "UTM",
+  "Tannbleking", "Kilde", "Status", "Antall kontaktpunkt", "Kommentar", "UTM",
 ];
 const FEEDBACK_HEADERS = ["Dato", "Tidspunkt", "Vurdering", "Navn", "Telefon", "Kommentar", "Fulgt opp"];
 
