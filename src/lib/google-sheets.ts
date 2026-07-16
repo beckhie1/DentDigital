@@ -43,10 +43,10 @@ export async function appendRow(
   }
 }
 
-/** Oslo-local date + time strings, e.g. ["14.07.2026", "13:45"]. */
+/** Oslo-local date + time strings, e.g. ["15/07/2026", "13:45"]. */
 export function osloTimestamp(): [string, string] {
   const now = new Date();
-  const dato = now.toLocaleDateString("nb-NO", { timeZone: "Europe/Oslo" });
+  const dato = now.toLocaleDateString("en-GB", { timeZone: "Europe/Oslo" }); // dd/mm/yyyy
   const tid = now.toLocaleTimeString("nb-NO", {
     timeZone: "Europe/Oslo",
     hour: "2-digit",
