@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
 import { services } from "@/lib/services";
+import { isLandingPath } from "@/lib/clinics";
 import Logo from "@/components/Logo";
 import Magnetic from "@/components/shell/Magnetic";
 import { Reveal } from "@/components/motion/Reveal";
@@ -11,6 +13,8 @@ import { Reveal } from "@/components/motion/Reveal";
 export default function Footer() {
   const { lang } = useLang();
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  if (isLandingPath(pathname)) return null;
 
   return (
     <footer className="dark-section bg-dark text-canvas">

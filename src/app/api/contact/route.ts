@@ -33,7 +33,7 @@ export async function POST(request: Request) {
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
-      from: "DentDigital <onboarding@resend.dev>",
+      from: "DentDigital <post@dentdigital.no>",
       to: ["post@dentdigital.no"],
       replyTo: email,
       subject: `Ny henvendelse fra ${firstName} ${lastName}${clinic ? ` (${clinic})` : ""}`,

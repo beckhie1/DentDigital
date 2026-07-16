@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
+import { isLandingPath } from "@/lib/clinics";
 import Logo from "@/components/Logo";
 import Magnetic from "@/components/shell/Magnetic";
 
@@ -38,6 +39,8 @@ export default function Header() {
       document.documentElement.style.overflow = "";
     };
   }, [open]);
+
+  if (isLandingPath(pathname)) return null;
 
   return (
     <header
