@@ -57,6 +57,8 @@ export interface Clinic {
   metaPixelId?: string;
   /** Optional clinic look & feel for the landing pages (defaults to DentDigital) */
   branding?: ClinicBranding;
+  /** Google rating shown as social proof on the tilbud page */
+  rating?: { value: string; count: string };
   /**
    * Lead-row destination. "gdts-us" appends to the clinic's legacy `US` tab
    * (Dato..Kommentar A:J, K blank, L Source, M Ad Name, N Ad ID).
@@ -101,8 +103,19 @@ export const clinics: Clinic[] = [
       accentInk: "#8B7340",
     },
     leadsLayout: "gdts-us",
+    rating: { value: "4,9", count: "200+" },
     active: true,
-    offer: DEFAULT_OFFER,
+    offer: {
+      title: "Komplett undersøkelse + Airflow-rens",
+      oldPrice: 1390,
+      price: 590,
+      includes: [
+        "Grundig undersøkelse av erfaren tannlege",
+        "Røntgenbilder og konsultasjon",
+        "Premium Airflow-rens som fjerner misfarging",
+        "Personlig behandlingsplan",
+      ],
+    },
   },
   // ⟪ONBOARD:INSERT⟫ — entries are appended above this line by scripts/onboard-clinic.mjs
 ];

@@ -25,6 +25,13 @@ export default function OfferLanding({ clinic }: { clinic: Clinic }) {
           )}
           <h2 className="font-display text-lg font-semibold tracking-tight">{clinic.name}</h2>
           <p className="text-xs uppercase tracking-widest text-ink-40">{clinic.address}</p>
+          {clinic.rating && (
+            <p className="mt-1.5 flex items-center justify-center gap-1.5 text-sm">
+              <span aria-hidden className="tracking-tight text-[#f5b301]">★★★★★</span>
+              <span className="font-semibold">{clinic.rating.value} av 5</span>
+              <span className="text-ink-40">· {clinic.rating.count} Google-anmeldelser</span>
+            </p>
+          )}
         </div>
 
         {/* Offer card */}
