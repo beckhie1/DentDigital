@@ -81,7 +81,7 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
       });
       if (result.success) {
         setSubmitted(true);
-        window.fbq?.("track", "Lead", {}, { eventID: eventId });
+        // Standard "Lead" intentionally not fired — Meta flags it for dental/health ads.
         if (kilde === "tilbud") window.fbq?.("trackCustom", "exam_lead", {}, { eventID: `${eventId}.exam` });
         window.gtag?.("event", "conversion", {
           send_to: process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID,

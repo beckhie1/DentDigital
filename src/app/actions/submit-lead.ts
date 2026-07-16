@@ -82,23 +82,25 @@ export async function submitLead(input: LeadInput) {
 
   // Server-side Conversions API — mirrors the pixel with shared event_ids (dedup).
   // Only with marketing consent, matching the consent-gated browser pixel.
-  if (clinic.metaPixelId && input.consent === "all") {
+  // Standard "Lead" intentionally not sent — Meta flags it for dental/health ads.
+  if (clinic.metaPixelId && input.consent === "all" && input.kilde !== "tannlegevakt") {
     const h = await headers();
     const eventId = String(input.eventId ?? "").slice(0, 64) || crypto.randomUUID();
-    const base = {
-      eventSourceUrl: String(input.pageUrl ?? "").slice(0, 500) || `https://www.dentdigital.no/${clinic.slug}-${input.kilde === "tannlegevakt" ? "tannlegevakt" : "tilbud"}`,
-      email: epost,
-      phone: telefon,
-      clientIp: (h.get("x-forwarded-for") ?? "").split(",")[0].trim() || undefined,
-      userAgent: h.get("user-agent") ?? undefined,
-      fbp: String(input.fbp ?? "").slice(0, 100) || undefined,
-      fbc: String(input.fbc ?? "").slice(0, 200) || undefined,
-    };
-    const events = [{ ...base, eventName: "Lead", eventId }];
-    if (input.kilde !== "tannlegevakt") {
-      events.push({ ...base, eventName: "exam_lead", eventId: `${eventId}.exam` });
-    }
-    tasks.push(sendMetaEvents(clinic.metaPixelId, events));
+    tasks.push(
+      sendMetaEvents(clinic.metaPixelId, [
+        {
+          eventName: "exam_lead",
+          eventId: `${eventId}.exam`,
+          eventSourceUrl: String(input.pageUrl ?? "").slice(0, 500) || `https://www.dentdigital.no/${clinic.slug}-tilbud`,
+          email: epost,
+          phone: telefon,
+          clientIp: (h.get("x-forwarded-for") ?? "").split(",")[0].trim() || undefined,
+          userAgent: h.get("user-agent") ?? undefined,
+          fbp: String(input.fbp ?? "").slice(0, 100) || undefined,
+          fbc: String(input.fbc ?? "").slice(0, 200) || undefined,
+        },
+      ]),
+    );
   }
 
   const results = await Promise.allSettled(tasks);
