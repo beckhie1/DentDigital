@@ -1,8 +1,10 @@
 "use server";
 
+import { headers } from "next/headers";
 import { Resend } from "resend";
 import { getClinicBySlug } from "@/lib/clinics";
 import { appendRow, osloTimestamp } from "@/lib/google-sheets";
+import { sendMetaEvents } from "@/lib/meta-capi";
 
 export interface LeadInput {
   clinicSlug: string;
@@ -19,6 +21,14 @@ export interface LeadInput {
   utmTerm?: string;
   /** which landing page produced the lead */
   kilde?: "tilbud" | "tannlegevakt";
+  /** browser-generated id shared with the pixel events for Meta dedup */
+  eventId?: string;
+  /** Meta browser cookies + page URL for Conversions API matching */
+  fbp?: string;
+  fbc?: string;
+  pageUrl?: string;
+  /** "all" when the visitor accepted marketing cookies */
+  consent?: string;
 }
 
 const esc = (s: string) =>
@@ -63,18 +73,41 @@ export async function submitLead(input: LeadInput) {
           dato, tid, navn, epost, telefon, onsketDato, tannbleking, kilde, "Ny", "", kommentar, utm,
         ]);
 
-  const results = await Promise.allSettled([
+  const tasks: Promise<unknown>[] = [
     sheetWrite,
     sendLeadEmail(clinic.email, clinic.name, {
       navn, epost, telefon, onsketDato, tannbleking, kommentar, kilde,
     }),
-  ]);
+  ];
+
+  // Server-side Conversions API — mirrors the pixel with shared event_ids (dedup).
+  // Only with marketing consent, matching the consent-gated browser pixel.
+  if (clinic.metaPixelId && input.consent === "all") {
+    const h = await headers();
+    const eventId = String(input.eventId ?? "").slice(0, 64) || crypto.randomUUID();
+    const base = {
+      eventSourceUrl: String(input.pageUrl ?? "").slice(0, 500) || `https://www.dentdigital.no/${clinic.slug}-${input.kilde === "tannlegevakt" ? "tannlegevakt" : "tilbud"}`,
+      email: epost,
+      phone: telefon,
+      clientIp: (h.get("x-forwarded-for") ?? "").split(",")[0].trim() || undefined,
+      userAgent: h.get("user-agent") ?? undefined,
+      fbp: String(input.fbp ?? "").slice(0, 100) || undefined,
+      fbc: String(input.fbc ?? "").slice(0, 200) || undefined,
+    };
+    const events = [{ ...base, eventName: "Lead", eventId }];
+    if (input.kilde !== "tannlegevakt") {
+      events.push({ ...base, eventName: "exam_lead", eventId: `${eventId}.exam` });
+    }
+    tasks.push(sendMetaEvents(clinic.metaPixelId, events));
+  }
+
+  const results = await Promise.allSettled(tasks);
 
   const failures = results.filter((r) => r.status === "rejected");
   for (const f of failures) console.error("submitLead failure:", (f as PromiseRejectedResult).reason);
 
-  // Consider it a success if at least one channel got the lead (never lose a lead silently).
-  if (failures.length === results.length) {
+  // Consider it a success if the sheet or the email got the lead (never lose a lead silently).
+  if (results[0].status === "rejected" && results[1].status === "rejected") {
     return { success: false, error: "Kunne ikke sende. Ring oss gjerne direkte." };
   }
   return { success: true };

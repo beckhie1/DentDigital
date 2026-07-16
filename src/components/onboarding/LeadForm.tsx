@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { submitLead } from "@/app/actions/submit-lead";
+import { getConsent } from "@/components/shell/ConsentBanner";
+
+const readCookie = (name: string) =>
+  document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))?.[1] ?? "";
 
 const inputCls =
   "w-full rounded-lg border border-line bg-white px-3.5 py-3 text-base placeholder:text-ink-40 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--l-cta)]";
@@ -57,11 +61,28 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
     setSubmitting(true);
     setError("");
     try {
-      const result = await submitLead({ clinicSlug, kilde, ...form, ...utm });
+      // Shared event id → Meta dedupes the browser pixel + Conversions API pair.
+      const eventId = crypto.randomUUID();
+      const fbc =
+        readCookie("_fbc") ||
+        (new URLSearchParams(window.location.search).get("fbclid")
+          ? `fb.1.${Date.now()}.${new URLSearchParams(window.location.search).get("fbclid")}`
+          : "");
+      const result = await submitLead({
+        clinicSlug,
+        kilde,
+        ...form,
+        ...utm,
+        eventId,
+        fbp: readCookie("_fbp"),
+        fbc,
+        pageUrl: window.location.href,
+        consent: getConsent() ?? "",
+      });
       if (result.success) {
         setSubmitted(true);
-        window.fbq?.("track", "Lead");
-        if (kilde === "tilbud") window.fbq?.("trackCustom", "exam_lead");
+        window.fbq?.("track", "Lead", {}, { eventID: eventId });
+        if (kilde === "tilbud") window.fbq?.("trackCustom", "exam_lead", {}, { eventID: `${eventId}.exam` });
         window.gtag?.("event", "conversion", {
           send_to: process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID,
         });
