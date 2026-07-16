@@ -24,6 +24,7 @@ export default function ConsentBanner() {
 
   const choose = (value: ConsentValue) => {
     window.localStorage.setItem("dentdigital-consent", value);
+    window.dispatchEvent(new Event("dentdigital-consent"));
     setVisible(false);
   };
 

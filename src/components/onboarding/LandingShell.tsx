@@ -29,12 +29,6 @@ export default function LandingShell({
       className="-mt-16 flex min-h-screen flex-col bg-canvas px-4 pt-10 sm:pt-14"
     >
       <div className="flex-1">{children}</div>
-      <p className="py-6 text-center text-xs text-ink-40">
-        Levert av{" "}
-        <a href="https://www.dentdigital.no" className="underline hover:text-ink">
-          DentDigital
-        </a>
-      </p>
     </div>
   );
 }
