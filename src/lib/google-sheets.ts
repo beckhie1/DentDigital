@@ -29,7 +29,7 @@ export async function appendRow(
   const accessToken = await getAccessToken();
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${encodeURIComponent(
     range,
-  )}:append?valueInputOption=USER_ENTERED`;
+  )}:append?valueInputOption=RAW`;
   const res = await fetch(url, {
     method: "POST",
     headers: {
