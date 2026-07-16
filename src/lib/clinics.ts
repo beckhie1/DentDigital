@@ -83,7 +83,7 @@ export const clinics: Clinic[] = [
     {
     slug: "groruddalen-tannlegesenter",
     name: "Groruddalen Tannlegesenter",
-    email: "post@gdts.no",
+    email: "postgdts@gmail.com",
     phone: "+47 92 02 92 02",
     address: "Kakkelovnskroken 3, 0954 Oslo",
     spreadsheetId: "16KgjmLMZ74I_6R0Y09xIcjjt1jJg7Ag45b3K3JmwY2U",
