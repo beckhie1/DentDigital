@@ -53,10 +53,11 @@ export async function submitLead(input: LeadInput) {
   // Dato | TId | Navn | E-post | Telefon | Ønsket dato | Tannbleking? | Status | Antall kontaktpunkt | Kommentar | (blank) | Source | Ad Name | Ad ID
   const utmSource = String(input.utmSource ?? "").trim().slice(0, 100);
   const utmContent = String(input.utmContent ?? "").trim().slice(0, 100);
+  const utmTerm = String(input.utmTerm ?? "").trim().slice(0, 100);
   const sheetWrite =
     clinic.leadsLayout === "gdts-us"
       ? appendRow(clinic.spreadsheetId, "US!A:N", [
-          dato, tid, navn, epost, telefon, onsketDato, tannbleking, "Ny", "", kommentar, "", utmSource || kilde, utmContent, "",
+          dato, tid, navn, epost, telefon, onsketDato, tannbleking, "Ny", "", kommentar, "", utmSource || kilde, utmContent, utmTerm,
         ])
       : appendRow(clinic.spreadsheetId, "Leads!A:L", [
           dato, tid, navn, epost, telefon, onsketDato, tannbleking, kilde, "Ny", "", kommentar, utm,

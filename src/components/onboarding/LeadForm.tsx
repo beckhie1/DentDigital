@@ -61,6 +61,7 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
       if (result.success) {
         setSubmitted(true);
         window.fbq?.("track", "Lead");
+        if (kilde === "tilbud") window.fbq?.("trackCustom", "exam_lead");
         window.gtag?.("event", "conversion", {
           send_to: process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID,
         });

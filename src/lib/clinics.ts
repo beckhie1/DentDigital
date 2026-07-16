@@ -89,7 +89,7 @@ export const clinics: Clinic[] = [
     spreadsheetId: "16KgjmLMZ74I_6R0Y09xIcjjt1jJg7Ag45b3K3JmwY2U",
     googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJ7QqXhJFxQUYRqnqGd6n8K_4",
     feedbackCode: "kz8t3d2",
-    metaPixelId: "1289643192545999",
+    metaPixelId: "1577091370498070",
     branding: {
       logo: "/clinics/groruddalen-tannlegesenter.png",
       dark: "#1B2B3A",
