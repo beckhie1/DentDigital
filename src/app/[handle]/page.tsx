@@ -4,6 +4,7 @@ import { landingHandles, matchHandle } from "@/lib/clinics";
 import OfferLanding from "@/components/onboarding/OfferLanding";
 import VaktLanding from "@/components/onboarding/VaktLanding";
 import FeedbackFlow from "@/components/onboarding/FeedbackFlow";
+import MetaPixel from "@/components/onboarding/MetaPixel";
 
 /** Only handles from the clinic registry exist; everything else 404s at build time. */
 export const dynamicParams = false;
@@ -42,7 +43,21 @@ export default async function ClinicLandingPage({
   if (!match) notFound();
 
   const { kind, clinic } = match;
-  if (kind === "tilbud") return <OfferLanding clinic={clinic} />;
-  if (kind === "tannlegevakt") return <VaktLanding clinic={clinic} />;
-  return <FeedbackFlow clinic={clinic} />;
+  const pixel = clinic.metaPixelId && kind !== "feedback" ? (
+    <MetaPixel pixelId={clinic.metaPixelId} />
+  ) : null;
+  const page =
+    kind === "tilbud" ? (
+      <OfferLanding clinic={clinic} />
+    ) : kind === "tannlegevakt" ? (
+      <VaktLanding clinic={clinic} />
+    ) : (
+      <FeedbackFlow clinic={clinic} />
+    );
+  return (
+    <>
+      {pixel}
+      {page}
+    </>
+  );
 }

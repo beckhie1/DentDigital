@@ -34,6 +34,8 @@ export interface Clinic {
   feedbackCode: string;
   /** Phone shown on the tannlegevakt page (defaults to `phone`) */
   vaktPhone?: string;
+  /** Meta (Facebook) pixel/dataset id — loaded on the clinic's landing pages */
+  metaPixelId?: string;
   active: boolean;
   offer: ClinicOffer;
 }
@@ -60,6 +62,7 @@ export const clinics: Clinic[] = [
     spreadsheetId: "16KgjmLMZ74I_6R0Y09xIcjjt1jJg7Ag45b3K3JmwY2U",
     googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJ7QqXhJFxQUYRqnqGd6n8K_4",
     feedbackCode: "kz8t3d2",
+    metaPixelId: "1289643192545999",
     active: true,
     offer: DEFAULT_OFFER,
   },
