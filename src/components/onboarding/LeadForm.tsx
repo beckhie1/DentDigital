@@ -128,11 +128,6 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
         </fieldset>
       )}
 
-      <div>
-        <label htmlFor="kommentar" className="mb-1.5 block text-sm font-medium">Kommentar</label>
-        <textarea id="kommentar" rows={3} placeholder="Er det noe annet klinikken bør vite?" value={form.kommentar} onChange={set("kommentar")} className={`${inputCls} resize-none`} />
-      </div>
-
       {error && <p className="text-sm text-red-600">{error}</p>}
 
       <button
