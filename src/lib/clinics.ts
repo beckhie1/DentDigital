@@ -18,6 +18,25 @@ export interface ClinicOffer {
   includes: string[];
 }
 
+export interface ClinicBranding {
+  /** Path under /public, e.g. "/clinics/groruddalen-tannlegesenter.png" */
+  logo?: string;
+  /** Banner background (gradient start) */
+  dark: string;
+  /** Banner gradient end (defaults to `dark`) */
+  darkTo?: string;
+  /** CTA/button + badge color */
+  cta: string;
+  /** CTA hover color */
+  ctaHover: string;
+  /** Text color on CTA buttons */
+  onCta: string;
+  /** Accent text on dark banner */
+  glow: string;
+  /** AA-safe accent on light backgrounds (checkmarks, badge text) */
+  accentInk: string;
+}
+
 export interface Clinic {
   /** URL-safe clinic slug, e.g. "groruddalen-tannlegesenter" */
   slug: string;
@@ -36,6 +55,8 @@ export interface Clinic {
   vaktPhone?: string;
   /** Meta (Facebook) pixel/dataset id — loaded on the clinic's landing pages */
   metaPixelId?: string;
+  /** Optional clinic look & feel for the landing pages (defaults to DentDigital) */
+  branding?: ClinicBranding;
   active: boolean;
   offer: ClinicOffer;
 }
@@ -63,6 +84,16 @@ export const clinics: Clinic[] = [
     googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJ7QqXhJFxQUYRqnqGd6n8K_4",
     feedbackCode: "kz8t3d2",
     metaPixelId: "1289643192545999",
+    branding: {
+      logo: "/clinics/groruddalen-tannlegesenter.png",
+      dark: "#1B2B3A",
+      darkTo: "#2C3E50",
+      cta: "#D5BC88",
+      ctaHover: "#c9ab6f",
+      onCta: "#1B2B3A",
+      glow: "#D5BC88",
+      accentInk: "#8B7340",
+    },
     active: true,
     offer: DEFAULT_OFFER,
   },

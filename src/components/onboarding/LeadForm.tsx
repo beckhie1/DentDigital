@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { submitLead } from "@/app/actions/submit-lead";
 
 const inputCls =
-  "w-full rounded-lg border border-line bg-white px-3.5 py-3 text-base placeholder:text-ink-40 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-accent";
+  "w-full rounded-lg border border-line bg-white px-3.5 py-3 text-base placeholder:text-ink-40 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--l-cta)]";
 
 interface Props {
   clinicSlug: string;
@@ -116,7 +116,7 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded-xl bg-accent py-3.5 text-base font-semibold text-ink transition-all hover:bg-accent-bright active:scale-[0.98] disabled:opacity-50"
+        className="w-full rounded-xl bg-[var(--l-cta)] py-3.5 text-base font-semibold text-[var(--l-on-cta)] transition-all hover:bg-[var(--l-cta-hover)] active:scale-[0.98] disabled:opacity-50"
       >
         {submitting ? "Sender…" : "Bestill time nå"}
       </button>

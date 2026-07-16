@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import type { Clinic } from "@/lib/clinics";
 import { submitFeedback } from "@/app/actions/submit-feedback";
 import LandingShell from "./LandingShell";
@@ -10,7 +11,7 @@ const EMOJIS = ["😞", "😕", "😐", "😊", "😁"];
 type View = "survey" | "negative" | "positive" | "submitted";
 
 const inputCls =
-  "w-full rounded-lg border border-line bg-white px-3.5 py-3 text-base placeholder:text-ink-40 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-accent";
+  "w-full rounded-lg border border-line bg-white px-3.5 py-3 text-base placeholder:text-ink-40 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--l-cta)]";
 
 /** Feedback flow: dentdigital.no/{feedbackCode} — mirrors gdts.no/tilbakemelding. */
 export default function FeedbackFlow({ clinic }: { clinic: Clinic }) {
@@ -37,10 +38,19 @@ export default function FeedbackFlow({ clinic }: { clinic: Clinic }) {
   };
 
   return (
-    <LandingShell>
+    <LandingShell clinic={clinic}>
       <div className="mx-auto w-full max-w-md">
         {/* Clinic identity */}
         <div className="mb-6 text-center">
+          {clinic.branding?.logo && (
+            <Image
+              src={clinic.branding.logo}
+              alt={clinic.name}
+              width={64}
+              height={64}
+              className="mx-auto mb-2 h-14 w-14 rounded-xl sm:h-16 sm:w-16"
+            />
+          )}
           <h2 className="font-display text-lg font-semibold tracking-tight">{clinic.name}</h2>
           <p className="text-xs uppercase tracking-widest text-ink-40">Tilbakemelding</p>
         </div>
@@ -65,7 +75,7 @@ export default function FeedbackFlow({ clinic }: { clinic: Clinic }) {
                     onClick={() => setRating(score)}
                     className={`flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-xl border-2 py-2.5 transition-all active:scale-95 sm:py-3 ${
                       selected
-                        ? "border-accent bg-accent/10"
+                        ? "border-[var(--l-cta)] bg-[color-mix(in_srgb,var(--l-cta)_10%,transparent)]"
                         : "border-transparent bg-canvas hover:bg-line/40"
                     }`}
                   >
@@ -83,7 +93,7 @@ export default function FeedbackFlow({ clinic }: { clinic: Clinic }) {
             <button
               onClick={handleSubmitRating}
               disabled={!rating}
-              className="w-full rounded-xl bg-accent py-3.5 text-base font-semibold text-ink transition-all hover:bg-accent-bright active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-30"
+              className="w-full rounded-xl bg-[var(--l-cta)] py-3.5 text-base font-semibold text-[var(--l-on-cta)] transition-all hover:bg-[var(--l-cta-hover)] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-30"
             >
               Send inn
             </button>
@@ -122,7 +132,7 @@ export default function FeedbackFlow({ clinic }: { clinic: Clinic }) {
             <button
               onClick={handleSubmitNegative}
               disabled={submitting}
-              className="w-full rounded-xl bg-accent py-3.5 text-base font-semibold text-ink transition-all hover:bg-accent-bright active:scale-[0.98] disabled:opacity-50"
+              className="w-full rounded-xl bg-[var(--l-cta)] py-3.5 text-base font-semibold text-[var(--l-on-cta)] transition-all hover:bg-[var(--l-cta-hover)] active:scale-[0.98] disabled:opacity-50"
             >
               {submitting ? "Sender…" : "Send inn"}
             </button>

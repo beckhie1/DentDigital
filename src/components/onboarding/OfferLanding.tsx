@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Clinic } from "@/lib/clinics";
 import LandingShell from "./LandingShell";
 import LeadForm from "./LeadForm";
@@ -9,21 +10,33 @@ export default function OfferLanding({ clinic }: { clinic: Clinic }) {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinic.address)}`;
 
   return (
-    <LandingShell>
+    <LandingShell clinic={clinic}>
       <div className="mx-auto w-full max-w-lg">
         {/* Clinic identity */}
         <div className="mb-5 text-center">
+          {clinic.branding?.logo && (
+            <Image
+              src={clinic.branding.logo}
+              alt={clinic.name}
+              width={64}
+              height={64}
+              className="mx-auto mb-2 h-14 w-14 rounded-xl sm:h-16 sm:w-16"
+            />
+          )}
           <h2 className="font-display text-lg font-semibold tracking-tight">{clinic.name}</h2>
           <p className="text-xs uppercase tracking-widest text-ink-40">{clinic.address}</p>
         </div>
 
         {/* Offer card */}
         <div className="mb-4 overflow-hidden rounded-card border border-line bg-white shadow-lg">
-          <div className="bg-dark px-5 py-4 text-center text-canvas">
-            <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-accent-bright">
+          <div
+            className="px-5 py-4 text-center text-white"
+            style={{ background: "linear-gradient(to right, var(--l-dark), var(--l-dark-to))" }}
+          >
+            <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-[var(--l-glow)]">
               ✦ Kampanje ✦
             </p>
-            <p className="text-sm text-canvas/80">{offer.title}</p>
+            <p className="text-sm text-white/80">{offer.title}</p>
           </div>
 
           <div className="px-5 pb-4 pt-5 text-center">
@@ -31,7 +44,7 @@ export default function OfferLanding({ clinic }: { clinic: Clinic }) {
               <span className="text-lg text-ink-40 line-through">
                 {offer.oldPrice.toLocaleString("nb-NO")} kr
               </span>
-              <span className="rounded-full bg-accent/15 px-2 py-0.5 text-xs font-bold text-accent-ink">
+              <span className="rounded-full bg-[color-mix(in_srgb,var(--l-cta)_15%,transparent)] px-2 py-0.5 text-xs font-bold text-[var(--l-accent-ink)]">
                 SPAR {save}%
               </span>
             </div>
@@ -45,7 +58,7 @@ export default function OfferLanding({ clinic }: { clinic: Clinic }) {
             <ul className="space-y-2">
               {offer.includes.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-ink-60">
-                  <span className="mt-0.5 shrink-0 text-accent-ink">✓</span>
+                  <span className="mt-0.5 shrink-0 text-[var(--l-accent-ink)]">✓</span>
                   {item}
                 </li>
               ))}
