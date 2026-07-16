@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
+import { matchHandle } from "@/lib/clinics";
 
 export type ConsentValue = "all" | "necessary";
 
@@ -16,6 +18,7 @@ export function getConsent(): ConsentValue | null {
 /** GDPR consent banner. Gates any future analytics behind "all". */
 export default function ConsentBanner() {
   const { lang } = useLang();
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -30,6 +33,49 @@ export default function ConsentBanner() {
 
   if (!visible) return null;
   const t = ui.consent;
+
+  const seg = pathname?.replace(/^\/+|\/+$/g, "") ?? "";
+  const landing = seg && !seg.includes("/") ? matchHandle(seg) : null;
+
+  if (landing) {
+    const cta = landing.clinic.branding?.cta ?? "#00c2b8";
+    const onCta = landing.clinic.branding?.onCta ?? "#111110";
+    return (
+      <div className="fixed inset-0 z-[9000] flex items-end justify-center bg-ink/40 p-4 backdrop-blur-[2px] sm:items-center">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Cookie consent"
+          className="w-full max-w-sm rounded-2xl border border-line bg-white p-6 text-center shadow-2xl"
+        >
+          <div className="mb-2 text-3xl">🍪</div>
+          <h2 className="font-display mb-2 text-lg font-semibold">
+            Få best mulig opplevelse
+          </h2>
+          <p className="mb-5 text-sm leading-relaxed text-ink-60">
+            Vi bruker informasjonskapsler for at siden skal fungere best mulig, og for at
+            klinikken skal kunne følge opp henvendelsen din.{" "}
+            <Link href="/cookies" className="underline">
+              {t.more.no}
+            </Link>
+          </p>
+          <button
+            onClick={() => choose("all")}
+            style={{ background: cta, color: onCta }}
+            className="w-full rounded-xl py-3.5 text-base font-semibold transition-all hover:opacity-90 active:scale-[0.98]"
+          >
+            {t.accept.no}
+          </button>
+          <button
+            onClick={() => choose("necessary")}
+            className="mt-3 text-xs text-ink-40 underline hover:text-ink"
+          >
+            {t.necessary.no}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
