@@ -45,12 +45,23 @@ export async function submitLead(input: LeadInput) {
 
   const [dato, tid] = osloTimestamp();
 
-  // Row layout matches the sheet created by scripts/onboard-clinic.mjs:
+  // Standard layout (sheet created by scripts/onboard-clinic.mjs):
   // Dato | Tidspunkt | Navn | E-post | Telefon | Ønsket tidspunkt | Kilde | Status | Antall kontaktpunkt | Kommentar | UTM
+  // "gdts-us" layout (clinic's own US tab):
+  // Dato | TId | Navn | E-post | Telefon | Ønsket dato | Tannbleking? | Status | Antall kontaktpunkt | Kommentar | (blank) | Source | Ad Name | Ad ID
+  const utmSource = String(input.utmSource ?? "").trim().slice(0, 100);
+  const utmContent = String(input.utmContent ?? "").trim().slice(0, 100);
+  const sheetWrite =
+    clinic.leadsLayout === "gdts-us"
+      ? appendRow(clinic.spreadsheetId, "US!A:N", [
+          dato, tid, navn, epost, telefon, onsketDato, "", "Ny", "", kommentar, "", utmSource || kilde, utmContent, "",
+        ])
+      : appendRow(clinic.spreadsheetId, "Leads!A:K", [
+          dato, tid, navn, epost, telefon, onsketDato, kilde, "Ny", "", kommentar, utm,
+        ]);
+
   const results = await Promise.allSettled([
-    appendRow(clinic.spreadsheetId, "Leads!A:K", [
-      dato, tid, navn, epost, telefon, onsketDato, kilde, "Ny", "", kommentar, utm,
-    ]),
+    sheetWrite,
     sendLeadEmail(clinic.email, clinic.name, {
       navn, epost, telefon, onsketDato, kommentar, kilde,
     }),

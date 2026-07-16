@@ -57,6 +57,12 @@ export interface Clinic {
   metaPixelId?: string;
   /** Optional clinic look & feel for the landing pages (defaults to DentDigital) */
   branding?: ClinicBranding;
+  /**
+   * Lead-row destination. "gdts-us" appends to the clinic's legacy `US` tab
+   * (Dato..Kommentar A:J, K blank, L Source, M Ad Name, N Ad ID).
+   * Default: the standard `Leads` tab (A:K).
+   */
+  leadsLayout?: "gdts-us";
   active: boolean;
   offer: ClinicOffer;
 }
@@ -94,6 +100,7 @@ export const clinics: Clinic[] = [
       glow: "#D5BC88",
       accentInk: "#8B7340",
     },
+    leadsLayout: "gdts-us",
     active: true,
     offer: DEFAULT_OFFER,
   },
