@@ -98,6 +98,8 @@ export async function submitLead(input: LeadInput) {
           userAgent: h.get("user-agent") ?? undefined,
           fbp: String(input.fbp ?? "").slice(0, 100) || undefined,
           fbc: String(input.fbc ?? "").slice(0, 200) || undefined,
+          value: clinic.offer.price,
+          currency: "NOK",
         },
       ]),
     );

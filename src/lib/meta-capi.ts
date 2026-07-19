@@ -32,6 +32,10 @@ export interface CapiEvent {
   userAgent?: string;
   fbp?: string;
   fbc?: string;
+  /** Monetary value of the event, e.g. the offer price (for Meta ROAS modeling) */
+  value?: number;
+  /** ISO currency code, e.g. "NOK" */
+  currency?: string;
 }
 
 export async function sendMetaEvents(datasetId: string, events: CapiEvent[]): Promise<void> {
@@ -45,6 +49,10 @@ export async function sendMetaEvents(datasetId: string, events: CapiEvent[]): Pr
     event_id: e.eventId,
     action_source: "website",
     event_source_url: e.eventSourceUrl,
+    custom_data:
+      e.value != null
+        ? { value: e.value, currency: e.currency ?? "NOK" }
+        : undefined,
     user_data: {
       em: e.email ? [hashEmail(e.email)] : undefined,
       ph: e.phone ? [hashPhone(e.phone)] : undefined,

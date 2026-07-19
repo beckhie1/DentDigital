@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { submitLead } from "@/app/actions/submit-lead";
 import { getConsent } from "@/components/shell/ConsentBanner";
+import { getClinicBySlug } from "@/lib/clinics";
 
 const readCookie = (name: string) =>
   document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))?.[1] ?? "";
@@ -82,7 +83,15 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
       if (result.success) {
         setSubmitted(true);
         // Standard "Lead" intentionally not fired — Meta flags it for dental/health ads.
-        if (kilde === "tilbud") window.fbq?.("trackCustom", "exam_lead", {}, { eventID: `${eventId}.exam` });
+        if (kilde === "tilbud") {
+          const price = getClinicBySlug(clinicSlug)?.offer.price;
+          window.fbq?.(
+            "trackCustom",
+            "exam_lead",
+            price ? { value: price, currency: "NOK" } : {},
+            { eventID: `${eventId}.exam` },
+          );
+        }
         window.gtag?.("event", "conversion", {
           send_to: process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID,
         });

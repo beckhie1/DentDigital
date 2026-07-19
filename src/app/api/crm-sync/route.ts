@@ -78,6 +78,8 @@ export async function GET(req: Request) {
             eventSourceUrl: `https://www.dentdigital.no/${clinic.slug}-tilbud`,
             email: lead.epost || undefined,
             phone: lead.telefon || undefined,
+            value: clinic.offer.price,
+            currency: "NOK",
           },
         ]);
         // stamp the row so it is never sent twice
