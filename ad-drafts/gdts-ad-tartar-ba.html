@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1080px; overflow: hidden; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(150deg, #16222E 0%, #1B2B3A 45%, #2C3E50 100%);
+    color: #fff; position: relative;
+  }
+  .glow { position: absolute; width: 720px; height: 720px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(213,188,136,.14) 0%, transparent 65%);
+    top: -180px; right: -180px; }
+  .wrap { position: relative; height: 100%; padding: 56px 64px; display: flex; flex-direction: column; }
+  .top { display: flex; align-items: center; gap: 20px; }
+  .top img { width: 78px; height: 78px; border-radius: 18px; }
+  .clinic { font-size: 28px; font-weight: 600; letter-spacing: .2px; }
+  .stars { margin-top: 5px; font-size: 20px; color: #f5b301; letter-spacing: 2px; }
+  .stars span { color: rgba(255,255,255,.75); font-size: 19px; letter-spacing: .2px; margin-left: 8px; }
+  .hero { display: flex; align-items: center; gap: 44px; margin-top: 36px; flex: 1; }
+  .hero-text { flex: 1.05; }
+  h1 { font-size: 66px; line-height: 1.06; font-weight: 800; letter-spacing: -1.5px; }
+  h1 .gold { color: #D5BC88; }
+  .sub { margin-top: 18px; font-size: 27px; line-height: 1.42; color: rgba(255,255,255,.88); max-width: 520px; }
+  .sub strong { color: #fff; font-weight: 700; }
+  .price-row { display: flex; align-items: flex-end; gap: 20px; margin-top: 24px; white-space: nowrap; }
+  .old { font-size: 34px; color: rgba(255,255,255,.45); text-decoration: line-through; text-decoration-thickness: 3px; padding-bottom: 11px; }
+  .new { font-size: 96px; font-weight: 800; color: #D5BC88; letter-spacing: -3px; line-height: 1; }
+  .new small { font-size: 38px; font-weight: 600; letter-spacing: 0; }
+  .badge { align-self: flex-end; margin-bottom: 14px; background: #D5BC88; color: #1B2B3A;
+    font-size: 22px; font-weight: 800; padding: 8px 18px; border-radius: 999px; }
+  .includes { margin-top: 10px; font-size: 25px; color: rgba(255,255,255,.85); }
+  /* before/after card */
+  .ba { flex: .95; display: flex; flex-direction: column; gap: 14px; }
+  .panel { position: relative; border-radius: 20px; overflow: hidden; height: 250px;
+    border: 3px solid rgba(213,188,136,.55); box-shadow: 0 12px 40px rgba(0,0,0,.35); }
+  .panel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tag { position: absolute; top: 14px; left: 14px; font-size: 24px; font-weight: 800;
+    padding: 8px 20px; border-radius: 999px; letter-spacing: .5px; }
+  .tag.before { background: #B3413F; color: #fff; }
+  .tag.after { background: #2E7D5B; color: #fff; }
+  .caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 26px 16px 12px;
+    background: linear-gradient(transparent, rgba(10,16,22,.85)); font-size: 21px; font-weight: 600; }
+  .arrow { text-align: center; font-size: 30px; color: #D5BC88; line-height: .4; }
+  .bottom { margin-top: 30px; background: rgba(213,188,136,.12); border: 2px solid rgba(213,188,136,.45);
+    border-radius: 22px; padding: 24px 34px; display: flex; align-items: center; justify-content: space-between; }
+  .hours { font-size: 28px; font-weight: 700; color: #E8D9B0; }
+  .hours small { display: block; font-size: 21px; font-weight: 400; color: rgba(255,255,255,.8); margin-top: 5px; }
+  .cta { background: #D5BC88; color: #1B2B3A; font-size: 27px; font-weight: 800;
+    padding: 19px 36px; border-radius: 15px; white-space: nowrap; }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="top">
+      <img src="file:///Users/umar/Documents/DEV/DentDigital/DentDigital/public/clinics/groruddalen-tannlegesenter.png" alt="">
+      <div>
+        <div class="clinic">Groruddalen Tannlegesenter</div>
+        <div class="stars">★★★★★<span>4,9 av 5 · 200+ anmeldelser</span></div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Tannstein?<br><span class="gold">Børsten fjerner den ikke.</span></h1>
+        <p class="sub">Mørke kanter og belegg langs tannkjøttet er tannstein — den må fjernes profesjonelt <strong>før</strong> den gir betennelse og dårlig ånde.</p>
+        <div class="price-row">
+          <div class="new">590<small> kr</small></div>
+          <div class="old">1 390 kr</div>
+          <div class="badge">SPAR 58%</div>
+        </div>
+        <div class="includes">Komplett undersøkelse + Premium Airflow-rens</div>
+      </div>
+
+      <div class="ba">
+        <div class="panel">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Sarro.jpg/960px-Sarro.jpg" alt="" style="object-position: 48% 78%; transform: scale(1.9); transform-origin: 48% 78%;">
+          <div class="tag before">FØR</div>
+          <div class="caption">Tannstein og belegg langs tannkjøttet</div>
+        </div>
+        <div class="arrow">▼</div>
+        <div class="panel">
+          <img src="https://images.pexels.com/photos/3762402/pexels-photo-3762402.jpeg?auto=compress&w=960" alt="" style="object-position: center 40%;">
+          <div class="tag after">ETTER RENS</div>
+          <div class="caption">Rene, glatte tenner uten belegg</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="hours">🕐 Åpent til 20 på hverdager — og hele helgen<small>Man–Fre 08–20 · Lør–Søn 10–18 · 🚇 Rett ved Rødtvet T-bane</small></div>
+      <div class="cta">Bestill time</div>
+    </div>
+  </div>
+</body>
+</html>
