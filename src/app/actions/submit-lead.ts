@@ -61,7 +61,9 @@ export async function submitLead(input: LeadInput) {
   // Dato | Tidspunkt | Navn | E-post | Telefon | Ønsket tidspunkt | Tannbleking | Kilde | Status | Antall kontaktpunkt | Kommentar | UTM | Event ID | fbp | fbc
   // "gdts-us" layout (clinic's own US tab):
   // Dato | TId | Navn | E-post | Telefon | Ønsket dato | Tannbleking? | Status | Antall kontaktpunkt | Kommentar | (blank) | Source | Ad Name | Ad ID
-  //   | O Meta synk | P Count | Q gclid | R gbraid | S Event ID | T fbp | U fbc
+  //   | O Meta synk | P Count | Q gclid | R gbraid | S wbraid | T/U hashed phone/email
+  //   | V timestamp | W fclid | X..AO Apps Script OCT/enrichment columns
+  //   | AP Event ID | AQ fbp | AR fbc  (← ours; S..AO belong to the clinic's Apps Script)
   const utmSource = String(input.utmSource ?? "").trim().slice(0, 100);
   const utmContent = String(input.utmContent ?? "").trim().slice(0, 100);
   const utmTerm = String(input.utmTerm ?? "").trim().slice(0, 100);
@@ -75,9 +77,10 @@ export async function submitLead(input: LeadInput) {
 
   const sheetWrite =
     clinic.leadsLayout === "gdts-us"
-      ? appendRow(clinic.spreadsheetId, "US!A:U", [
+      ? appendRow(clinic.spreadsheetId, "US!A:AR", [
           dato, tid, navn, epost, telefon, onsketDato, tannbleking, "Ny", "", kommentar, "", utmSource || kilde, utmContent, utmTerm,
-          "", "", "", "", storedEventId, storedFbp, storedFbc,
+          ...Array(27).fill(""), // O..AO: Apps Script OCT/enrichment columns — leave untouched
+          storedEventId, storedFbp, storedFbc,
         ])
       : appendRow(clinic.spreadsheetId, "Leads!A:O", [
           dato, tid, navn, epost, telefon, onsketDato, tannbleking, kilde, "Ny", "", kommentar, utm,

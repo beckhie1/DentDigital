@@ -28,9 +28,10 @@ const FUNNEL = [
 ] as const;
 
 // gdts-us layout: A Dato, C Navn, D E-post, E Telefon, H Status, O Meta synk,
-// P Count, Q gclid, R gbraid, S Event ID, T fbp, U fbc
-const US_RANGE = "US!A:U";
-const US_COLS = { epost: 3, telefon: 4, status: 7, synced: 14, fbp: 19, fbc: 20 };
+// P Count, Q gclid, R gbraid, S..AO Apps Script OCT/enrichment columns,
+// AP Event ID, AQ fbp, AR fbc
+const US_RANGE = "US!A:AR";
+const US_COLS = { epost: 3, telefon: 4, status: 7, synced: 14, fbp: 42, fbc: 43 };
 
 async function sheetsToken(): Promise<string> {
   const keyJson = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
