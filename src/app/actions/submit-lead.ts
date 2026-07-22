@@ -58,19 +58,30 @@ export async function submitLead(input: LeadInput) {
   const [dato, tid] = osloTimestamp();
 
   // Standard layout (sheet created by scripts/onboard-clinic.mjs):
-  // Dato | Tidspunkt | Navn | E-post | Telefon | Ønsket tidspunkt | Tannbleking | Kilde | Status | Antall kontaktpunkt | Kommentar | UTM
+  // Dato | Tidspunkt | Navn | E-post | Telefon | Ønsket tidspunkt | Tannbleking | Kilde | Status | Antall kontaktpunkt | Kommentar | UTM | Event ID | fbp | fbc
   // "gdts-us" layout (clinic's own US tab):
   // Dato | TId | Navn | E-post | Telefon | Ønsket dato | Tannbleking? | Status | Antall kontaktpunkt | Kommentar | (blank) | Source | Ad Name | Ad ID
+  //   | O Meta synk | P Count | Q gclid | R gbraid | S Event ID | T fbp | U fbc
   const utmSource = String(input.utmSource ?? "").trim().slice(0, 100);
   const utmContent = String(input.utmContent ?? "").trim().slice(0, 100);
   const utmTerm = String(input.utmTerm ?? "").trim().slice(0, 100);
+
+  // Meta identifiers stored on the row so the CRM sync can send high-match
+  // funnel events later (booked/completed). Only with marketing consent.
+  const hasMarketingConsent = input.consent === "all";
+  const storedEventId = hasMarketingConsent ? String(input.eventId ?? "").slice(0, 64) || crypto.randomUUID() : "";
+  const storedFbp = hasMarketingConsent ? String(input.fbp ?? "").slice(0, 100) : "";
+  const storedFbc = hasMarketingConsent ? String(input.fbc ?? "").slice(0, 200) : "";
+
   const sheetWrite =
     clinic.leadsLayout === "gdts-us"
-      ? appendRow(clinic.spreadsheetId, "US!A:N", [
+      ? appendRow(clinic.spreadsheetId, "US!A:U", [
           dato, tid, navn, epost, telefon, onsketDato, tannbleking, "Ny", "", kommentar, "", utmSource || kilde, utmContent, utmTerm,
+          "", "", "", "", storedEventId, storedFbp, storedFbc,
         ])
-      : appendRow(clinic.spreadsheetId, "Leads!A:L", [
+      : appendRow(clinic.spreadsheetId, "Leads!A:O", [
           dato, tid, navn, epost, telefon, onsketDato, tannbleking, kilde, "Ny", "", kommentar, utm,
+          storedEventId, storedFbp, storedFbc,
         ]);
 
   const tasks: Promise<unknown>[] = [
@@ -83,9 +94,9 @@ export async function submitLead(input: LeadInput) {
   // Server-side Conversions API — mirrors the pixel with shared event_ids (dedup).
   // Only with marketing consent, matching the consent-gated browser pixel.
   // Standard "Lead" intentionally not sent — Meta flags it for dental/health ads.
-  if (clinic.metaPixelId && input.consent === "all" && input.kilde !== "tannlegevakt") {
+  if (clinic.metaPixelId && hasMarketingConsent && input.kilde !== "tannlegevakt") {
     const h = await headers();
-    const eventId = String(input.eventId ?? "").slice(0, 64) || crypto.randomUUID();
+    const eventId = storedEventId;
     tasks.push(
       sendMetaEvents(clinic.metaPixelId, [
         {

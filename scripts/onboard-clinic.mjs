@@ -158,6 +158,7 @@ async function api(url, method, token, body) {
 const LEAD_HEADERS = [
   "Dato", "Tidspunkt", "Navn", "E-post", "Telefon", "Ønsket tidspunkt",
   "Tannbleking", "Kilde", "Status", "Antall kontaktpunkt", "Kommentar", "UTM",
+  "Event ID", "fbp", "fbc", "Meta synk",
 ];
 const FEEDBACK_HEADERS = ["Dato", "Tidspunkt", "Vurdering", "Navn", "Telefon", "Kommentar", "Fulgt opp"];
 
