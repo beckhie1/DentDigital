@@ -157,6 +157,7 @@ export function getClinicBySlug(slug: string): Clinic | undefined {
 /** True when the current pathname is a chrome-free landing page. */
 export function isLandingPath(pathname: string): boolean {
   const seg = pathname.replace(/^\/+|\/+$/g, "");
+  if (seg === "skjema" || seg.startsWith("skjema/")) return true;
   if (!seg || seg.includes("/")) return false;
   return matchHandle(seg) !== null;
 }
