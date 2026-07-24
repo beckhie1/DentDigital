@@ -59,6 +59,9 @@ export default function OfferLanding({ clinic }: { clinic: Clinic }) {
               {offer.price.toLocaleString("nb-NO")}{" "}
               <span className="text-xl font-normal text-ink-60">kr</span>
             </p>
+            <p className="mt-1.5 text-xs font-medium uppercase tracking-wide text-ink-40">
+              Begrenset antall plasser
+            </p>
           </div>
 
           <div className="px-5 pb-5">
@@ -77,7 +80,7 @@ export default function OfferLanding({ clinic }: { clinic: Clinic }) {
         <div className="rounded-card border border-line bg-white p-5 shadow-lg sm:p-7">
           <h1 className="font-display mb-1 text-xl font-semibold sm:text-2xl">Bestill din time</h1>
           <p className="mb-5 text-sm leading-relaxed text-ink-60">
-            Fyll ut skjemaet, så kontakter klinikken deg for å bekrefte timen.
+            Tar under ett minutt — klinikken kontakter deg og bekrefter timen.
           </p>
           <LeadForm clinicSlug={clinic.slug} kilde="tilbud" />
         </div>

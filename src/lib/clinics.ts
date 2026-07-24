@@ -140,13 +140,13 @@ export const clinics: Clinic[] = [
     },
     active: true,
     offer: {
-      title: "Komplett undersøkelse + rens",
+      title: "Komplett undersøkelse + Airflow-tannrens",
       oldPrice: 1390,
       price: 590,
       includes: [
+        "Premium Airflow-tannrens — fjerner tannstein og misfarging skånsomt",
         "Grundig undersøkelse av erfaren tannlege",
         "Røntgenbilder og konsultasjon",
-        "Profesjonell rens som fjerner misfarging",
         "Personlig behandlingsplan",
       ],
     },
