@@ -117,6 +117,40 @@ export const clinics: Clinic[] = [
       ],
     },
   },
+  {
+    slug: "lillestrom-tannhelse",
+    name: "Lillestrøm Tannhelse",
+    email: "post@lillestromtannhelse.no",
+    phone: "+47 901 11 919",
+    address: "Nittedalsgata 20B, 2000 Lillestrøm",
+    // DEMO — sheet + review-url settes ved signering (scripts/onboard-clinic.mjs)
+    spreadsheetId: "",
+    googleReviewUrl:
+      "https://www.google.com/maps/search/?api=1&query=Lillestr%C3%B8m%20Tannhelse%20Nittedalsgata%2020B",
+    feedbackCode: "lth7m2k",
+    branding: {
+      logo: "/clinics/lillestrom-tannhelse.png",
+      dark: "#012459",
+      darkTo: "#003a9e",
+      cta: "#68ccd1",
+      ctaHover: "#54b9be",
+      onCta: "#012459",
+      glow: "#68ccd1",
+      accentInk: "#003a9e",
+    },
+    active: true,
+    offer: {
+      title: "Komplett undersøkelse + rens",
+      oldPrice: 1390,
+      price: 590,
+      includes: [
+        "Grundig undersøkelse av erfaren tannlege",
+        "Røntgenbilder og konsultasjon",
+        "Profesjonell rens som fjerner misfarging",
+        "Personlig behandlingsplan",
+      ],
+    },
+  },
   // ⟪ONBOARD:INSERT⟫ — entries are appended above this line by scripts/onboard-clinic.mjs
 ];
 
