@@ -112,7 +112,6 @@ function itemHtml(item: Item, values: FormValues): string {
 
 export function buildEgenvurderingEmailHtml(values: FormValues, date: string): string {
   const navn = getString(values, "navn");
-  const fnr = getString(values, "fnr");
   const signatur = getString(values, "signatur");
 
   const metaRow = (label: string, value: string) =>
@@ -133,7 +132,6 @@ export function buildEgenvurderingEmailHtml(values: FormValues, date: string): s
 
     <table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:14px;">
       ${metaRow("Navn:", navn)}
-      ${metaRow("Fødselsnummer:", fnr)}
       ${metaRow("Dato:", date)}
     </table>
 

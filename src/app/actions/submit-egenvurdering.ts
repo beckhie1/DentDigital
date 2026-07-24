@@ -24,7 +24,6 @@ const cleanStr = (v: unknown, max = MAX_TEXT) =>
 function sanitize(input: FormValues): FormValues {
   const out: FormValues = {};
   out.navn = cleanStr(input.navn, 150);
-  out.fnr = cleanStr(input.fnr, 20).replace(/\s/g, "");
   out.signatur = cleanStr(input.signatur, 150);
   out.samtykke = cleanStr(input.samtykke, 3);
 
@@ -73,11 +72,9 @@ export async function submitEgenvurdering(
 ): Promise<{ success: boolean; error?: string }> {
   const values = sanitize(input);
   const navn = getString(values, "navn");
-  const fnr = getString(values, "fnr");
   const signatur = getString(values, "signatur");
 
   if (!navn) return { success: false, error: "Mangler navn" };
-  if (!/^\d{11}$/.test(fnr)) return { success: false, error: "Ugyldig fødselsnummer" };
   if (!signatur) return { success: false, error: "Mangler signatur" };
   if (values.samtykke !== "Ja") return { success: false, error: "Mangler samtykke" };
 

@@ -301,7 +301,6 @@ function ItemPdf({ item, values }: { item: Item; values: FormValues }) {
 
 export function EgenvurderingPdf({ values, date }: { values: FormValues; date: string }) {
   const navn = getString(values, "navn");
-  const fnr = getString(values, "fnr");
   const signatur = getString(values, "signatur");
 
   return (
@@ -328,10 +327,6 @@ export function EgenvurderingPdf({ values, date }: { values: FormValues; date: s
         <View style={s.metaRow}>
           <Text style={s.metaLabel}>Navn:</Text>
           <Text style={s.metaValue}>{navn}</Text>
-        </View>
-        <View style={s.metaRow}>
-          <Text style={s.metaLabel}>Fødselsnummer (11 siffer):</Text>
-          <Text style={s.metaValue}>{fnr}</Text>
         </View>
         <View style={s.metaRow}>
           <Text style={s.metaLabel}>Dato:</Text>
