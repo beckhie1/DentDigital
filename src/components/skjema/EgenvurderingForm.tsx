@@ -85,7 +85,6 @@ export default function EgenvurderingForm() {
     e.preventDefault();
     const errs: Record<string, string> = {};
     if (!str(values, "navn").trim()) errs.navn = "Skriv inn navnet ditt.";
-    if (!/^\d{11}$/.test(str(values, "fnr").replace(/\s/g, ""))) errs.fnr = "Fødselsnummer må være 11 siffer.";
     if (!str(values, "signatur").trim()) errs.signatur = "Signer med fullt navn.";
     if (str(values, "samtykke") !== "Ja") errs.samtykke = "Du må samtykke for å sende inn.";
     setErrors(errs);
@@ -134,20 +133,6 @@ export default function EgenvurderingForm() {
             onChange={(e) => set("navn", e.target.value)}
           />
           {errors.navn && <p className="mt-1 text-xs font-medium text-red-700">{errors.navn}</p>}
-        </div>
-        <div id="f-fnr">
-          <label htmlFor="fnr" className={labelCls}>
-            Fødselsnummer (11 siffer) *
-          </label>
-          <input
-            id="fnr"
-            className={inputCls}
-            inputMode="numeric"
-            maxLength={11}
-            value={str(values, "fnr")}
-            onChange={(e) => set("fnr", e.target.value.replace(/\D/g, ""))}
-          />
-          {errors.fnr && <p className="mt-1 text-xs font-medium text-red-700">{errors.fnr}</p>}
         </div>
         <div>
           <span className={labelCls}>Dato</span>
