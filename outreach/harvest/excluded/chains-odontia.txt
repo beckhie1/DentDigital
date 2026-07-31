@@ -1,0 +1,35 @@
+Odontia Tannlegene Asker|Asker|asker@odontia.no|https://odontia.no/tannlege/asker
+Odontia Tannlegene Askim|Askim|askim@odontia.no|https://odontia.no/tannlege/askim
+Odontia Tannlegene Brumunddal|Brumunddal|brumunddal@odontia.no|https://odontia.no/tannlege/brumunddal
+Odontia Tannlegene Drammen Brage|Drammen|drammen@odontia.no|https://odontia.no/tannlege/drammen
+Fredrikstad Endodonti|Fredrikstad|cicignontannlege@hotmail.no|https://odontia.no/tannlege/fredrikstad-endodonti
+Odontia Tannlegene Fåvang|Fåvang|faavang@odontia.no|https://odontia.no/tannlege/favang
+Odontia Tannlegene Hamar|Hamar|hamar@odontia.no|https://odontia.no/tannlege/hamar
+Odontia Tannlegene Haugesund|Haugesund|haugesund@odontia.no|https://odontia.no/tannlege/haugesund
+Odontia Tannlegene Hov|Hov|hov@odontia.no|https://odontia.no/tannlege/hov
+Odontia Tannlegene Hønefoss|Hønefoss|honefoss@odontia.no|https://odontia.no/tannlege/honefoss
+Sentrum Tannhelse Odontia|Kristiansund|sentrumtannhelse@odontia.no|https://odontia.no/tannlege/kristiansund
+Odontia Tannlegene Kvernberget|Kristiansund|kvernberget@odontia.no|https://odontia.no/tannlege/kvernberget-kristiansund
+Odontia Tannlegene Larvik|Larvik|larvik@odontia.no|https://odontia.no/tannlege/larvik
+Odontia Tannlegene Lillehammer Lilletorget|Lillehammer|lillehammer@odontia.no|https://odontia.no/tannlege/lillehammer-lilletorget
+Odontia Tannlegene Lillehammer Nymosvingen|Lillehammer|lillehammertannhelse@odontia.no|https://odontia.no/tannlege/lillehammer-tannhelse
+Odontia Tannlegene Lyngdal|Lyngdal|lyngdal@odontia.no|https://odontia.no/tannlege/lyngdal
+Odontia Tannlegene Molde|Molde|molde@odontia.no|https://odontia.no/tannlege/molde
+Odontia Tannlegene Moss Sentrum (Walle)|Moss|walle@odontia.no|https://odontia.no/tannlege/moss-walle
+Odontia Varna Tannlegesenter|Moss|varna@odontia.no|https://odontia.no/tannlege/varna
+Oslo Endodontisenter|Oslo|post@osloendo.no|https://odontia.no/tannlege/oslo-endodonti
+Odontia Tannlegene Oslo Sentrum|Oslo|oslosentrum@odontia.no|https://odontia.no/tannlege/oslo-sentrum
+Odontia Tannlegene Røa|Oslo|roa@odontia.no|https://odontia.no/tannlege/roa
+Odontia Tannlegene Stovner Senter|Oslo|stovner@odontia.no|https://odontia.no/tannlege/oslo-stovner
+Odontia Tannlegene Ullevål|Oslo|ullevaal@odontia.no|https://odontia.no/tannlege/oslo-ulleval
+Odontia Tannlegene Sandefjord|Sandefjord|sandefjord@odontia.no|https://odontia.no/tannlege/sandefjord
+Odontia Tannlegene Sandvika Storsenter|Sandvika|sandvika@odontia.no|https://odontia.no/tannlege/sandvika
+Odontia Tannlegene Sortland|Sortland|sortland@odontia.no|https://odontia.no/tannlege/sortland
+Odontia Tannlegene Stange|Stange|stange@odontia.no|https://odontia.no/tannlege/stange
+Odontia Tannlegene Stokmarknes|Stokmarknes|stokmarknes@odontia.no|https://odontia.no/tannlege/stokmarknes
+Odontia Tannlegene Strømmen Storsenter|Strømmen|strommen@odontia.no|https://odontia.no/tannlege/strommen-storsenter
+Odontia Tannlegene Tromsø ABA|Tromsø|tromso@odontia.no|https://odontia.no/tannlege/tromso-aba
+Odontia Tannlegene Tromsø Byporten|Tromsø|byporten-tromso@odontia.no|https://odontia.no/tannlege/tromso-byporten
+Odontia Tannlegene Tønsberg|Tønsberg|tonsberg@odontia.no|https://odontia.no/tannlege/tonsberg
+Odontia Tannlegekontoret Volda|Volda|tannlegekontoret@odontia.no|https://odontia.no/tannlege/volda
+Odontia Tannlegene Ås|Ås|aas@odontia.no|https://odontia.no/tannlege/aas

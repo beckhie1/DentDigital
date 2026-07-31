@@ -1,0 +1,100 @@
+Verified: oris.no/klinikker returns 404; the live site is **orisdental.no** and the full directory is at https://orisdental.no/klinikker (alphabetical, A–Å, complete list with per-clinic contact info).
+
+```
+Oris Dental Aker Brygge|Oslo|akerbrygge@orisdental.no|https://orisdental.no/klinikker/aker-brygge
+Oris Dental Arendal Spesialistklinikk|Arendal|arendal@orisdental.no|https://orisdental.no/klinikker/arendal
+Oris Dental Arken Åsane|Ulset (Åsane, Bergen)|arken@orisdental.no|https://orisdental.no/klinikker/arken-asane
+Oris Dental Arken Åsane Tannregulering|Ulset (Åsane, Bergen)|kjevearken@orisdental.no|https://orisdental.no/klinikker/arken-aasane-tannregulering
+Oris Dental Askøy|Kleppestø|askoy@orisdental.no|https://orisdental.no/klinikker/askoy
+Oris Dental Bodø|Bodø|bodo@orisdental.no|https://orisdental.no/klinikker/bodo
+Oris Dental Bossekop|Alta|bossekop@orisdental.no|https://orisdental.no/klinikker/bossekop
+Oris Dental Broegelmannhuset|Bergen|broegelmannhuset@orisdental.no|https://orisdental.no/klinikker/broegelmannhuset
+Oris Dental Brosundet|Ålesund|brosundet@orisdental.no|https://orisdental.no/klinikker/brosundet
+Oris Dental Bryn|Oslo|bryn@orisdental.no|https://orisdental.no/klinikker/bryn
+Oris Dental Bryne|Bryne|bryne@orisdental.no|https://orisdental.no/klinikker/bryne
+Oris Dental Bryne Tannregulering|Bryne|brynetannregulering@orisdental.no|https://orisdental.no/klinikker/bryne-tannregulering
+Oris Dental Drammen|Drammen|drammen@orisdental.no|https://orisdental.no/klinikker/drammen
+Oris Dental Drammen avd. Landfalløya|Drammen|landfalloya@orisdental.no|https://orisdental.no/klinikker/drammen-avd-landfalloya
+Oris Dental Egersund|Egersund|egersund@orisdental.no|https://orisdental.no/klinikker/egersund
+Oris Dental Eikås|Nordfjordeid|eikas@orisdental.no|https://orisdental.no/klinikker/eikas
+Oris Dental Farmannsgate|Fredrikstad|farmannsgate@orisdental.no|https://orisdental.no/klinikker/farmannsgate
+Oris Dental Fredrikstad|Kråkerøy (Fredrikstad)|fredrikstad@orisdental.no|https://orisdental.no/klinikker/fredrikstad
+Oris Dental Galleri Oslo|Oslo|gallerioslo@orisdental.no|https://orisdental.no/klinikker/galleri-oslo
+Oris Dental Godtanna Gol|Gol|godtannagol@orisdental.no|https://orisdental.no/klinikker/godtannagol
+Oris Dental Gressvik|Gressvik (Fredrikstad)|gressvik@orisdental.no|https://orisdental.no/klinikker/gressvik
+Oris Dental Grønnegata Tannlegesenter|Tromsø|gronnegata@orisdental.no|https://orisdental.no/klinikker/gronnegata
+Oris Dental Hamar|Hamar|hamar@orisdental.no|https://orisdental.no/klinikker/hamar
+Oris Dental Harstad Torv|Harstad|harstad@orisdental.no|https://orisdental.no/klinikker/harstad-torv
+Oris Dental Harstad ved Havet|Harstad|harstadvedhavet@orisdental.no|https://orisdental.no/klinikker/harstad-ved-havet
+Oris Dental Harstadtannlegene|Harstad|harstadtannlegene@orisdental.no|https://orisdental.no/klinikker/harstadtannlegene
+Oris Dental Haugesund|Haugesund|haugesund@orisdental.no|https://orisdental.no/klinikker/haugesund
+Oris Dental Hinna Park|Stavanger|hinna@orisdental.no|https://orisdental.no/klinikker/hinna-park
+Oris Dental Hokksund Tannregulering|Hokksund|hokksund@orisdental.no|https://orisdental.no/klinikker/hokksund-tannregulering
+Oris Dental Homansbyen|Oslo|homansbyen@orisdental.no|https://orisdental.no/klinikker/homansbyen
+Oris Dental Hvalertannlegene|Vesterøy (Hvaler)|hvalertannlegene@orisdental.no|https://orisdental.no/klinikker/hvalertannlegene
+Oris Dental Indre Arna|Indre Arna (Bergen)|arna@orisdental.no|https://orisdental.no/klinikker/indre-arna
+Oris Dental Jørpeland|Jørpeland|jorpeland@orisdental.no|https://orisdental.no/klinikker/jorpeland
+Kjeveortoped Aavatsmark|Stjørdal|IKKE PUBLISERT|https://orisdental.no/klinikker/kjeveortoped-aavatsmark
+Oris Dental Knapstad|Knapstad|knapstad@orisdental.no|https://orisdental.no/klinikker/knapstad
+Oris Dental Kolsås|Kolsås (Bærum)|kolsaas@orisdental.no|https://orisdental.no/klinikker/kolsas
+Oris Dental Kristiansand|Kristiansand|kristiansand@orisdental.no|https://orisdental.no/klinikker/kristiansand
+Oris Dental Kvadraturen Tannregulering|Kristiansand|kvadraturentannregulering@orisdental.no|https://orisdental.no/klinikker/kvadraturen-tannregulering
+Oris Dental Leutenhaven (Munkegata)|Trondheim|leutenhaven@orisdental.no|https://orisdental.no/klinikker/leutenhaven
+Oris Dental Levanger|Levanger|levanger@orisdental.no|https://orisdental.no/klinikker/tannlege-levanger
+Oris Dental Lillehammer|Lillehammer|lillehammer@orisdental.no|https://orisdental.no/klinikker/lillehammer
+Oris Dental Lykkegården (Tidl. Trondheim Torg)|Trondheim|lykkegaarden@orisdental.no|https://orisdental.no/klinikker/lykkegaarden
+Oris Dental Lysaker|Lysaker (Bærum)|lysaker@orisdental.no|https://orisdental.no/klinikker/lysaker
+Oris Dental Løkketangen|Sandvika|lokketangen@orisdental.no|https://orisdental.no/klinikker/lokketangen
+Oris Dental Løkkeveien|Stavanger|lokkeveien@orisdental.no|https://orisdental.no/klinikker/lokkeveien
+Oris Dental Madla|Hafrsfjord (Stavanger)|madla@orisdental.no|https://orisdental.no/klinikker/madla
+Oris Dental Martin Stage|Hafrsfjord (Stavanger)|stage@orisdental.no|https://orisdental.no/klinikker/martin-stage
+Oris Dental Melhus|Melhus|melhus@orisdental.no|https://orisdental.no/klinikker/melhus
+Oris Dental Mo i Rana|Mo i Rana|moirana@orisdental.no|https://orisdental.no/klinikker/mo-i-rana
+Oris Dental Moa|Ålesund|moa@orisdental.no|https://orisdental.no/klinikker/moa
+Oris Dental Moelv|Moelv|moelv@orisdental.no|https://orisdental.no/klinikker/moelv
+Oris Dental Moss Spesialistklinikk|Moss|moss-spesialistklinikk@orisdental.no|https://orisdental.no/klinikker/moss-spesialistklinikk
+Oris Dental Munkegata|Trondheim|munkegata@orisdental.no|https://orisdental.no/klinikker/munkegata
+Oris Dental Måløy|Måløy|maloy@orisdental.no|https://orisdental.no/klinikker/maaloy
+Oris Dental Namsos Kjeveortopedi|Namsos|namsoskjeveortopedi@orisdental.no|https://orisdental.no/klinikker/namsos-kjeveortopedi
+Oris Dental Narvik|Narvik|narvik@orisdental.no|https://orisdental.no/klinikker/narvik
+Oris Dental Nationaltheatret Tannregulering|Oslo|nationaltheatret@orisdental.no|https://orisdental.no/klinikker/nationaltheatret-tannregulering
+Oris Dental Nesttun|Nesttun (Bergen)|nesttun@orisdental.no|https://orisdental.no/klinikker/nesttun
+Oris Dental Nittedal|Hagan (Nittedal)|nittedal@orisdental.no|https://orisdental.no/klinikker/nittedal
+Oris Dental Nærbø|Nærbø|narbo@orisdental.no|https://orisdental.no/klinikker/narbo
+Oris Dental Oralkirurgisk Klinikk|Oslo|oralkirurgisk@orisdental.no|https://orisdental.no/klinikker/oralkirurgisk-klinikk
+Oris Dental Orkanger|Orkanger|orkanger@orisdental.no|https://orisdental.no/klinikker/orkanger
+Oris Dental Raufoss|Raufoss|raufoss@orisdental.no|https://orisdental.no/klinikker/raufoss
+Oris Dental Rommen|Oslo|rommen@orisdental.no|https://orisdental.no/klinikker/rommen
+Oris Dental Ryen|Oslo|ryen@orisdental.no|https://orisdental.no/klinikker/ryen
+Oris Dental Sandane|Sandane|sandane@orisdental.no|https://orisdental.no/klinikker/sandane
+Oris Dental Sanden|Trondheim|sanden@orisdental.no|https://orisdental.no/klinikker/sanden
+Oris Dental Sandnes|Sandnes|sandnes@orisdental.no|https://orisdental.no/klinikker/sandnes
+Oris Dental Sandsli Tannregulering|Sandsli (Bergen)|sandslitannregulering@orisdental.no|https://orisdental.no/klinikker/sandsli-tannregulering
+Oris Dental Sandvika Storsenter|Sandvika|sandvika@orisdental.no|https://orisdental.no/klinikker/sandvika-storsenter
+Oris Dental Sarpsborg|Sarpsborg|sarpsborg@orisdental.no|https://orisdental.no/klinikker/sarpsborg
+Oris Dental Sirkus Shopping|Trondheim|sirkus@orisdental.no|https://orisdental.no/klinikker/sirkus-shopping
+Oris Dental Ski|Ski|ski@orisdental.no|https://orisdental.no/klinikker/ski
+Oris Dental Ski Kjeveortopedi|Ski|skikjeveortopedi@orisdental.no|https://orisdental.no/klinikker/ski-kjeveortopedi
+Oris Dental Ski Åsenveien (2. etasje)|Ski|ski3@orisdental.no|https://orisdental.no/klinikker/ski-asenveien-2-etasje
+Oris Dental Ski Åsenveien (3. etasje)|Ski|ski@orisdental.no|https://orisdental.no/klinikker/ski-asenveien-3-etasje
+Oris Dental Skøyen|Oslo|skoyen@orisdental.no|https://orisdental.no/klinikker/skoyen
+Oris Dental Slemmestad|Slemmestad|slemmestad@orisdental.no|https://orisdental.no/klinikker/slemmestad
+Oris Dental Sortland|Sortland|sortland@orisdental.no|https://orisdental.no/klinikker/sortland
+Oris Dental Stoa i Arendal|Arendal|stoa@orisdental.no|https://orisdental.no/klinikker/stoa
+Oris Dental Stokmarknes|Stokmarknes|stokmarknes@orisdental.no|https://orisdental.no/klinikker/stokmarknes
+Oris Dental Stord Heiane|Stord|heiane@orisdental.no|https://orisdental.no/klinikker/stord-heiane
+Oris Dental Stord Leirvik|Stord|leirvik@orisdental.no|https://orisdental.no/klinikker/stord-leirvik
+Oris Dental Strandgaten|Bergen|strandgaten@orisdental.no|https://orisdental.no/klinikker/tannlege-i-bergen-sentrum
+Oris Dental Søgne|Søgne|sogne@orisdental.no|https://orisdental.no/klinikker/sogne
+Oris Dental Tannteam Spesialistklinikk|Bergen|tannteam@orisdental.no|https://orisdental.no/klinikker/tannteam-spesialistklinikk
+Oris Dental Trondheim Spesialistklinikk|Trondheim|trondheim-spesialistklinikk@orisdental.no|https://orisdental.no/klinikker/trondheim-spesialistklinikk
+Oris Dental Tønsberg|Tønsberg|tonsberg@orisdental.no|https://orisdental.no/klinikker/tonsberg
+Oris Dental Tårnplassen|Bergen|tarnplassen@orisdental.no|https://orisdental.no/klinikker/tarnplassen
+Oris Dental Vestkanten|Loddefjord (Bergen)|vestkanten@orisdental.no|https://orisdental.no/klinikker/vestkanten
+Oris Dental Vøyenenga|Vøyenenga (Bærum)|voyenenga@orisdental.no|https://orisdental.no/klinikker/voyenenga
+Oris Dental Vågsbygd|Kristiansand|vagsbygd@orisdental.no|https://orisdental.no/klinikker/vagsbygd
+Oris Dental Øyrane Torg|Indre Arna (Bergen)|oyranetorg@orisdental.no|https://orisdental.no/klinikker/oyrane-torg
+Oris Dental Ål|Ål|aal@orisdental.no|https://orisdental.no/klinikker/aal
+```
+
+**TOTAL: 94 clinics found. Emails are PER-LOCATION (format lokasjon@orisdental.no) published directly in the directory for 93/94 clinics — only Kjeveortoped Aavatsmark (Stjørdal) lacks a published email.** Note: Ski Åsenveien 3. etasje shares ski@orisdental.no with Oris Dental Ski.

@@ -1,0 +1,86 @@
+All 13 regions and every city sub-page enumerated. Full list:
+
+```
+Colosseum Tannlege A1 tannlegen|Arendal|a1arendal@colosseum.no|https://colosseumtannlege.no/klinikker/agder/arendal/a1-tannlegen/
+Colosseum Tannlege Arendal|Arendal|arendal@colosseum.no|https://colosseumtannlege.no/klinikker/agder/arendal/arendal-sentrum/
+Colosseum Tannlege Arendal Kastell|Arendal|arendalkastell@colosseum.no|https://colosseumtannlege.no/klinikker/agder/arendal/kastell/
+Colosseum Tannlege Arendal Tannregulering|Arendal|kristiansand.tannregulering@colosseum.no|https://colosseumtannlege.no/klinikker/agder/arendal/kirkegaten/
+Colosseum Tannlege Farsund|Farsund|farsund@colosseum.no|https://colosseumtannlege.no/klinikker/agder/farsund/gasholmen/
+Colosseum Tannlege Kristiansand Marvika Torv|Kristiansand|marvika.torv@colosseum.no|https://colosseumtannlege.no/klinikker/agder/kristiansand/marvika-torv/
+Colosseum Tannlege Kristiansand Sørlandsparken|Kristiansand|kristiansand.sorlandsparken@colosseum.no|https://colosseumtannlege.no/klinikker/agder/kristiansand/sorlandsparken/
+Colosseum Tannlege Kristiansand Tannpaléet|Kristiansand|kristiansand.sentrum@colosseum.no|https://colosseumtannlege.no/klinikker/agder/kristiansand/tannpaleet/
+Colosseum Tannlege Kristiansand Tannregulering|Kristiansand|kristiansand.tannregulering@colosseum.no|https://colosseumtannlege.no/klinikker/agder/kristiansand/tollbodgata/
+Colosseum Tannlege Tvedestrand|Tvedestrand|tvedestrand@colosseum.no|https://colosseumtannlege.no/klinikker/agder/tvedestrand/hovedgata/
+Colosseum Tannlege Mandal|Mandal|mandal@colosseum.no|https://colosseumtannlege.no/klinikker/agder/mandal/johnstons-gate/
+Colosseum Tannlege Asker|Asker|asker@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/asker/asker-tannlege/
+Colosseum Tannlege Bekkestua tannregulering|Stabekk (Bærum)|bekkestua.tannregulering@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/bekkestua/bekkestua-tannregulering/
+Colosseum Tannlege Bjørkelangen|Bjørkelangen|bjorkelangen@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/bjorkelangen/amfi-bjorkeveien/
+Colosseum Tannlege Jessheim|Jessheim|jessheim@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/jessheim/ringveien/
+Colosseum Tannlege Lillestrøm|Lillestrøm|lillestrom@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/lillestrom/dampsagveien/
+Colosseum Tannlege Nesodden|Bjørnemyr (Nesodden)|nesodden.tannlege@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/nesodden/hakonskastet/
+Colosseum Tannlege Nesodden Tannregulering|Nesoddtangen|nesodden.tannregulering@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/nesodden/tangen-senter/
+Colosseum Tannlege Råholt|Råholt|raholt@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/rahalt/trondheimsvegen/
+Colosseum Tannlege Sandvika|Sandvika|sandvika@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/sandvika/radman-halmrastsvei/
+Colosseum Tannlege Strømmen Stjernesund|Strømmen|strommentannlege@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/strommen/stjernesund/
+Colosseum Tannlege Strømmen Tannregulering|Strømmen|strommen@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/strommen/strommen-tannregulering/
+Colosseum Tannlege Vestby|Vestby|vestby@colosseum.no|https://colosseumtannlege.no/klinikker/akershus/vestby/molleveien/
+Colosseum Tannlege Drammen|Drammen|drammen@colosseum.no|https://colosseumtannlege.no/klinikker/buskerud/drammen/drammen-sentrum/
+Colosseum Tannlege Gulskogen|Drammen|gulskogen@colosseum.no|https://colosseumtannlege.no/klinikker/buskerud/drammen/gulskogen/
+Colosseum Tannlege Mjøndalen|Mjøndalen|mjondalen@colosseum.no|https://colosseumtannlege.no/klinikker/buskerud/mjondalen/arbeidergata/
+Colosseum Tannlege Mjøndalen Øvre Tverrgate|Mjøndalen|ovre.tverrgate@colosseum.no|https://colosseumtannlege.no/klinikker/buskerud/mjondalen/ovre-tverrgate/
+Colosseum Tannlege Carolus|Molde|carolus@colosseum.no|https://colosseumtannlege.no/klinikker/more-og-romsdal/molde/carolusbygget/
+Colosseum Tannlege Kristiansund|Kristiansund|kristiansund@colosseum.no|https://colosseumtannlege.no/klinikker/more-og-romsdal/kristiansund/storgata-41/
+Colosseum Tannlege Moa|Ålesund|moa@colosseum.no|https://colosseumtannlege.no/klinikker/more-og-romsdal/alesund/moa/
+Colosseum Tannlege Molde|Molde|molde@colosseum.no|https://colosseumtannlege.no/klinikker/more-og-romsdal/molde/molde-sentrum/
+Colosseum Tannlege Stranda|Stranda|stranda@colosseum.no|https://colosseumtannlege.no/klinikker/more-og-romsdal/stranda/bankgata/
+Colosseum Tannlege Sykkylven|Sykkylven|sykkylven@colosseum.no|https://colosseumtannlege.no/klinikker/more-og-romsdal/sykkylven/storgata/
+Colosseum Tannlege Ålesund|Ålesund|firmapost.alesund@colosseum.no|https://colosseumtannlege.no/klinikker/more-og-romsdal/alesund/alesund-sentrum/
+Colosseum Tannlege Bodø Ramsalt|Bodø|ramsalt@colosseum.no|https://colosseumtannlege.no/klinikker/nordland/bodo/ramsalt/
+Colosseum Tannlege Bodø Tannregulering|Bodø|bodotannregulering@colosseum.no|https://colosseumtannlege.no/klinikker/nordland/bodo/bodo-tannregulering/
+Colosseum Tannlege Fauske|Fauske|fauske@colosseum.no|https://colosseumtannlege.no/klinikker/nordland/fauske/fauske-sentrum/
+Colosseum Tannlege Mo i Rana|Mo i Rana|moirana@colosseum.no|https://colosseumtannlege.no/klinikker/nordland/mo-i-rana/mo-sentrum/
+Colosseum Tannlege Narvik|Narvik|narvik@colosseum.no|https://colosseumtannlege.no/klinikker/nordland/narvik/kongensgate/
+Colosseum Tannlege Narvik Pettersen|Narvik|narvik@colosseum.no|https://colosseumtannlege.no/klinikker/nordland/narvik/kongensgate-50/
+Colosseum Tannlege Narvik Torvet|Narvik|narvik@colosseum.no|https://colosseumtannlege.no/klinikker/nordland/narvik/torvet/
+Colosseum Tannlege Rognan|Rognan|rognan@colosseum.no|https://colosseumtannlege.no/klinikker/nordland/rognan/rognan-sentrum/
+Colosseum Tannlege SpesDent|Oslo (Homansbyen)|post@spesdent.no|https://colosseumtannlege.no/klinikker/oslo/homansbyen/spesdent/
+Colosseum Tannlege Majorstuen|Oslo|majorstuen@colosseum.no|https://colosseumtannlege.no/klinikker/oslo/majorstuen/majorstuen-tannlege/
+Colosseum Tannlege Majorstuen tannregulering|Oslo|majorstuen@colosseum.no|https://colosseumtannlege.no/klinikker/oslo/majorstuen/majorstuen-tannregulering/
+Colosseum Tannlege Mølla|Oslo (Iladalen)|molla@colosseum.no|https://colosseumtannlege.no/klinikker/oslo/iladalen/sagveien/
+Colosseum Tannlege Furuset|Oslo|furuset@colosseum.no|https://colosseumtannlege.no/klinikker/oslo/furuset/trygve-lies-plass/
+Colosseum Tannlege Nationaltheatret|Oslo|nationaltheatret@colosseum.no|https://colosseumtannlege.no/klinikker/oslo/nationaltheatret/stortingsgata/
+Colosseum Tannlege Nordstrand|Oslo|saeter@colosseum.no|https://colosseumtannlege.no/klinikker/oslo/nordstrand/saeter-tannregulering/
+Colosseum Tannlege Ryen Tannregulering|Oslo|INGEN EPOST OPPGITT (kun tlf 22321100)|https://colosseumtannlege.no/klinikker/oslo/ryen/sandstuveien/
+Colosseum Tannlege Karmøy|Kopervik (Karmøy)|karmoy@colosseum.no|https://colosseumtannlege.no/klinikker/rogaland/karmoy/hovedgaten/
+Colosseum Tannlege Randaberg|Randaberg|randaberg@colosseum.no|https://colosseumtannlege.no/klinikker/rogaland/randaberg/jon-torbergssons-vei/
+Colosseum Tannlege Sandnes|Sandnes|sandnes@colosseum.no|https://colosseumtannlege.no/klinikker/rogaland/sandnes/langgata/
+Colosseum Tannlege Sola Vingveien|Sola|sola.vingveien@colosseum.no|https://colosseumtannlege.no/klinikker/rogaland/sola/vingveien/
+Colosseum Tannlege Stavanger|Stavanger|stavanger@colosseum.no|https://colosseumtannlege.no/klinikker/rogaland/stavanger/sentrum/
+Colosseum Tannlege Ålgård|Ålgård|algard@colosseum.no|https://colosseumtannlege.no/klinikker/rogaland/algard/krambugata/
+Colosseum Tannlege Skien|Skien|skien@colosseum.no|https://colosseumtannlege.no/klinikker/telemark/skien/skien-tannlege/
+Colosseum Tannlege Skien Tannregulering|Skien|skien.tannregulering@colosseum.no|https://colosseumtannlege.no/klinikker/telemark/skien/skien-tannregulering/
+Colosseum Tannlege Tromsø|Tromsø|tromsoe@colosseum.no|https://colosseumtannlege.no/klinikker/troms/tromso/
+Colosseum Tannlege Fosen|Brekstad|fosen@colosseum.no|https://colosseumtannlege.no/klinikker/trondelag/fosen/brekstad/
+Colosseum Tannlege Steinkjer|Steinkjer|steinkjer@colosseum.no|https://colosseumtannlege.no/klinikker/trondelag/steinkjer/kongens-gate/
+Colosseum Tannlege Trondheim Solsiden|Trondheim|trondheim.solsiden@colosseum.no|https://colosseumtannlege.no/klinikker/trondelag/trondheim/innherredsveien/
+Colosseum Tannlege Bergen|Bergen|bergen@colosseum.no|https://colosseumtannlege.no/klinikker/vestland/bergen/wallendahl/
+Colosseum Tannlege Nattland|Bergen|nattland@colosseum.no|https://colosseumtannlege.no/klinikker/vestland/bergen/nattlandsfjellet/
+Colosseum Tannlege Tannlegehuset Landås|Bergen|landas@colosseum.no|https://colosseumtannlege.no/klinikker/vestland/bergen/tannlegehuset-landas/
+Colosseum Tannlege Florø Hestenesgata|Florø|floro@colosseum.no|https://colosseumtannlege.no/klinikker/vestland/floro/hestenesgata/
+Colosseum Tannlege Florø Markegata|Florø|flora.markegata@colosseum.no|https://colosseumtannlege.no/klinikker/vestland/floro/markegata/
+Colosseum Tannlege Sogndal|Sogndal|sogndal@colosseum.no|https://colosseumtannlege.no/klinikker/vestland/sogndal/parkvegen/
+Colosseum Tannlege Sotra|Straume|sotra@colosseum.no|https://colosseumtannlege.no/klinikker/vestland/sotra/straume/
+Colosseum Tannlege Horten|Horten|horten@colosseum.no|https://colosseumtannlege.no/klinikker/vestfold/horten/trimveien/
+Colosseum Tannlege Horten Tannregulering|Horten|smiltannreguleringtonsberg@colosseum.no|https://colosseumtannlege.no/klinikker/vestfold/horten/horten-smil-tannregulering/
+Colosseum Tannlege Sandefjord|Sandefjord|sandefjord@colosseum.no|https://colosseumtannlege.no/klinikker/vestfold/sandefjord/thor-dahls-gate/
+Colosseum Tannlege Tønsberg|Tønsberg|tonsberg@colosseum.no|https://colosseumtannlege.no/klinikker/vestfold/tonsberg/tollbodgaten/
+Colosseum Tannlege Bredsand|Dilling (Moss)|bredsand@colosseum.no|https://colosseumtannlege.no/klinikker/ostfold/moss/torkoppveien/
+Colosseum Tannlege Moss|Moss|moss@colosseum.no|https://colosseumtannlege.no/klinikker/ostfold/moss/colosseum-tannlege-moss/
+Colosseum Tannlege Moss Klyve og Johansen (FLYTTET/merged into Moss)|Moss|INGEN EPOST OPPGITT|https://colosseumtannlege.no/klinikker/ostfold/moss/klyve-johansen/
+Colosseum Tannlege Fredrikstad Sentrum|Fredrikstad|fredrikstad.sentrum@colosseum.no|https://colosseumtannlege.no/klinikker/ostfold/fredrikstad/nygaardsgata/
+Colosseum Tannlege Fredrikstad Spesialistklinikk|Fredrikstad|fredrikstad.spesialist@colosseum.no|https://colosseumtannlege.no/klinikker/ostfold/fredrikstad/farmannsgate/
+Colosseum Tannlege Fredrikstad Tannregulering|Fredrikstad|fredrikstad.tannregulering@colosseum.no|https://colosseumtannlege.no/klinikker/ostfold/fredrikstad/tannregulering/
+Colosseum Tannlege Sarpsborg|Sarpsborg|sarpsborg@colosseum.no|https://colosseumtannlege.no/klinikker/ostfold/sarpsborg/st-marie-gate/
+```
+
+**80 clinics found across 13 regions. Emails are per-location** (unique `@colosseum.no` addresses per clinic), with these exceptions: SpesDent uses its own domain (post@spesdent.no); the 3 Narvik clinics share narvik@; the 2 Majorstuen clinics share majorstuen@; Arendal Tannregulering shares kristiansand.tannregulering@; Horten Tannregulering shares smiltannreguleringtonsberg@; Ryen Tannregulering and Moss Klyve og Johansen (marked as moved) publish no email.

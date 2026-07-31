@@ -9,7 +9,7 @@
   <array>
     <string>/bin/zsh</string>
     <string>/Users/umar/Documents/DEV/DentDigital/DentDigital/outreach/daily-send.sh</string>
-    <string>15</string>
+    <string>30</string>
   </array>
 
   <!-- Weekdays (Mon=1 … Fri=5) at 09:20. B2B-friendly, avoids weekends. -->

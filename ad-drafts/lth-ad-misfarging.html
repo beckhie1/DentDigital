@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1080px; overflow: hidden; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(150deg, #011a40 0%, #012459 45%, #003a9e 100%);
+    color: #fff; position: relative;
+  }
+  .glow { position: absolute; width: 720px; height: 720px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(104,204,209,.16) 0%, transparent 65%);
+    top: -180px; right: -180px; }
+  .wrap { position: relative; height: 100%; padding: 48px 60px; display: flex; flex-direction: column; }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 18px; }
+  .brand img { width: 72px; height: 72px; border-radius: 17px; background: #fff; }
+  .clinic { font-size: 27px; font-weight: 600; }
+  .where { margin-top: 5px; font-size: 19px; color: rgba(255,255,255,.75); }
+  .badge { background: #68ccd1; color: #012459; font-size: 22px; font-weight: 800; padding: 10px 22px; border-radius: 999px; }
+  .headline { margin-top: 30px; }
+  h1 { font-size: 62px; line-height: 1.05; font-weight: 800; letter-spacing: -1.5px; }
+  h1 .teal { color: #68ccd1; }
+  .sub { margin-top: 14px; font-size: 26px; line-height: 1.4; color: rgba(255,255,255,.88); max-width: 880px; }
+  .sub strong { color: #fff; font-weight: 700; }
+  .panel { margin-top: 28px; border-radius: 22px; overflow: hidden;
+    border: 3px solid rgba(104,204,209,.55); box-shadow: 0 14px 44px rgba(0,0,0,.4);
+    height: 545px; background: #fff; }
+  .panel img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
+  .row { margin-top: 34px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+  .price { display: flex; align-items: flex-end; gap: 20px; white-space: nowrap; }
+  .new { font-size: 96px; font-weight: 800; color: #68ccd1; letter-spacing: -2px; line-height: 1; }
+  .new small { font-size: 38px; font-weight: 600; letter-spacing: 0; }
+  .old { font-size: 34px; color: rgba(255,255,255,.45); text-decoration: line-through; text-decoration-thickness: 3px; padding-bottom: 11px; }
+  .includes { font-size: 25px; color: rgba(255,255,255,.85); padding-bottom: 11px; text-align: right; max-width: 380px; }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <img src="file:///Users/umar/Documents/DEV/DentDigital/DentDigital/public/clinics/lillestrom-tannhelse.png" alt="">
+        <div>
+          <div class="clinic">Lillestrøm Tannhelse</div>
+          <div class="where">Nittedalsgata 20B · Lillestrøm sentrum</div>
+        </div>
+      </div>
+      <div class="badge">SPAR 58%</div>
+    </div>
+
+    <div class="headline">
+      <h1>Misfarging? <span class="teal">Vi fjerner den.</span></h1>
+      <p class="sub">År med kaffe, te og rødvin gulner tennene — <strong>Airflow-tannrens</strong> løfter misfargingen skånsomt bort og gir smilet tilbake sin naturlige farge. Helt uten bleking.</p>
+    </div>
+
+    <div class="panel">
+      <img src="file:///Users/umar/Documents/DEV/DentDigital/DentDigital/ad-drafts/misfarging-ba.png" alt="" style="object-position: center 55%;">
+    </div>
+
+    <div class="row">
+      <div class="price">
+        <div class="new">590<small> kr</small></div>
+        <div class="old">1 390 kr</div>
+      </div>
+      <div class="includes">Komplett undersøkelse + Airflow-tannrens</div>
+    </div>
+  </div>
+</body>
+</html>
