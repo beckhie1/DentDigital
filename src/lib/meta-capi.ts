@@ -22,12 +22,22 @@ export function hashPhone(phone: string, defaultCountry = "47"): string | undefi
   return sha256(p);
 }
 
+/** Meta-normalized name/country hash: lowercase, trimmed, no punctuation. */
+export function hashName(name: string): string | undefined {
+  const n = name.trim().toLowerCase().replace(/[^\p{L}\p{N} -]/gu, "");
+  return n ? sha256(n) : undefined;
+}
+
 export interface CapiEvent {
   eventName: string;
   eventId: string;
   eventSourceUrl: string;
   email?: string;
   phone?: string;
+  firstName?: string;
+  lastName?: string;
+  /** ISO 3166-1 alpha-2, e.g. "no" */
+  country?: string;
   clientIp?: string;
   userAgent?: string;
   fbp?: string;
@@ -56,6 +66,9 @@ export async function sendMetaEvents(datasetId: string, events: CapiEvent[]): Pr
     user_data: {
       em: e.email ? [hashEmail(e.email)] : undefined,
       ph: e.phone ? [hashPhone(e.phone)] : undefined,
+      fn: e.firstName ? [hashName(e.firstName)] : undefined,
+      ln: e.lastName ? [hashName(e.lastName)] : undefined,
+      country: e.country ? [hashName(e.country)] : undefined,
       client_ip_address: e.clientIp || undefined,
       client_user_agent: e.userAgent || undefined,
       fbp: e.fbp || undefined,

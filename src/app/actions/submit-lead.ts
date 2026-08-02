@@ -100,6 +100,12 @@ export async function submitLead(input: LeadInput) {
   if (clinic.metaPixelId && hasMarketingConsent && input.kilde !== "tannlegevakt") {
     const h = await headers();
     const eventId = storedEventId;
+    // Meta prefers IPv6 when the client has one; pick it over IPv4 from the proxy chain
+    const ips = (h.get("x-forwarded-for") ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+    const clientIp = ips.find((ip) => ip.includes(":")) || ips[0] || undefined;
+    const nameParts = navn.trim().split(/\s+/);
+    const firstName = nameParts[0] || undefined;
+    const lastName = nameParts.length > 1 ? nameParts[nameParts.length - 1] : undefined;
     tasks.push(
       sendMetaEvents(clinic.metaPixelId, [
         {
@@ -108,7 +114,10 @@ export async function submitLead(input: LeadInput) {
           eventSourceUrl: String(input.pageUrl ?? "").slice(0, 500) || `https://www.dentdigital.no/${clinic.slug}-tilbud`,
           email: epost,
           phone: telefon,
-          clientIp: (h.get("x-forwarded-for") ?? "").split(",")[0].trim() || undefined,
+          firstName,
+          lastName,
+          country: "no",
+          clientIp,
           userAgent: h.get("user-agent") ?? undefined,
           fbp: String(input.fbp ?? "").slice(0, 100) || undefined,
           fbc: String(input.fbc ?? "").slice(0, 200) || undefined,
