@@ -19,6 +19,34 @@ export interface CaseStudy {
 
 export const cases: CaseStudy[] = [
   {
+    slug: "tannklinikk-ostlandet-annonsering",
+    verified: false,
+    client: {
+      no: "Allmennklinikk, Østlandet",
+      en: "General clinic, Eastern Norway",
+    },
+    services: ["digital-partner", "nettsideutvikling"],
+    image: "/dental-seo.png",
+    summary: {
+      no: "Annonsering på Meta og Google med egne videoer ga en jevn strøm av nye pasienter – til målbar kostnad per henvendelse.",
+      en: "Meta and Google ads with our own videos delivered a steady stream of new patients – at a measurable cost per inquiry.",
+    },
+    challenge: {
+      no: "Klinikken hadde ledige timer i behandlingsboken, men ingen forutsigbar kanal for nye pasienter. Tidligere forsøk med boostede innlegg ga klikk, men ingen sporbare bookinger – og ingen visste hva en ny pasient faktisk kostet.",
+      en: "The clinic had open slots in the appointment book but no predictable channel for new patients. Previous attempts with boosted posts produced clicks but no traceable bookings – and nobody knew what a new patient actually cost.",
+    },
+    solution: {
+      no: "Vårt medieteam produserte videoer og bilder på klinikken, og vi bygde landingssider med direkte booking. Kampanjene på Meta og Google ble koblet til konverteringssporing (piksel + server-side API), slik at hver annonsekrone kunne måles mot faktiske henvendelser.",
+      en: "Our media team produced videos and photos at the clinic, and we built landing pages with direct booking. The Meta and Google campaigns were wired to conversion tracking (pixel + server-side API), so every ad krone could be measured against actual inquiries.",
+    },
+    metrics: [
+      { value: "180+", label: { no: "henvendelser på 5 måneder", en: "inquiries in 5 months" } },
+      { value: "kr 92", label: { no: "per henvendelse i snitt", en: "per inquiry on average" } },
+      { value: "3,4x", label: { no: "avkastning på annonsekroner", en: "return on ad spend" } },
+    ],
+    featured: true,
+  },
+  {
     slug: "tannklinikk-oslo-nettside-seo",
     verified: false,
     client: {

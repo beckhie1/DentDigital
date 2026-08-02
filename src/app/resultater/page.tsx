@@ -6,6 +6,7 @@ import { useLang } from "@/lib/i18n";
 import { cases } from "@/lib/cases";
 import { getService } from "@/lib/services";
 import { Reveal, RevealLines } from "@/components/motion/Reveal";
+import Magnetic from "@/components/shell/Magnetic";
 
 const heroLines = {
   no: ["Ekte prosjekter,", "målbare tall."],
@@ -82,6 +83,40 @@ export default function ResultsPage() {
               </Link>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="dark-section bg-dark py-20 text-canvas lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <Reveal className="reveal-fade">
+            <p className="section-num">
+              {lang === "no" ? "Din klinikk kan være neste" : "Your clinic could be next"}
+            </p>
+          </Reveal>
+          <Reveal className="reveal-fade" delay={100}>
+            <h2 className="mt-4 font-display text-[length:var(--text-display-md)] font-semibold">
+              {lang === "no" ? "Vil du ha resultater som dette?" : "Want results like these?"}
+            </h2>
+          </Reveal>
+          <Reveal className="reveal-fade" delay={200}>
+            <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed opacity-70">
+              {lang === "no"
+                ? "En kort, uforpliktende prat – du får en konkret vurdering av klinikkens digitale synlighet og et veikart dere kan bruke uansett."
+                : "A short, no-obligation chat – you get a concrete assessment of your clinic's digital visibility and a roadmap you can use either way."}
+            </p>
+          </Reveal>
+          <Reveal className="reveal-fade mt-9" delay={300}>
+            <Magnetic className="inline-block">
+              <Link
+                href="/kontakt"
+                className="group inline-flex items-center gap-2 rounded-full bg-canvas px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-accent"
+              >
+                {lang === "no" ? "Book en uforpliktende prat" : "Book a no-obligation chat"}
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </Link>
+            </Magnetic>
+          </Reveal>
         </div>
       </section>
     </>
