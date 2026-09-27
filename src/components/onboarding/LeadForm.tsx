@@ -134,10 +134,8 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
       </div>
 
       <div>
-        <label htmlFor="onsketDato" className="mb-1 block text-sm font-medium">
-          Ønsket dato og tid <span className="font-normal text-ink-40">(valgfritt)</span>
-        </label>
-        <input id="onsketDato" placeholder="F.eks. mandag kl. 10:00" value={form.onsketDato} onChange={set("onsketDato")} className={inputCls} />
+        <label htmlFor="onsketDato" className="mb-1 block text-sm font-medium">Ønsket dato og tid for time</label>
+        <input id="onsketDato" placeholder="F.eks. mandag 15. juni kl. 10:00" value={form.onsketDato} onChange={set("onsketDato")} className={inputCls} />
       </div>
 
       {kilde === "tilbud" && (
