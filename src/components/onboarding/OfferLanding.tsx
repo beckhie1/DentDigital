@@ -53,7 +53,7 @@ export default function OfferLanding({ clinic }: { clinic: Clinic }) {
           >
             <div className="min-w-0">
               <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--l-glow)]">
-                ✦ Kampanje ✦
+                ✦ Høsttilbud ✦
               </p>
               <p className="font-display mt-0.5 text-[15px] font-semibold leading-snug text-balance sm:text-lg">
                 {offer.title}
