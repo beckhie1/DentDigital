@@ -26,7 +26,7 @@ export default function LandingShell({
   return (
     <div
       style={vars}
-      className="-mt-16 flex min-h-screen flex-col bg-canvas px-4 pt-10 sm:pt-14"
+      className="relative -mt-16 flex min-h-screen flex-col bg-canvas px-4 pt-4 sm:pt-14"
     >
       <div className="flex-1">{children}</div>
     </div>
