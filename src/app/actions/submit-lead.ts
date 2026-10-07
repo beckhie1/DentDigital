@@ -3,7 +3,8 @@
 import { headers } from "next/headers";
 import { Resend } from "resend";
 import { getClinicBySlug } from "@/lib/clinics";
-import { appendRow, osloTimestamp } from "@/lib/google-sheets";
+import { appendRow, osloTimestamp, styleRow } from "@/lib/google-sheets";
+import { GDTS_US_DROPDOWN_COLS, GDTS_US_ROW_FORMAT } from "@/lib/gdts-sheet-style";
 import { sendMetaEvents } from "@/lib/meta-capi";
 
 export interface LeadInput {
@@ -81,7 +82,13 @@ export async function submitLead(input: LeadInput) {
           dato, tid, navn, epost, telefon, onsketDato, tannbleking, "Ny", "", kommentar, "", utmSource || kilde, utmContent, utmTerm,
           ...Array(27).fill(""), // O..AO: Apps Script OCT/enrichment columns — leave untouched
           storedEventId, storedFbp, storedFbc,
-        ])
+        ]).then(async (row) => {
+          // Best-effort: the lead is already saved, so a styling failure must not fail it.
+          await styleRow(clinic.spreadsheetId, "US", row, GDTS_US_ROW_FORMAT, GDTS_US_DROPDOWN_COLS).catch((e) =>
+            console.error("submitLead styleRow failed:", e),
+          );
+          return row;
+        })
       : appendRow(clinic.spreadsheetId, "Leads!A:O", [
           dato, tid, navn, epost, telefon, onsketDato, tannbleking, kilde, "Ny", "", kommentar, utm,
           storedEventId, storedFbp, storedFbc,
