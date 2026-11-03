@@ -36,7 +36,7 @@ export default function AboutPage() {
           <Reveal className="reveal-fade" delay={200}>
             <div className="relative h-64 overflow-hidden rounded-[--radius-card] lg:h-80">
               <Image
-                src="/dental-technology-team.png"
+                src="/img/team.svg"
                 alt="DentDigital"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"

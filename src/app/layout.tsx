@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "DentDigital",
     locale: "nb_NO",
     type: "website",
-    images: [{ url: "/digital-dental-partnership.png", width: 1200, height: 630 }],
+    images: [{ url: "/img/og.png", width: 1200, height: 630 }],
   },
 };
 

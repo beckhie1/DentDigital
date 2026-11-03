@@ -14,7 +14,7 @@ export const services: Service[] = [
   {
     slug: "digital-partner",
     icon: "🤝",
-    image: "/digital-dental-partnership.png",
+    image: "/img/partner.svg",
     title: {
       no: "Digital Partner for Helseklinikker",
       en: "Digital Partner for Health Clinics",
@@ -52,7 +52,7 @@ export const services: Service[] = [
   {
     slug: "annonsering",
     icon: "📈",
-    image: "/dental-seo.png",
+    image: "/img/ads.svg",
     title: {
       no: "Google- og Meta-annonser",
       en: "Google and Meta Advertising",
@@ -90,7 +90,7 @@ export const services: Service[] = [
   {
     slug: "innhold-sosiale-medier",
     icon: "🎬",
-    image: "/digital-patient-experience.png",
+    image: "/img/content.svg",
     title: {
       no: "Reels, bilder og automatisk posting",
       en: "Reels, Photos and Automatic Posting",
@@ -128,7 +128,7 @@ export const services: Service[] = [
   {
     slug: "nettsideutvikling",
     icon: "🌐",
-    image: "/dental-website-marketing.png",
+    image: "/img/website.svg",
     title: {
       no: "Nettsideutvikling og SEO",
       en: "Website Development and SEO",
@@ -166,7 +166,7 @@ export const services: Service[] = [
   {
     slug: "it-infrastruktur",
     icon: "🖥️",
-    image: "/it-support-dental.png",
+    image: "/img/it.svg",
     title: {
       no: "IT-infrastruktur og Support",
       en: "IT Infrastructure and Support",
@@ -280,7 +280,7 @@ export const services: Service[] = [
   {
     slug: "datadrevet-innsikt",
     icon: "📊",
-    image: "/dental-software-dashboard.png",
+    image: "/img/dashboard.svg",
     title: {
       no: "Datadrevet Innsikt og Analyse",
       en: "Data-Driven Insight and Analytics",
@@ -394,7 +394,7 @@ export const services: Service[] = [
   {
     slug: "skreddersydde-systemer",
     icon: "⚙️",
-    image: "/dental-software-dashboard.png",
+    image: "/img/dashboard.svg",
     title: {
       no: "Skreddersydde Programvaresystemer",
       en: "Custom Software Systems",
@@ -432,7 +432,7 @@ export const services: Service[] = [
   {
     slug: "kurs-kompetanse",
     icon: "🎓",
-    image: "/dental-technology-team.png",
+    image: "/img/team.svg",
     title: {
       no: "Kurs og Kompetanseutvikling",
       en: "Courses and Competence Development",
