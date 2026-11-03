@@ -1,25 +1,22 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Bricolage_Grotesque, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/lib/i18n";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/shell/SmoothScroll";
-import Cursor from "@/components/shell/Cursor";
 import ConsentBanner from "@/components/shell/ConsentBanner";
 
-const clash = localFont({
-  src: "../fonts/ClashDisplay-Variable.woff2",
-  variable: "--font-clash",
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
   display: "swap",
-  weight: "200 700",
 });
 
-const generalSans = localFont({
-  src: "../fonts/GeneralSans-Variable.woff2",
-  variable: "--font-general-sans",
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-source-sans",
   display: "swap",
-  weight: "200 700",
 });
 
 export const metadata: Metadata = {
@@ -83,14 +80,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="nb">
-      <body className={`${clash.variable} ${generalSans.variable} grain bg-canvas font-sans text-ink antialiased`}>
+      <body className={`${bricolage.variable} ${sourceSans.variable} bg-canvas font-sans text-ink antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <LanguageProvider>
           <SmoothScroll />
-          <Cursor />
           <Header />
           <main className="pt-16">{children}</main>
           <Footer />
