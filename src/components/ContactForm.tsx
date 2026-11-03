@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
 import { services } from "@/lib/services";
@@ -11,6 +11,13 @@ export default function ContactForm() {
   const { lang } = useLang();
   const t = ui.contact;
   const [status, setStatus] = useState<Status>("idle");
+
+  // Outreach links arrive as /kontakt?clinic=<name>: pre-fill the clinic field.
+  useEffect(() => {
+    const c = new URLSearchParams(window.location.search).get("clinic");
+    const el = document.getElementById("clinic") as HTMLInputElement | null;
+    if (c && el && !el.value) el.value = c.slice(0, 200);
+  }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
