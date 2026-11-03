@@ -25,17 +25,20 @@ const generalSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.dentdigital.no"),
   title: {
-    default: "DentDigital – Digital Partner for Norske Tannklinikker",
+    default: "DentDigital – Digital Partner for Norske Helseklinikker",
     template: "%s | DentDigital",
   },
   description:
-    "Skreddersydde IT-løsninger, markedsføring og teknologisupport som hjelper tannklinikker å vokse, effektivisere og levere bedre pasientopplevelser.",
+    "Annonsering, innhold for sosiale medier, nettsider og IT-løsninger som hjelper helseklinikker – tannlege, fysio, kiropraktor, hudpleie og mer – å vokse og få flere pasienter.",
   keywords: [
-    "tannlege markedsføring",
-    "IT for tannklinikk",
-    "Opus support",
-    "nettside tannlege",
-    "GDPR tannklinikk",
+    "markedsføring helseklinikk",
+    "markedsføring tannlege",
+    "markedsføring fysioterapeut",
+    "markedsføring kiropraktor",
+    "nettside klinikk",
+    "sosiale medier klinikk",
+    "IT for helseklinikker",
+    "GDPR helseklinikk",
   ],
   openGraph: {
     siteName: "DentDigital",
@@ -68,7 +71,7 @@ const jsonLd = {
       name: "DentDigital",
       parentOrganization: { "@id": "https://www.dentdigital.no/#org" },
       description:
-        "Digital partner for norske tannklinikker: nettsider, lokal SEO, IT-drift, Opus-integrasjon, sikkerhetskopi og datainnsikt.",
+        "Digital partner for norske helseklinikker: annonsering, innhold og posting i sosiale medier, nettsider, lokal SEO, IT-drift, sikkerhetskopi og datainnsikt.",
       areaServed: "NO",
       url: "https://www.dentdigital.no",
     },

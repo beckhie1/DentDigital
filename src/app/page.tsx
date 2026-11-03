@@ -12,13 +12,13 @@ import ParticleField from "@/components/home/ParticleField";
 import Magnetic from "@/components/shell/Magnetic";
 
 const heroLines = {
-  no: ["Digitalt partnerskap", "for norske", "tannklinikker."],
-  en: ["Digital partnership", "for Norwegian", "dental clinics."],
+  no: ["Digitalt partnerskap", "for norske", "helseklinikker."],
+  en: ["Digital partnership", "for Norwegian", "health clinics."],
 };
 
 const marqueeItems = {
-  no: ["Nettsider", "Lokal SEO", "IT-drift", "Opus-integrasjon", "Sikkerhetskopi", "GDPR", "Datainnsikt", "AI-løsninger"],
-  en: ["Websites", "Local SEO", "IT Operations", "Opus Integration", "Backup", "GDPR", "Data Insight", "AI Solutions"],
+  no: ["Annonsering", "Reels og foto", "Automatisk posting", "Nettsider", "Lokal SEO", "IT-drift", "GDPR", "AI-løsninger"],
+  en: ["Advertising", "Reels & Photo", "Auto-posting", "Websites", "Local SEO", "IT Operations", "GDPR", "AI Solutions"],
 };
 
 function SectionHead({

@@ -7,8 +7,8 @@ import { Reveal, RevealLines } from "@/components/motion/Reveal";
 import Magnetic from "@/components/shell/Magnetic";
 
 const heroLines = {
-  no: ["AI for", "tannklinikker."],
-  en: ["AI for", "dental clinics."],
+  no: ["AI for", "helseklinikker."],
+  en: ["AI for", "health clinics."],
 };
 
 const chatDemo = {
