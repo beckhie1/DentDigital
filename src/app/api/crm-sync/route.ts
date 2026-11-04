@@ -27,11 +27,11 @@ const FUNNEL = [
   { status: "behandling startet", event: "treatment_started", withValue: false },
 ] as const;
 
-// gdts-us layout: A Dato, C Navn, D E-post, E Telefon, H Status, O Meta synk,
-// P Count, Q gclid, R gbraid, S..AO Apps Script OCT/enrichment columns,
-// AP Event ID, AQ fbp, AR fbc
+// gdts-us layout: A Dato, C Navn, D Gjelder, E E-post, F Telefon, I Status, P Meta synk,
+// Q Count, R gclid, S gbraid, T..AP Apps Script OCT/enrichment columns,
+// AQ Event ID, AR fbp, AS fbc
 const US_RANGE = "US!A:AS";
-const US_COLS = { epost: 4, telefon: 5, status: 8, synced: 15, fbp: 43, fbc: 44 };
+const US_COLS = { gjelder: 3, epost: 4, telefon: 5, status: 8, synced: 15, fbp: 43, fbc: 44 };
 
 async function sheetsToken(): Promise<string> {
   const keyJson = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
@@ -68,7 +68,7 @@ export async function GET(req: Request) {
     const { values = [] } = (await res.json()) as { values?: string[][] };
 
     const toSync: {
-      row: number; epost: string; telefon: string; fbp: string; fbc: string;
+      row: number; invisalign: boolean; epost: string; telefon: string; fbp: string; fbc: string;
       events: { event: string; withValue: boolean }[]; synced: string;
     }[] = [];
     values.forEach((row, i) => {
@@ -86,7 +86,7 @@ export async function GET(req: Request) {
       const telefon = (row[US_COLS.telefon] ?? "").trim();
       if (events.length && (epost || telefon)) {
         toSync.push({
-          row: i + 1, epost, telefon,
+          row: i + 1, invisalign: /invisalign/i.test(row[US_COLS.gjelder] ?? ""), epost, telefon,
           fbp: (row[US_COLS.fbp] ?? "").trim(),
           fbc: (row[US_COLS.fbc] ?? "").trim(),
           events: events.map((s) => ({ event: s.event, withValue: s.withValue })),
@@ -101,20 +101,21 @@ export async function GET(req: Request) {
         await sendMetaEvents(
           clinic.metaPixelId,
           lead.events.map((s) => ({
-            eventName: s.event,
+            // Invisalign consultations are free: own event names, no exam price
+            eventName: lead.invisalign ? `invisalign_${s.event}` : s.event,
             eventId: `crm-${clinic.slug}-r${lead.row}-${s.event}`,
-            eventSourceUrl: `https://www.dentdigital.no/${clinic.slug}-tilbud`,
+            eventSourceUrl: `https://www.dentdigital.no/${clinic.slug}-${lead.invisalign ? "invisalign" : "tilbud"}`,
             email: lead.epost || undefined,
             phone: lead.telefon || undefined,
             fbp: lead.fbp || undefined,
             fbc: lead.fbc || undefined,
-            value: s.withValue ? clinic.offer.price : undefined,
-            currency: s.withValue ? "NOK" : undefined,
+            value: s.withValue && !lead.invisalign ? clinic.offer.price : undefined,
+            currency: s.withValue && !lead.invisalign ? "NOK" : undefined,
           })),
         );
         // stamp the row so stages are never sent twice
         const day = new Date().toISOString().slice(0, 10);
-        const stamps = lead.events.map((s) => `✓ ${s.event} ${day}`).join(" | ");
+        const stamps = lead.events.map((s) => `✓ ${lead.invisalign ? "invisalign_" : ""}${s.event} ${day}`).join(" | ");
         await fetch(
           `https://sheets.googleapis.com/v4/spreadsheets/${clinic.spreadsheetId}/values/${encodeURIComponent(`US!P${lead.row}`)}?valueInputOption=RAW`,
           {
