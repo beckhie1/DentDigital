@@ -101,7 +101,7 @@ export async function GET(req: Request) {
         await sendMetaEvents(
           clinic.metaPixelId,
           lead.events.map((s) => ({
-            // Invisalign consultations are free: own event names, no exam price
+            // Invisalign consultations are free: own event names, explicit value 0 NOK
             eventName: lead.invisalign ? `invisalign_${s.event}` : s.event,
             eventId: `crm-${clinic.slug}-r${lead.row}-${s.event}`,
             eventSourceUrl: `https://www.dentdigital.no/${clinic.slug}-${lead.invisalign ? "invisalign" : "tilbud"}`,
@@ -109,8 +109,8 @@ export async function GET(req: Request) {
             phone: lead.telefon || undefined,
             fbp: lead.fbp || undefined,
             fbc: lead.fbc || undefined,
-            value: s.withValue && !lead.invisalign ? clinic.offer.price : undefined,
-            currency: s.withValue && !lead.invisalign ? "NOK" : undefined,
+            value: lead.invisalign ? 0 : s.withValue ? clinic.offer.price : undefined,
+            currency: lead.invisalign || s.withValue ? "NOK" : undefined,
           })),
         );
         // stamp the row so stages are never sent twice

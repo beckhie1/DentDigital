@@ -84,7 +84,7 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
         setSubmitted(true);
         // Standard "Lead" intentionally not fired — Meta flags it for dental/health ads.
         if (kilde === "invisalign") {
-          window.fbq?.("trackCustom", "invisalign_lead", {}, { eventID: `${eventId}.invisalign` });
+          window.fbq?.("trackCustom", "invisalign_lead", { value: 0, currency: "NOK" }, { eventID: `${eventId}.invisalign` });
         }
         if (kilde === "tilbud") {
           const price = getClinicBySlug(clinicSlug)?.offer.price;
