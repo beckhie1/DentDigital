@@ -13,7 +13,7 @@ const inputCls =
 
 interface Props {
   clinicSlug: string;
-  kilde: "tilbud" | "tannlegevakt";
+  kilde: "tilbud" | "tannlegevakt" | "invisalign";
 }
 
 declare global {
@@ -83,6 +83,9 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
       if (result.success) {
         setSubmitted(true);
         // Standard "Lead" intentionally not fired — Meta flags it for dental/health ads.
+        if (kilde === "invisalign") {
+          window.fbq?.("trackCustom", "invisalign_lead", {}, { eventID: `${eventId}.invisalign` });
+        }
         if (kilde === "tilbud") {
           const price = getClinicBySlug(clinicSlug)?.offer.price;
           window.fbq?.(
@@ -128,14 +131,14 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
           <input id="telefon" type="tel" inputMode="tel" autoComplete="tel" required placeholder="4X XXX XXX" value={form.telefon} onChange={set("telefon")} className={inputCls} />
         </div>
         <div>
-          <label htmlFor="epost" className="mb-1 block text-sm font-medium">E-post *</label>
-          <input id="epost" type="email" inputMode="email" autoComplete="email" required placeholder="din@epost.no" value={form.epost} onChange={set("epost")} className={inputCls} />
+          <label htmlFor="epost" className="mb-1 block text-sm font-medium">E-post{kilde === "invisalign" ? " (valgfritt)" : " *"}</label>
+          <input id="epost" type="email" inputMode="email" autoComplete="email" required={kilde !== "invisalign"} placeholder="din@epost.no" value={form.epost} onChange={set("epost")} className={inputCls} />
         </div>
       </div>
 
       <div>
-        <label htmlFor="onsketDato" className="mb-1 block text-sm font-medium">Ønsket dato og tid for time</label>
-        <input id="onsketDato" placeholder="F.eks. mandag 15. juni kl. 10:00" value={form.onsketDato} onChange={set("onsketDato")} className={inputCls} />
+        <label htmlFor="onsketDato" className="mb-1 block text-sm font-medium">{kilde === "invisalign" ? "Når passer det best? (valgfritt)" : "Ønsket dato og tid for time"}</label>
+        <input id="onsketDato" placeholder={kilde === "invisalign" ? "F.eks. mandag ettermiddag" : "F.eks. mandag 15. juni kl. 10:00"} value={form.onsketDato} onChange={set("onsketDato")} className={inputCls} />
       </div>
 
       {kilde === "tilbud" && (
@@ -162,7 +165,7 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
         </fieldset>
       )}
 
-      {kilde !== "tilbud" && (
+      {kilde === "tannlegevakt" && (
         <div>
           <label htmlFor="kommentar" className="mb-1 block text-sm font-medium">Kommentar</label>
           <textarea id="kommentar" rows={3} placeholder="Er det noe annet klinikken bør vite?" value={form.kommentar} onChange={set("kommentar")} className={`${inputCls} resize-none`} />
@@ -176,7 +179,7 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
         disabled={submitting}
         className="w-full rounded-xl bg-[var(--l-cta)] py-3.5 text-base font-semibold text-[var(--l-on-cta)] transition-all hover:bg-[var(--l-cta-hover)] active:scale-[0.98] disabled:opacity-50"
       >
-        {submitting ? "Sender…" : "Bestill time nå"}
+        {submitting ? "Sender…" : kilde === "invisalign" ? "Bestill gratis konsultasjon" : "Bestill time nå"}
       </button>
 
       <p className="text-center text-xs text-ink-40">

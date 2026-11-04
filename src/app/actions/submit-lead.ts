@@ -21,7 +21,7 @@ export interface LeadInput {
   utmContent?: string;
   utmTerm?: string;
   /** which landing page produced the lead */
-  kilde?: "tilbud" | "tannlegevakt";
+  kilde?: "tilbud" | "tannlegevakt" | "invisalign";
   /** browser-generated id shared with the pixel events for Meta dedup */
   eventId?: string;
   /** Meta browser cookies + page URL for Conversions API matching */
@@ -44,10 +44,12 @@ export async function submitLead(input: LeadInput) {
   const telefon = String(input.telefon ?? "").trim().slice(0, 30);
   const onsketDato = String(input.onsketDato ?? "").trim().slice(0, 200);
   const tannbleking = ["Ja", "Nei", "Usikker"].includes(String(input.tannbleking)) ? String(input.tannbleking) : "";
-  const kommentar = String(input.kommentar ?? "").trim().slice(0, 2000);
-  const kilde = input.kilde === "tannlegevakt" ? "Tannlegevakt" : "Tilbud";
+  const isInvisalign = input.kilde === "invisalign" && clinic.invisalign === true;
+  const kommentar = isInvisalign ? "invisalign konsultasjon 0 kr" : String(input.kommentar ?? "").trim().slice(0, 2000);
+  const kilde = isInvisalign ? "Invisalign" : input.kilde === "tannlegevakt" ? "Tannlegevakt" : "Tilbud";
 
-  if (!navn || !telefon || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost)) {
+  const epostOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost) || (isInvisalign && epost === "");
+  if (!navn || !telefon || !epostOk) {
     return { success: false, error: "Manglende eller ugyldige felt" };
   }
 
@@ -110,8 +112,8 @@ export async function submitLead(input: LeadInput) {
     tasks.push(
       sendMetaEvents(clinic.metaPixelId, [
         {
-          eventName: "exam_lead",
-          eventId: `${eventId}.exam`,
+          eventName: isInvisalign ? "invisalign_lead" : "exam_lead",
+          eventId: isInvisalign ? `${eventId}.invisalign` : `${eventId}.exam`,
           eventSourceUrl: String(input.pageUrl ?? "").slice(0, 500) || `https://www.dentdigital.no/${clinic.slug}-tilbud`,
           email: epost,
           phone: telefon,
@@ -119,8 +121,7 @@ export async function submitLead(input: LeadInput) {
           userAgent: h.get("user-agent") ?? undefined,
           fbp: String(input.fbp ?? "").slice(0, 100) || undefined,
           fbc: String(input.fbc ?? "").slice(0, 200) || undefined,
-          value: clinic.offer.price,
-          currency: "NOK",
+          ...(isInvisalign ? {} : { value: clinic.offer.price, currency: "NOK" }),
         },
       ]),
     );
@@ -150,14 +151,14 @@ async function sendLeadEmail(
   const { error } = await resend.emails.send({
     from: "DentDigital <post@dentdigital.no>",
     to: [to],
-    replyTo: d.epost,
+    replyTo: d.epost || undefined,
     subject: `Ny pasienthenvendelse – ${d.navn} (${d.kilde})`,
     html: `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px;border:1px solid #e4e4de;border-radius:12px;color:#111110;">
         <h1 style="font-size:20px;border-bottom:2px solid #00c2b8;padding-bottom:10px;">Ny pasienthenvendelse via ${esc(clinicName)}-siden</h1>
         <p><strong>Navn:</strong> ${esc(d.navn)}</p>
         <p><strong>Telefon:</strong> <a href="tel:${esc(d.telefon)}">${esc(d.telefon)}</a></p>
-        <p><strong>E-post:</strong> ${esc(d.epost)}</p>
+        <p><strong>E-post:</strong> ${esc(d.epost) || "–"}</p>
         ${d.onsketDato ? `<p><strong>Ønsket tidspunkt:</strong> ${esc(d.onsketDato)}</p>` : ""}
         ${d.tannbleking ? `<p><strong>Ønsker tannbleking:</strong> ${esc(d.tannbleking)}</p>` : ""}
         ${d.kommentar ? `<p><strong>Kommentar:</strong><br/>${esc(d.kommentar).replace(/\n/g, "<br/>")}</p>` : ""}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { landingHandles, matchHandle } from "@/lib/clinics";
 import OfferLanding from "@/components/onboarding/OfferLanding";
+import InvisalignLanding from "@/components/onboarding/InvisalignLanding";
 import VaktLanding from "@/components/onboarding/VaktLanding";
 import FeedbackFlow from "@/components/onboarding/FeedbackFlow";
 import MetaPixel from "@/components/onboarding/MetaPixel";
@@ -25,6 +26,7 @@ export async function generateMetadata({
   const titles = {
     tilbud: `${clinic.offer.title} – ${clinic.name}`,
     tannlegevakt: `Tannlegevakt – ${clinic.name}`,
+    invisalign: `Gratis Invisalign-konsultasjon – ${clinic.name}`,
     feedback: `Tilbakemelding – ${clinic.name}`,
   } as const;
   return {
@@ -49,6 +51,8 @@ export default async function ClinicLandingPage({
   const page =
     kind === "tilbud" ? (
       <OfferLanding clinic={clinic} />
+    ) : kind === "invisalign" ? (
+      <InvisalignLanding clinic={clinic} />
     ) : kind === "tannlegevakt" ? (
       <VaktLanding clinic={clinic} />
     ) : (

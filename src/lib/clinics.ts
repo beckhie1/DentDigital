@@ -65,6 +65,8 @@ export interface Clinic {
    * Default: the standard `Leads` tab (A:K).
    */
   leadsLayout?: "gdts-us";
+  /** Enables the free Invisalign-consultation landing page /{slug}-invisalign */
+  invisalign?: boolean;
   active: boolean;
   offer: ClinicOffer;
 }
@@ -103,6 +105,7 @@ export const clinics: Clinic[] = [
       accentInk: "#8B7340",
     },
     leadsLayout: "gdts-us",
+    invisalign: true,
     rating: { value: "4,9", count: "200+" },
     active: true,
     offer: {
@@ -156,7 +159,7 @@ export const clinics: Clinic[] = [
 
 /* ── helpers ─────────────────────────────────────────────── */
 
-export type LandingKind = "tilbud" | "tannlegevakt" | "feedback";
+export type LandingKind = "tilbud" | "tannlegevakt" | "feedback" | "invisalign";
 
 export interface HandleMatch {
   kind: LandingKind;
@@ -170,6 +173,7 @@ export function landingHandles(): string[] {
   return activeClinics().flatMap((c) => [
     `${c.slug}-tilbud`,
     `${c.slug}-tannlegevakt`,
+    ...(c.invisalign ? [`${c.slug}-invisalign`] : []),
     c.feedbackCode,
   ]);
 }
@@ -179,6 +183,7 @@ export function matchHandle(handle: string): HandleMatch | null {
   for (const clinic of activeClinics()) {
     if (handle === `${clinic.slug}-tilbud`) return { kind: "tilbud", clinic };
     if (handle === `${clinic.slug}-tannlegevakt`) return { kind: "tannlegevakt", clinic };
+    if (clinic.invisalign && handle === `${clinic.slug}-invisalign`) return { kind: "invisalign", clinic };
     if (handle === clinic.feedbackCode) return { kind: "feedback", clinic };
   }
   return null;
