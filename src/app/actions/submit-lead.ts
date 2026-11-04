@@ -45,7 +45,8 @@ export async function submitLead(input: LeadInput) {
   const onsketDato = String(input.onsketDato ?? "").trim().slice(0, 200);
   const tannbleking = ["Ja", "Nei", "Usikker"].includes(String(input.tannbleking)) ? String(input.tannbleking) : "";
   const isInvisalign = input.kilde === "invisalign" && clinic.invisalign === true;
-  const kommentar = isInvisalign ? "invisalign konsultasjon 0 kr" : String(input.kommentar ?? "").trim().slice(0, 2000);
+  const kommentar = isInvisalign ? "" : String(input.kommentar ?? "").trim().slice(0, 2000);
+  const gjelder = isInvisalign ? "Invisalign tilbud -0 kr" : input.kilde === "tannlegevakt" ? "" : "komplett tannlegebesøk 590";
   const kilde = isInvisalign ? "Invisalign" : input.kilde === "tannlegevakt" ? "Tannlegevakt" : "Tilbud";
 
   const epostOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(epost) || (isInvisalign && epost === "");
@@ -63,7 +64,7 @@ export async function submitLead(input: LeadInput) {
   // Standard layout (sheet created by scripts/onboard-clinic.mjs):
   // Dato | Tidspunkt | Navn | E-post | Telefon | Ønsket tidspunkt | Tannbleking | Kilde | Status | Antall kontaktpunkt | Kommentar | UTM | Event ID | fbp | fbc
   // "gdts-us" layout (clinic's own US tab):
-  // Dato | TId | Navn | E-post | Telefon | Ønsket dato | Tannbleking? | Status | Antall kontaktpunkt | Kommentar | (blank) | Source | Ad Name | Ad ID
+  // Dato | TId | Navn | Gjelder | E-post | Telefon | Ønsket dato | Tannbleking? | Status | Antall kontaktpunkt | Kommentar | (blank) | Source | Ad Name | Ad ID
   //   | O Meta synk | P Count | Q gclid | R gbraid | S wbraid | T/U hashed phone/email
   //   | V timestamp | W fclid | X..AO Apps Script OCT/enrichment columns
   //   | AP Event ID | AQ fbp | AR fbc  (← ours; S..AO belong to the clinic's Apps Script)
@@ -80,9 +81,9 @@ export async function submitLead(input: LeadInput) {
 
   const sheetWrite =
     clinic.leadsLayout === "gdts-us"
-      ? appendRow(clinic.spreadsheetId, "US!A:AR", [
-          dato, tid, navn, epost, telefon, onsketDato, tannbleking, "Ny", "", kommentar, "", utmSource || kilde, utmContent, utmTerm,
-          ...Array(27).fill(""), // O..AO: Apps Script OCT/enrichment columns — leave untouched
+      ? appendRow(clinic.spreadsheetId, "US!A:AS", [
+          dato, tid, navn, gjelder, epost, telefon, onsketDato, tannbleking, "Ny", "", kommentar, "", utmSource || kilde, utmContent, utmTerm,
+          ...Array(27).fill(""), // P..AP: Apps Script OCT/enrichment columns — leave untouched
           storedEventId, storedFbp, storedFbc,
         ]).then(async (row) => {
           // Best-effort: the lead is already saved, so a styling failure must not fail it.

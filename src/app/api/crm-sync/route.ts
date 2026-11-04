@@ -30,8 +30,8 @@ const FUNNEL = [
 // gdts-us layout: A Dato, C Navn, D E-post, E Telefon, H Status, O Meta synk,
 // P Count, Q gclid, R gbraid, S..AO Apps Script OCT/enrichment columns,
 // AP Event ID, AQ fbp, AR fbc
-const US_RANGE = "US!A:AR";
-const US_COLS = { epost: 3, telefon: 4, status: 7, synced: 14, fbp: 42, fbc: 43 };
+const US_RANGE = "US!A:AS";
+const US_COLS = { epost: 4, telefon: 5, status: 8, synced: 15, fbp: 43, fbc: 44 };
 
 async function sheetsToken(): Promise<string> {
   const keyJson = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
@@ -116,7 +116,7 @@ export async function GET(req: Request) {
         const day = new Date().toISOString().slice(0, 10);
         const stamps = lead.events.map((s) => `✓ ${s.event} ${day}`).join(" | ");
         await fetch(
-          `https://sheets.googleapis.com/v4/spreadsheets/${clinic.spreadsheetId}/values/${encodeURIComponent(`US!O${lead.row}`)}?valueInputOption=RAW`,
+          `https://sheets.googleapis.com/v4/spreadsheets/${clinic.spreadsheetId}/values/${encodeURIComponent(`US!P${lead.row}`)}?valueInputOption=RAW`,
           {
             method: "PUT",
             headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
