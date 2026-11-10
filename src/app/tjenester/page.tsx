@@ -8,8 +8,8 @@ import { services } from "@/lib/services";
 import { Reveal, RevealLines } from "@/components/motion/Reveal";
 
 const heroLines = {
-  no: ["Digitale løsninger", "for tannklinikker."],
-  en: ["Digital solutions", "for dental clinics."],
+  no: ["Digitale løsninger", "for helseklinikker."],
+  en: ["Digital solutions", "for health clinics."],
 };
 
 export default function ServicesPage() {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * Custom cursor: instant dot + lerped ring. Ring expands over interactive
@@ -8,6 +9,7 @@ import { useEffect, useRef } from "react";
  * Native cursor stays visible (accessibility).
  */
 export default function Cursor() {
+  const pathname = usePathname();
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
@@ -54,6 +56,8 @@ export default function Cursor() {
       cancelAnimationFrame(raf);
     };
   }, []);
+
+  if (pathname?.startsWith("/demo")) return null;
 
   return (
     <>

@@ -26,7 +26,7 @@ export const cases: CaseStudy[] = [
       en: "General clinic, Eastern Norway",
     },
     services: ["digital-partner", "nettsideutvikling"],
-    image: "/dental-seo.png",
+    image: "/img/ads.svg",
     summary: {
       no: "Annonsering på Meta og Google med egne videoer ga en jevn strøm av nye pasienter – til målbar kostnad per henvendelse.",
       en: "Meta and Google ads with our own videos delivered a steady stream of new patients – at a measurable cost per inquiry.",
@@ -54,7 +54,7 @@ export const cases: CaseStudy[] = [
       en: "General clinic, Oslo",
     },
     services: ["nettsideutvikling", "pasientkommunikasjon"],
-    image: "/dental-website-marketing.png",
+    image: "/img/website.svg",
     summary: {
       no: "Ny nettside med online booking og lokal SEO ga flere pasienter – uten økt annonsebudsjett.",
       en: "A new website with online booking and local SEO brought more patients – without increasing ad spend.",
@@ -82,7 +82,7 @@ export const cases: CaseStudy[] = [
       en: "Clinic chain, Western Norway (3 locations)",
     },
     services: ["it-infrastruktur", "sikkerhetskopi-sky"],
-    image: "/it-support-dental.png",
+    image: "/img/it.svg",
     summary: {
       no: "Standardisert IT-drift og hybrid backup ga stabil hverdag på tvers av tre klinikker.",
       en: "Standardized IT operations and hybrid backup delivered a stable workday across three clinics.",
@@ -110,7 +110,7 @@ export const cases: CaseStudy[] = [
       en: "Specialist clinic, Trondheim",
     },
     services: ["opus-programvare", "datadrevet-innsikt"],
-    image: "/dental-software-dashboard.png",
+    image: "/img/dashboard.svg",
     summary: {
       no: "Optimalisert Opus-oppsett og et enkelt nøkkeltall-dashboard frigjorde tid og fylte timeboken.",
       en: "An optimized Opus setup and a simple KPI dashboard freed up time and filled the appointment book.",

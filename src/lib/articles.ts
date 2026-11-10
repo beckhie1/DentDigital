@@ -44,7 +44,7 @@ export const articles: Article[] = [
   },
   {
     slug: "google-annonsering-tannleger-2026",
-    image: "/dental-seo.png",
+    image: "/img/ads.svg",
     date: "2026-03-18",
     category: { no: "Markedsføring", en: "Marketing" },
     title: {
@@ -100,7 +100,7 @@ export const articles: Article[] = [
   },
   {
     slug: "ai-i-tanndiagnostikk",
-    image: "/dental-software-dashboard.png",
+    image: "/img/dashboard.svg",
     date: "2025-06-10",
     category: { no: "Teknologi", en: "Technology" },
     title: {
@@ -158,7 +158,7 @@ export const articles: Article[] = [
   },
   {
     slug: "digital-transformasjon-guide",
-    image: "/digital-dental-partnership.png",
+    image: "/img/partner.svg",
     date: "2025-05-28",
     category: { no: "Strategi", en: "Strategy" },
     title: {
@@ -188,7 +188,7 @@ export const articles: Article[] = [
   },
   {
     slug: "oke-pasienttilstromning-med-seo",
-    image: "/dental-seo.png",
+    image: "/img/ads.svg",
     date: "2025-05-15",
     category: { no: "Markedsføring", en: "Marketing" },
     title: {
@@ -302,7 +302,7 @@ export const articles: Article[] = [
   },
   {
     slug: "velge-it-leverandor",
-    image: "/it-support-dental.png",
+    image: "/img/it.svg",
     date: "2024-12-05",
     category: { no: "IT-infrastruktur", en: "IT Infrastructure" },
     title: {

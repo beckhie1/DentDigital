@@ -8,17 +8,11 @@ import { services } from "@/lib/services";
 import { articles } from "@/lib/articles";
 import { cases } from "@/lib/cases";
 import { Reveal, RevealLines, CountUp } from "@/components/motion/Reveal";
-import ParticleField from "@/components/home/ParticleField";
 import Magnetic from "@/components/shell/Magnetic";
 
 const heroLines = {
-  no: ["Digitalt partnerskap", "for norske", "tannklinikker."],
-  en: ["Digital partnership", "for Norwegian", "dental clinics."],
-};
-
-const marqueeItems = {
-  no: ["Nettsider", "Lokal SEO", "IT-drift", "Opus-integrasjon", "Sikkerhetskopi", "GDPR", "Datainnsikt", "AI-løsninger"],
-  en: ["Websites", "Local SEO", "IT Operations", "Opus Integration", "Backup", "GDPR", "Data Insight", "AI Solutions"],
+  no: ["Digitalt partnerskap", "for norske", "helseklinikker."],
+  en: ["Digital partnership", "for Norwegian", "health clinics."],
 };
 
 function SectionHead({
@@ -62,9 +56,18 @@ export default function HomePage() {
   return (
     <>
       {/* 01 · Hero */}
-      <section className="relative flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden">
-        <ParticleField className="absolute inset-0 h-full w-full" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-canvas via-canvas/60 to-transparent" />
+      <section className="hero-shape relative flex min-h-[calc(100svh-4rem)] flex-col overflow-hidden">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 280 286"
+          className="pointer-events-none absolute -bottom-6 right-[4%] hidden h-[78%] max-h-[34rem] w-auto opacity-[0.14] sm:block"
+        >
+          <rect y="203" width="54" height="84" rx="27" fill="#1E40AF" />
+          <rect x="72" y="161" width="54" height="126" rx="27" fill="#1E40AF" />
+          <rect x="144" y="113" width="54" height="174" rx="27" fill="#1E40AF" />
+          <rect x="216" y="58" width="54" height="229" rx="27" fill="#22C7A9" />
+          <path d="M205 64H280L242.5 0Z" fill="#22C7A9" stroke="#22C7A9" strokeWidth="4" strokeLinejoin="round" />
+        </svg>
 
         <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-4 pb-10 pt-14 sm:px-6 lg:px-8">
           <Reveal className="reveal-fade flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-ink-60">
@@ -105,22 +108,6 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
-
-      {/* Marquee strip */}
-      <div className="dark-section overflow-hidden border-y border-line-dark bg-dark py-4" aria-hidden>
-        <div className="marquee-track gap-0">
-          {[0, 1].map((dup) => (
-            <div key={dup} className="flex shrink-0 items-center">
-              {marqueeItems[lang].map((item) => (
-                <span key={item + dup} className="flex items-center gap-6 pr-6 font-display text-sm font-medium uppercase tracking-[0.18em] text-canvas/70">
-                  {item}
-                  <span className="h-1 w-1 rounded-full bg-accent-bright" />
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* 02 · Services — numbered interactive rows */}
       <section className="py-24 lg:py-32">
@@ -171,7 +158,7 @@ export default function HomePage() {
       </section>
 
       {/* 03 · Featured results */}
-      <section className="dark-section bg-dark py-24 text-canvas lg:py-32">
+      <section className="dark-section dark-block bg-dark py-24 text-canvas lg:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHead dark kicker={t.resultsKicker[lang]} title={t.resultsTitle[lang]} sub={t.resultsSub[lang]} />
@@ -240,7 +227,7 @@ export default function HomePage() {
       </section>
 
       {/* 05 · Proof strip */}
-      <section className="dark-section border-y border-line-dark bg-dark py-20 text-canvas">
+      <section className="dark-section dark-block bg-dark py-20 text-canvas">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-4 sm:px-6 lg:grid-cols-4 lg:px-8">
           {[
             { count: 50, suffix: "+", stat: t.stats[lang][0] },

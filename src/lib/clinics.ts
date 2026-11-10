@@ -10,6 +10,8 @@
  * the ⟪ONBOARD:INSERT⟫ marker below.
  */
 
+import { isLtPath } from "@/lib/lillestrom";
+
 export interface ClinicOffer {
   /** e.g. "Komplett undersøkelse + rens" */
   title: string;
@@ -65,6 +67,13 @@ export interface Clinic {
    * Default: the standard `Leads` tab (A:K).
    */
   leadsLayout?: "gdts-us";
+  /** Enables the free Invisalign-consultation landing page /{slug}-invisalign */
+  invisalign?: boolean;
+  /**
+   * Enables the long-form offer page /{slug}-tilbud-ny (agency-style: offer, details,
+   * location, trust, FAQ, form). The slug keeps "-tilbud" so URL-scoped conversions still match.
+   */
+  longOffer?: { hours: string[]; transit?: string; parking?: string };
   active: boolean;
   offer: ClinicOffer;
 }
@@ -103,6 +112,12 @@ export const clinics: Clinic[] = [
       accentInk: "#8B7340",
     },
     leadsLayout: "gdts-us",
+    invisalign: true,
+    longOffer: {
+      hours: ["Mandag–fredag 08:00–20:00", "Lørdag–søndag 10:00–18:00"],
+      transit: "Rett ved Rødtvet T-bane",
+      parking: "Gratis parkering",
+    },
     rating: { value: "4,9", count: "200+" },
     active: true,
     offer: {
@@ -156,7 +171,7 @@ export const clinics: Clinic[] = [
 
 /* ── helpers ─────────────────────────────────────────────── */
 
-export type LandingKind = "tilbud" | "tannlegevakt" | "feedback";
+export type LandingKind = "tilbud" | "tilbud-ny" | "tannlegevakt" | "feedback" | "invisalign";
 
 export interface HandleMatch {
   kind: LandingKind;
@@ -170,6 +185,8 @@ export function landingHandles(): string[] {
   return activeClinics().flatMap((c) => [
     `${c.slug}-tilbud`,
     `${c.slug}-tannlegevakt`,
+    ...(c.invisalign ? [`${c.slug}-invisalign`] : []),
+    ...(c.longOffer ? [`${c.slug}-tilbud-ny`] : []),
     c.feedbackCode,
   ]);
 }
@@ -178,7 +195,9 @@ export function landingHandles(): string[] {
 export function matchHandle(handle: string): HandleMatch | null {
   for (const clinic of activeClinics()) {
     if (handle === `${clinic.slug}-tilbud`) return { kind: "tilbud", clinic };
+    if (clinic.longOffer && handle === `${clinic.slug}-tilbud-ny`) return { kind: "tilbud-ny", clinic };
     if (handle === `${clinic.slug}-tannlegevakt`) return { kind: "tannlegevakt", clinic };
+    if (clinic.invisalign && handle === `${clinic.slug}-invisalign`) return { kind: "invisalign", clinic };
     if (handle === clinic.feedbackCode) return { kind: "feedback", clinic };
   }
   return null;
@@ -192,6 +211,8 @@ export function getClinicBySlug(slug: string): Clinic | undefined {
 export function isLandingPath(pathname: string): boolean {
   const seg = pathname.replace(/^\/+|\/+$/g, "");
   if (seg === "skjema" || seg.startsWith("skjema/")) return true;
+  if (seg === "demo" || seg.startsWith("demo/")) return true;
   if (!seg || seg.includes("/")) return false;
+  if (isLtPath(seg)) return true;
   return matchHandle(seg) !== null;
 }

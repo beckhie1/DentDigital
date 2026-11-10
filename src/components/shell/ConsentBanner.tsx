@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useLang } from "@/lib/i18n";
 import { ui } from "@/lib/content";
 import { matchHandle } from "@/lib/clinics";
+import { isLtBarePath } from "@/lib/lillestrom";
 
 export type ConsentValue = "all" | "necessary";
 
@@ -32,9 +33,12 @@ export default function ConsentBanner() {
   };
 
   if (!visible) return null;
+  if (pathname?.startsWith("/demo")) return null;
   const t = ui.consent;
 
   const seg = pathname?.replace(/^\/+|\/+$/g, "") ?? "";
+  // Lillestrøm offer pages show only the offer and the form, as on the clinic's own site.
+  if (isLtBarePath(seg)) return null;
   const landing = seg && !seg.includes("/") ? matchHandle(seg) : null;
 
   if (landing) {

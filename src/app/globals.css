@@ -1,28 +1,30 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────
-   DentDigital design tokens — "Klinisk presisjon"
+   DentDigital design tokens — sober, flat, hairline rules
    ───────────────────────────────────────────── */
-@theme {
-  /* type */
-  --font-sans: var(--font-general-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-clash), var(--font-general-sans), sans-serif;
+@theme inline {
+  /* type — shared with upshift IT */
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-source-sans), sans-serif;
 
-  /* palette */
-  --color-canvas: #fafaf8; /* warm off-white */
-  --color-ink: #111110; /* deep ink */
-  --color-ink-60: #55554f;
-  --color-ink-40: #8b8b84;
-  --color-accent: #00c2b8; /* electric teal */
-  --color-accent-ink: #007a73; /* AA-safe teal on light */
-  --color-accent-bright: #2de8de; /* teal on dark sections */
-  --color-dark: #0c0c0b; /* inverted section */
-  --color-dark-soft: #161615;
-  --color-line: #e4e4de; /* hairline on light */
-  --color-line-dark: #262624; /* hairline on dark */
+  /* palette — built from the logo: navy ink, brand blue, signal green */
+  --color-canvas: #f8faf9; /* cool paper white */
+  --color-paper: #e8eff1; /* tinted section ground */
+  --color-ink: #0f1b2d; /* logo navy */
+  --color-ink-60: #44556b;
+  --color-ink-40: #7a889a;
+  --color-brand: #1e40af; /* logo blue */
+  --color-accent: #22c7a9; /* logo green (signal) */
+  --color-accent-ink: #0b7a68; /* AA-safe green on light */
+  --color-accent-bright: #4be0c4; /* green on dark sections */
+  --color-dark: #0f1b2d; /* inverted section */
+  --color-dark-soft: #172a44;
+  --color-line: #d3dde0; /* hairline on light */
+  --color-line-dark: #2a3f5c; /* hairline on dark */
 
-  /* type scale (fluid editorial) */
-  --text-display-xl: clamp(2.75rem, 8vw, 7rem);
+/* type scale (fluid editorial) */
+  --text-display-xl: clamp(2.5rem, 6.2vw, 5rem);
   --text-display-lg: clamp(2.25rem, 5.5vw, 4.5rem);
   --text-display-md: clamp(1.75rem, 3.5vw, 3rem);
   --text-display-sm: clamp(1.35rem, 2.2vw, 1.9rem);
@@ -34,7 +36,7 @@
   --duration-slow: 1000ms;
 
   /* radii */
-  --radius-card: 1.25rem;
+  --radius-card: 0.75rem;
 }
 
 html {
@@ -50,7 +52,7 @@ html {
 /* ── editorial utilities ─────────────────────── */
 
 .font-display {
-  font-family: var(--font-display);
+  font-family: var(--font-bricolage), var(--font-source-sans), sans-serif;
   letter-spacing: -0.02em;
 }
 
@@ -204,4 +206,124 @@ html {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ── upshift-style shapes ───────────────────── */
+.hero-shape {
+  background: var(--color-paper);
+  border-radius: 0 0 30% 8%;
+}
+.dark-block {
+  border-radius: 4rem 0;
+}
+@media (max-width: 640px) {
+  .hero-shape { border-radius: 0 0 24% 6%; }
+  .dark-block { border-radius: 2.5rem 0; }
+}
+
+/* ─────────────────────────────────────────────
+   Lillestrøm Tannhelse ad pages (src/app/(lillestrom))
+   Tokens copied from lillestromtannhelse.no, prefixed so DentDigital's own are untouched.
+   ───────────────────────────────────────────── */
+@theme inline {
+  --color-lt-ink: #15171c;
+  --color-lt-ink-soft: #4a5160;
+  --color-lt-cobalt: #0e3f94;
+  --color-lt-cobalt-deep: #0a2f6f;
+  --color-lt-enamel: #f7f9fb;
+  --color-lt-frost: #e6eef8;
+  --color-lt-line: #d5deea;
+  --font-lt: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer components {
+.lt-root {
+  font-family: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-lt-ink);
+}
+.lt-root :where(h1, h2, h3, h4) {
+  font-family: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  color: var(--color-lt-ink);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.lt-root ::selection {
+  background: var(--color-lt-cobalt);
+  color: white;
+}
+.lt-root :where(input, textarea) {
+  caret-color: var(--color-lt-cobalt);
+}
+.lt-root :focus-visible {
+  outline: 3px solid var(--color-lt-cobalt);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.lt-wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 88rem;
+  padding-inline: 1.25rem;
+}
+@media (width >= 40rem) {
+  .lt-wrap {
+    padding-inline: 2rem;
+  }
+}
+@media (width >= 80rem) {
+  .lt-wrap {
+    padding-inline: 3rem;
+  }
+}
+.lt-page-title {
+  font-size: clamp(2rem, 1.45rem + 2.2vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+.lt-lead {
+  max-width: 38rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-lt-ink-soft);
+}
+@media (width >= 40rem) {
+  .lt-lead {
+    font-size: 1.125rem;
+  }
+}
+:where(.lt-btn-primary, .lt-btn-ghost) {
+  display: inline-flex;
+  white-space: nowrap;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding-inline: 1.5rem;
+  font-family: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: background-color 150ms, border-color 150ms, color 150ms;
+}
+.lt-btn-primary {
+  background: var(--color-lt-cobalt);
+  color: white;
+}
+.lt-btn-primary:hover {
+  background: var(--color-lt-cobalt-deep);
+}
+.lt-btn-ghost {
+  border: 1px solid color-mix(in srgb, var(--color-lt-ink) 15%, transparent);
+  background: white;
+  color: var(--color-lt-ink);
+}
+.lt-btn-ghost:hover {
+  border-color: var(--color-lt-cobalt);
+  color: var(--color-lt-cobalt);
+}
 }

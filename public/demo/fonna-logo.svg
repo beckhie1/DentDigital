@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 96" role="img" aria-label="Fonna Tannklinikk — Rosendal">
+  <defs>
+    <clipPath id="tooth">
+      <path d="M32 8 C21 8 13 15 13 26 C13 35 16 43 19 52 C20 56.5 24.5 57 25.5 52 C26.5 47 27.5 43 32 43 C36.5 43 37.5 47 38.5 52 C39.5 57 44 56.5 45 52 C48 43 51 35 51 26 C51 15 43 8 32 8 Z"/>
+    </clipPath>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e7c86"/>
+      <stop offset="1" stop-color="#0a3b42"/>
+    </linearGradient>
+  </defs>
+
+  <!-- mark -->
+  <g transform="translate(6,10)">
+    <g stroke="#0e7c86" stroke-linecap="round" fill="none">
+      <path d="M14 63 C20 60 24 66 30 63 C36 60 40 66 46 63" stroke-width="2.4" opacity="0.55"/>
+    </g>
+    <g clip-path="url(#tooth)">
+      <rect x="0" y="0" width="64" height="76" fill="url(#body)"/>
+      <path d="M6 0 H58 V26 C51 29.5 46 24.5 40 27.5 C35 30 30 25 24.5 27.5 C19 30 13 25.5 6 28.5 Z" fill="#f4f8f9"/>
+      <path d="M17 25 L24 16 L30 21 L37 13 L46 23" stroke="#d9a441" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <text x="92" y="50" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="42" font-weight="600" letter-spacing="-0.5" fill="#0a3b42">Fonna</text>
+  <text x="94" y="70" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="6" fill="#0a5760">TANNKLINIKK</text>
+  <text x="95" y="86" font-family="'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="600" letter-spacing="3" fill="#8b8b84">ROSENDAL · HARDANGER</text>
+</svg>

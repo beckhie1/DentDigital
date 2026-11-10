@@ -23,8 +23,8 @@ export const ui = {
   },
   footer: {
     blurb: {
-      no: "Vi er din digitale partner som forstår de unike behovene til norske tannklinikker – både teknologisk og regulativt.",
-      en: "We are your digital partner who understands the unique needs of Norwegian dental clinics – both technologically and regulatorily.",
+      no: "Vi er din digitale partner som forstår de unike behovene til norske helseklinikker – både teknologisk og regulativt.",
+      en: "We are your digital partner who understands the unique needs of Norwegian health clinics – both technologically and regulatorily.",
     },
     ctaLine: {
       no: "Klar for å digitalisere klinikken?",
@@ -55,32 +55,32 @@ export const ui = {
   },
   home: {
     badge: {
-      no: "#1 Digital Partner for Tannklinikker",
-      en: "#1 Digital Partner for Dental Clinics",
+      no: "Digital Partner for Helseklinikker",
+      en: "Digital Partner for Health Clinics",
     },
     heroTitle: {
-      no: "Digitalt Partnerskap for Norske Tannklinikker",
-      en: "Digital Partnership for Norwegian Dental Clinics",
+      no: "Digitalt Partnerskap for Norske Helseklinikker",
+      en: "Digital Partnership for Norwegian Health Clinics",
     },
     heroSub: {
-      no: "Skreddersydde IT-løsninger, markedsføring og teknologisupport som hjelper tannklinikker å vokse, effektivisere og levere bedre pasientopplevelser.",
-      en: "Tailored IT solutions, marketing and technology support that help dental clinics grow, streamline and deliver better patient experiences.",
+      no: "Annonsering, innhold for sosiale medier, nettsider og IT-løsninger som hjelper helseklinikker å vokse, effektivisere og levere bedre pasient- og kundeopplevelser.",
+      en: "Advertising, social media content, websites and IT solutions that help health clinics grow, streamline and deliver better patient and customer experiences.",
     },
     heroPoints: {
       no: [
-        "Spesialister på IT og digitalisering for norske tannklinikker",
+        "Spesialister på digitalisering og markedsføring for norske helseklinikker",
         "24/7 support og personlig tilpassede løsninger",
         "GDPR- og Personvernsikre systemer",
       ],
       en: [
-        "Specialists in IT and digitalization for Norwegian dental clinics",
+        "Specialists in digitalization and marketing for Norwegian health clinics",
         "24/7 support and personally tailored solutions",
         "GDPR- and privacy-compliant systems",
       ],
     },
     heroStat: {
-      no: "fornøyde tannklinikker i Norge",
-      en: "satisfied dental clinics in Norway",
+      no: "fornøyde klinikker i Norge",
+      en: "satisfied clinics in Norway",
     },
     servicesKicker: { no: "Våre Tjenester", en: "Our Services" },
     servicesTitle: {
@@ -88,8 +88,8 @@ export const ui = {
       en: "Complete Digital Solutions",
     },
     servicesSub: {
-      no: "Vi tilbyr et bredt spekter av digitale tjenester skreddersydd for tannklinikker i Norge.",
-      en: "We offer a wide range of digital services tailored for dental clinics in Norway.",
+      no: "Vi tilbyr et bredt spekter av digitale tjenester skreddersydd for helseklinikker i Norge.",
+      en: "We offer a wide range of digital services tailored for health clinics in Norway.",
     },
     statsKicker: { no: "Våre Resultater", en: "Our Results" },
     statsTitle: {
@@ -97,21 +97,21 @@ export const ui = {
       en: "Numbers that speak for themselves",
     },
     statsSub: {
-      no: "Vi leverer målbare resultater for tannklinikker over hele Norge",
-      en: "We deliver measurable results for dental clinics all over Norway",
+      no: "Vi leverer målbare resultater for helseklinikker over hele Norge",
+      en: "We deliver measurable results for health clinics all over Norway",
     },
     stats: {
       no: [
-        { value: "50+", label: "Klinikker", desc: "Betjener over 50 tannklinikker i Norge" },
+        { value: "50+", label: "Klinikker", desc: "Betjener over 50 klinikker i Norge" },
         { value: "24/7", label: "Support", desc: "Teknisk støtte tilgjengelig døgnet rundt" },
         { value: "100%", label: "GDPR-Kompatibel", desc: "Alle løsninger følger personvernforordningen" },
-        { value: "5+", label: "Års Erfaring", desc: "Spesialisert på tannhelsesektoren" },
+        { value: "5+", label: "Års Erfaring", desc: "Spesialisert på helseklinikker" },
       ],
       en: [
-        { value: "50+", label: "Clinics", desc: "Serving over 50 dental clinics in Norway" },
+        { value: "50+", label: "Clinics", desc: "Serving over 50 clinics in Norway" },
         { value: "24/7", label: "Support", desc: "Technical support available around the clock" },
         { value: "100%", label: "GDPR Compliant", desc: "All solutions follow the privacy regulation" },
-        { value: "5+", label: "Years of Experience", desc: "Specialized in the dental health sector" },
+        { value: "5+", label: "Years of Experience", desc: "Specialized in health clinics" },
       ],
     },
     whyKicker: { no: "Hvorfor Velge Oss", en: "Why Choose Us" },
@@ -125,7 +125,7 @@ export const ui = {
     },
     whyPoints: {
       no: [
-        { title: "Spesialister på IT for tannklinikker", desc: "Vi forstår de unike behovene til norske tannklinikker og leverer skreddersydde digitale løsninger som oppfyller alle regulatoriske krav." },
+        { title: "Spesialister på helseklinikker", desc: "Vi forstår de unike behovene til norske helseklinikker og leverer skreddersydde digitale løsninger som oppfyller alle regulatoriske krav." },
         { title: "24/7 support og personlig service", desc: "Vår dedikerte supporttjeneste er tilgjengelig døgnet rundt for å sikre at din klinikk alltid har den tekniske støtten den trenger." },
         { title: "GDPR- og Personvernsikre systemer", desc: "Alle våre løsninger er utviklet med personvern i fokus og oppfyller kravene fra både GDPR og Helsedirektoratet." },
         { title: "Tidsbesparende løsninger", desc: "Våre digitale verktøy automatiserer rutineoppgaver og frigjør verdifull tid som kan brukes på pasientbehandling." },
@@ -133,7 +133,7 @@ export const ui = {
         { title: "Dokumenterte resultater", desc: "Våre kunder rapporterer i gjennomsnitt 30% økt effektivitet og 20% vekst etter implementering av våre løsninger." },
       ],
       en: [
-        { title: "IT specialists for dental clinics", desc: "We understand the unique needs of Norwegian dental clinics and deliver tailored digital solutions that meet all regulatory requirements." },
+        { title: "Specialists for health clinics", desc: "We understand the unique needs of Norwegian health clinics and deliver tailored digital solutions that meet all regulatory requirements." },
         { title: "24/7 support and personal service", desc: "Our dedicated support team is available around the clock to ensure your clinic always has the technical support it needs." },
         { title: "GDPR- and privacy-compliant systems", desc: "All our solutions are built with privacy in focus and meet the requirements of both GDPR and the Norwegian Directorate of Health." },
         { title: "Time-saving solutions", desc: "Our digital tools automate routine tasks and free up valuable time that can be spent on patient care." },
@@ -184,17 +184,17 @@ export const ui = {
       en: "Articles and Resources",
     },
     articlesSub: {
-      no: "Hold deg oppdatert på de nyeste digitale trendene for tannklinikker.",
-      en: "Stay updated on the latest digital trends for dental clinics.",
+      no: "Hold deg oppdatert på de nyeste digitale trendene for helseklinikker.",
+      en: "Stay updated on the latest digital trends for health clinics.",
     },
     ctaKicker: { no: "Ta steget inn i fremtiden", en: "Step into the future" },
     ctaTitle: {
-      no: "Klar for å Digitalisere Din Tannklinikk?",
-      en: "Ready to Digitalize Your Dental Clinic?",
+      no: "Klar for å Digitalisere Din Klinikk?",
+      en: "Ready to Digitalize Your Clinic?",
     },
     ctaSub: {
-      no: "Ta det første steget mot en mer effektiv og lønnsom tannklinikk med våre skreddersydde digitale løsninger.",
-      en: "Take the first step towards a more efficient and profitable dental clinic with our tailored digital solutions.",
+      no: "Ta det første steget mot en mer effektiv og lønnsom klinikk med våre skreddersydde digitale løsninger.",
+      en: "Take the first step towards a more efficient and profitable clinic with our tailored digital solutions.",
     },
     ctaNote: {
       no: "Gratis konsultasjon og behovsanalyse ved kontakt innen 30 dager",
@@ -205,20 +205,20 @@ export const ui = {
     kicker: { no: "Om Oss", en: "About Us" },
     title: { no: "Din Digitale Partner", en: "Your Digital Partner" },
     sub: {
-      no: "Vi startet DentDigital fordi norske tannklinikker fortjener en partner som forstår deres unike behov – både teknologisk og regulativt.",
-      en: "We started DentDigital because Norwegian dental clinics deserve a partner who understands their unique needs – both technologically and regulatorily.",
+      no: "Vi startet DentDigital fordi norske helseklinikker fortjener en partner som forstår deres unike behov – både teknologisk og regulativt.",
+      en: "We started DentDigital because Norwegian health clinics deserve a partner who understands their unique needs – both technologically and regulatorily.",
     },
     historyTitle: { no: "Vår Historie", en: "Our Story" },
     history: {
       no: [
-        "DentDigital ble grunnlagt av en gruppe teknologieksperter og tannhelsespesialister som så et behov for skreddersydde digitale løsninger for norske tannklinikker.",
-        "Vi oppdaget at mange tannklinikker brukte generelle IT-tjenester som ikke forsto de spesifikke behovene og regulatoriske kravene i tannhelsesektoren. Dette førte til ineffektive systemer, sikkerhetsproblemer og frustrerte klinikkeiere.",
-        "Vår visjon er å bli den foretrukne digitale partneren for tannklinikker i hele Norge, fra små enkeltmannspraksiser til store klinikkjeder. Vi er dedikert til å gjøre norske tannklinikker mer effektive, sikre og lønnsomme gjennom skreddersydde digitale løsninger.",
+        "DentDigital ble grunnlagt av en gruppe teknologieksperter og spesialister fra helsesektoren som så et behov for skreddersydde digitale løsninger for norske helseklinikker.",
+        "Vi oppdaget at mange helseklinikker brukte generelle IT-tjenester som ikke forsto de spesifikke behovene og regulatoriske kravene i helsesektoren. Dette førte til ineffektive systemer, sikkerhetsproblemer og frustrerte klinikkeiere.",
+        "Vår visjon er å bli den foretrukne digitale partneren for helseklinikker i hele Norge, fra små enkeltmannspraksiser til store klinikkjeder. Vi er dedikert til å gjøre norske helseklinikker mer effektive, sikre og lønnsomme gjennom skreddersydde digitale løsninger.",
       ],
       en: [
-        "DentDigital was founded by a group of technology experts and dental health specialists who saw a need for tailored digital solutions for Norwegian dental clinics.",
-        "We discovered that many dental clinics used generic IT services that did not understand the specific needs and regulatory requirements of the dental health sector. This led to inefficient systems, security issues and frustrated clinic owners.",
-        "Our vision is to become the preferred digital partner for dental clinics throughout Norway, from small solo practices to large clinic chains. We are dedicated to making Norwegian dental clinics more efficient, secure and profitable through tailored digital solutions.",
+        "DentDigital was founded by a group of technology experts and specialists from the health sector who saw a need for tailored digital solutions for Norwegian health clinics.",
+        "We discovered that many health clinics used generic IT services that did not understand the specific needs and regulatory requirements of the health sector. This led to inefficient systems, security issues and frustrated clinic owners.",
+        "Our vision is to become the preferred digital partner for health clinics throughout Norway, from small solo practices to large clinic chains. We are dedicated to making Norwegian health clinics more efficient, secure and profitable through tailored digital solutions.",
       ],
     },
     valuesTitle: { no: "Våre Verdier", en: "Our Values" },
@@ -255,8 +255,8 @@ export const ui = {
       en: "Contact DentDigital – Your Digital Partner",
     },
     sub: {
-      no: "Vi er her for å hjelpe din tannklinikk med å ta steget inn i den digitale fremtiden.",
-      en: "We are here to help your dental clinic step into the digital future.",
+      no: "Vi er her for å hjelpe din klinikk med å ta steget inn i den digitale fremtiden.",
+      en: "We are here to help your clinic step into the digital future.",
     },
     formTitle: { no: "Send oss en melding", en: "Send us a message" },
     formSub: {
@@ -311,29 +311,29 @@ export const ui = {
   },
   ai: {
     title: {
-      no: "AI-løsninger for Tannklinikker",
-      en: "AI Solutions for Dental Clinics",
+      no: "AI-løsninger for Helseklinikker",
+      en: "AI Solutions for Health Clinics",
     },
     sub: {
-      no: "Moderne AI-teknologi skreddersydd for tannhelsesektoren.",
-      en: "Modern AI technology tailored for the dental health sector.",
+      no: "Moderne AI-teknologi skreddersydd for helsesektoren.",
+      en: "Modern AI technology tailored for the health sector.",
     },
     servicesTitle: { no: "Våre AI-tjenester", en: "Our AI Services" },
     servicesSub: {
-      no: "Skreddersydde AI-løsninger som hjelper din tannklinikk med å levere bedre pasientopplevelser og effektivisere driften.",
-      en: "Tailored AI solutions that help your dental clinic deliver better patient experiences and streamline operations.",
+      no: "Skreddersydde AI-løsninger som hjelper din klinikk med å levere bedre pasientopplevelser og effektivisere driften.",
+      en: "Tailored AI solutions that help your clinic deliver better patient experiences and streamline operations.",
     },
     services: {
       no: [
         { title: "AI Chatbots", desc: "Intelligente chatbots som kan svare på pasientspørsmål, håndtere timebestillinger og gi behandlingsinformasjon døgnet rundt." },
-        { title: "RAG-løsninger", desc: "Retrieval Augmented Generation-systemer som kombinerer din klinikks kunnskap med AI for å gi nøyaktige og kontekstuelle svar på komplekse spørsmål." },
+        { title: "RAG-løsninger", desc: "Retrieval-augmented Generation-systemer som kombinerer din klinikks kunnskap med AI for å gi nøyaktige og kontekstuelle svar på komplekse spørsmål." },
         { title: "Semantisk Søk", desc: "Avanserte søkesystemer som forstår kontekst og intensjon, slik at du raskt kan finne relevant pasientinformasjon og journaler." },
         { title: "Automatisert Pasientkommunikasjon", desc: "AI-drevne systemer som sender personlige påminnelser, oppfølginger og helseinformasjon tilpasset hver enkelt pasient." },
         { title: "Prediktiv Analyse", desc: "Analyseverktøy som forutsier pasientbehov, identifiserer trender og hjelper med strategisk planlegging basert på historiske data." },
       ],
       en: [
         { title: "AI Chatbots", desc: "Intelligent chatbots that can answer patient questions, handle appointment bookings and provide treatment information around the clock." },
-        { title: "RAG Solutions", desc: "Retrieval Augmented Generation systems that combine your clinic's knowledge with AI to provide accurate and contextual answers to complex questions." },
+        { title: "RAG Solutions", desc: "Retrieval-augmented Generation systems that combine your clinic's knowledge with AI to provide accurate and contextual answers to complex questions." },
         { title: "Semantic Search", desc: "Advanced search systems that understand context and intent, so you can quickly find relevant patient information and records." },
         { title: "Automated Patient Communication", desc: "AI-driven systems that send personal reminders, follow-ups and health information tailored to each individual patient." },
         { title: "Predictive Analytics", desc: "Analytics tools that predict patient needs, identify trends and help with strategic planning based on historical data." },
@@ -344,27 +344,27 @@ export const ui = {
       en: "Interested in our AI solutions?",
     },
     ctaSub: {
-      no: "Kontakt oss for en uforpliktende samtale om hvordan AI kan transformere din tannklinikk.",
-      en: "Contact us for a no-obligation conversation about how AI can transform your dental clinic.",
+      no: "Kontakt oss for en uforpliktende samtale om hvordan AI kan transformere din klinikk.",
+      en: "Contact us for a no-obligation conversation about how AI can transform your clinic.",
     },
   },
   servicesPage: {
     kicker: { no: "Våre Tjenester", en: "Our Services" },
     title: {
-      no: "Digitale Løsninger for Tannklinikker",
-      en: "Digital Solutions for Dental Clinics",
+      no: "Digitale Løsninger for Helseklinikker",
+      en: "Digital Solutions for Health Clinics",
     },
     sub: {
-      no: "Skreddersydde tjenester som hjelper din tannklinikk å vokse, effektivisere og levere bedre pasientopplevelser.",
-      en: "Tailored services that help your dental clinic grow, streamline and deliver better patient experiences.",
+      no: "Skreddersydde tjenester som hjelper din klinikk å vokse, effektivisere og levere bedre pasientopplevelser.",
+      en: "Tailored services that help your clinic grow, streamline and deliver better patient experiences.",
     },
     benefitsTitle: {
       no: "Fordeler med våre tjenester",
       en: "Benefits of our services",
     },
     benefitsSub: {
-      no: "Våre digitale løsninger gir din tannklinikk konkurransefortrinn og effektiviserer driften",
-      en: "Our digital solutions give your dental clinic a competitive edge and streamline operations",
+      no: "Våre digitale løsninger gir din klinikk konkurransefortrinn og effektiviserer driften",
+      en: "Our digital solutions give your clinic a competitive edge and streamline operations",
     },
     benefits: {
       no: [
@@ -376,7 +376,7 @@ export const ui = {
         "Norskutviklet for norske forhold",
         "Økt synlighet på Google",
         "Sikker pasientdata i norsk sky",
-        "Skreddersydde løsninger for tannklinikker",
+        "Skreddersydde løsninger for helseklinikker",
       ],
       en: [
         "Save up to 40% administrative time",
@@ -387,12 +387,12 @@ export const ui = {
         "Developed in Norway for Norwegian conditions",
         "Increased visibility on Google",
         "Secure patient data in Norwegian cloud",
-        "Tailored solutions for dental clinics",
+        "Tailored solutions for health clinics",
       ],
     },
     ctaTitle: {
-      no: "Klar for å digitalisere din tannklinikk?",
-      en: "Ready to digitalize your dental clinic?",
+      no: "Klar for å digitalisere din klinikk?",
+      en: "Ready to digitalize your clinic?",
     },
     ctaSub: {
       no: "Ta kontakt med oss i dag for en uforpliktende samtale om hvordan vi kan hjelpe din klinikk.",
@@ -406,8 +406,8 @@ export const ui = {
       en: "Articles and Resources",
     },
     sub: {
-      no: "Hold deg oppdatert på de nyeste digitale trendene og beste praksiser for tannklinikker i Norge",
-      en: "Stay updated on the latest digital trends and best practices for dental clinics in Norway",
+      no: "Hold deg oppdatert på de nyeste digitale trendene og beste praksiser for helseklinikker i Norge",
+      en: "Stay updated on the latest digital trends and best practices for health clinics in Norway",
     },
     all: { no: "Alle", en: "All" },
     newsletterTitle: {
@@ -415,8 +415,8 @@ export const ui = {
       en: "Get Exclusive Resources",
     },
     newsletterSub: {
-      no: "Abonner på vårt nyhetsbrev for å motta gratis guider, maler og tips for din tannklinikk.",
-      en: "Subscribe to our newsletter to receive free guides, templates and tips for your dental clinic.",
+      no: "Abonner på vårt nyhetsbrev for å motta gratis guider, maler og tips for din klinikk.",
+      en: "Subscribe to our newsletter to receive free guides, templates and tips for your clinic.",
     },
     subscribe: { no: "Abonner Nå", en: "Subscribe Now" },
     backToArticles: { no: "Tilbake til fagartikler", en: "Back to articles" },

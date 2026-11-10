@@ -9,3 +9,4 @@ GDTS-secrets.env
 *.tsbuildinfo
 next-env.d.ts
 node_modules
+.claude/settings.local.json

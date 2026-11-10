@@ -14,10 +14,10 @@ export const services: Service[] = [
   {
     slug: "digital-partner",
     icon: "🤝",
-    image: "/digital-dental-partnership.png",
+    image: "/img/partner.svg",
     title: {
-      no: "Digital Partner for Tannklinikker",
-      en: "Digital Partner for Dental Clinics",
+      no: "Digital Partner for Helseklinikker",
+      en: "Digital Partner for Health Clinics",
     },
     short: {
       no: "Vi integrerer oss i din praksis som en forlengelse av teamet ditt – fra IT til markedsføring.",
@@ -50,9 +50,85 @@ export const services: Service[] = [
     featured: true,
   },
   {
+    slug: "annonsering",
+    icon: "📈",
+    image: "/img/ads.svg",
+    title: {
+      no: "Google- og Meta-annonser",
+      en: "Google and Meta Advertising",
+    },
+    short: {
+      no: "Målrettet annonsering som fyller timeboken – målt på bookede timer, ikke klikk.",
+      en: "Targeted advertising that fills your appointment book – measured on booked appointments, not clicks.",
+    },
+    tagline: {
+      no: "Flere nye pasienter og kunder til en kostnad du kan måle.",
+      en: "More new patients and customers at a cost you can measure.",
+    },
+    features: {
+      no: [
+        "Google Ads og Meta-annonser målrettet mot folk som søker behandling i ditt område.",
+        "Sporing av henvendelser og bookinger, slik at du vet hva en ny pasient koster.",
+        "Egne landingssider bygget for timebestilling.",
+        "Løpende optimalisering og månedlig rapportering.",
+        "Tilpasset kliniktype: tannlege, fysioterapi, kiropraktikk, hudpleie og flere.",
+      ],
+      en: [
+        "Google Ads and Meta ads targeted at people searching for treatment in your area.",
+        "Tracking of enquiries and bookings, so you know what a new patient costs.",
+        "Dedicated landing pages built for appointment booking.",
+        "Continuous optimization and monthly reporting.",
+        "Adapted to your clinic type: dental, physiotherapy, chiropractic, skin care and more.",
+      ],
+    },
+    cta: {
+      no: "Få flere pasienter – book en prat",
+      en: "Get more patients – book a call",
+    },
+    featured: true,
+  },
+  {
+    slug: "innhold-sosiale-medier",
+    icon: "🎬",
+    image: "/img/content.svg",
+    title: {
+      no: "Reels, bilder og automatisk posting",
+      en: "Reels, Photos and Automatic Posting",
+    },
+    short: {
+      no: "Profesjonelle reels og bilder i toppkvalitet, publisert automatisk i sosiale medier.",
+      en: "Professional top-quality reels and photos, published automatically on social media.",
+    },
+    tagline: {
+      no: "Vær synlig hver uke uten å løfte en finger.",
+      en: "Stay visible every week without lifting a finger.",
+    },
+    features: {
+      no: [
+        "Reels og foto i toppkvalitet: Profesjonelt innhold av klinikken, behandlinger og team – ferdig redigert.",
+        "Fast ukeplan: Innholdet planlegges og publiseres automatisk på Instagram, Facebook og TikTok.",
+        "Innhold tilpasset din kliniktype og målgruppe.",
+        "Gjenbruk av innholdet i annonser og på nettsiden.",
+        "Månedlig oversikt over rekkevidde og engasjement.",
+      ],
+      en: [
+        "Top-quality reels and photos: Professional content of your clinic, treatments and team – fully edited.",
+        "Fixed weekly schedule: Content is planned and published automatically on Instagram, Facebook and TikTok.",
+        "Content tailored to your clinic type and target audience.",
+        "Reuse of the content in ads and on your website.",
+        "Monthly overview of reach and engagement.",
+      ],
+    },
+    cta: {
+      no: "Se hvordan vi lager innhold",
+      en: "See how we create content",
+    },
+    featured: true,
+  },
+  {
     slug: "nettsideutvikling",
     icon: "🌐",
-    image: "/dental-website-marketing.png",
+    image: "/img/website.svg",
     title: {
       no: "Nettsideutvikling og SEO",
       en: "Website Development and SEO",
@@ -68,14 +144,14 @@ export const services: Service[] = [
     features: {
       no: [
         "UI/UX Design: Brukervennlig design for mobil og desktop.",
-        "Tilpasset Innhold: Pasientorientert tekst og bilder.",
+        "Tilpasset Innhold: Pasient- og kundeorientert tekst og bilder.",
         "Responsivt design (Next.js, React).",
         "Integrasjon med bookingverktøy.",
         "Lokal SEO for bedre synlighet på Google.",
       ],
       en: [
         "UI/UX Design: User-friendly design for mobile and desktop.",
-        "Tailored content: Patient-oriented text and images.",
+        "Tailored content: Patient- and customer-oriented text and images.",
         "Responsive design (Next.js, React).",
         "Integration with booking tools.",
         "Local SEO for better visibility on Google.",
@@ -90,7 +166,7 @@ export const services: Service[] = [
   {
     slug: "it-infrastruktur",
     icon: "🖥️",
-    image: "/it-support-dental.png",
+    image: "/img/it.svg",
     title: {
       no: "IT-infrastruktur og Support",
       en: "IT Infrastructure and Support",
@@ -130,8 +206,8 @@ export const services: Service[] = [
     icon: "🦷",
     image: "/dental-imaging-software.png",
     title: {
-      no: "Opus Programvare og Integrasjon",
-      en: "Opus Software and Integration",
+      no: "Opus Programvare og Integrasjon (tannklinikker)",
+      en: "Opus Software and Integration (dental clinics)",
     },
     short: {
       no: "Maksimer effektiviteten av bildediagnostikkverktøy med oppsett, integrasjon og opplæring.",
@@ -204,7 +280,7 @@ export const services: Service[] = [
   {
     slug: "datadrevet-innsikt",
     icon: "📊",
-    image: "/dental-software-dashboard.png",
+    image: "/img/dashboard.svg",
     title: {
       no: "Datadrevet Innsikt og Analyse",
       en: "Data-Driven Insight and Analytics",
@@ -296,14 +372,14 @@ export const services: Service[] = [
     features: {
       no: [
         "SMS-påminnelser: Automatiske varsler for avtaler og etterkontroller.",
-        "E-postkampanjer: Informasjon om tannbleking, barnetannpleie, etc.",
+        "E-postkampanjer: Informasjon om behandlinger, kampanjer og nyheter.",
         "Online Booking: Integrert kalender med direkte pasientbestilling.",
         "Automatiserte oppfølginger etter behandling.",
         "Pasientportal for enkel kommunikasjon og dokumentdeling.",
       ],
       en: [
         "SMS reminders: Automatic notifications for appointments and follow-ups.",
-        "Email campaigns: Information about whitening, pediatric care, etc.",
+        "Email campaigns: Information about treatments, campaigns and news.",
         "Online booking: Integrated calendar with direct patient booking.",
         "Automated follow-ups after treatment.",
         "Patient portal for easy communication and document sharing.",
@@ -318,7 +394,7 @@ export const services: Service[] = [
   {
     slug: "skreddersydde-systemer",
     icon: "⚙️",
-    image: "/dental-software-dashboard.png",
+    image: "/img/dashboard.svg",
     title: {
       no: "Skreddersydde Programvaresystemer",
       en: "Custom Software Systems",
@@ -334,14 +410,14 @@ export const services: Service[] = [
     features: {
       no: [
         "Tilpassede Skjemaer: Digitalisering av pasientundersøkelser.",
-        "Lagerstyring: Automatisk bestilling av tannlegeutstyr og materialer.",
+        "Lagerstyring: Automatisk bestilling av utstyr og forbruksmateriell.",
         "API-integrasjoner: Kobling mellom faktureringssystemer og journalsystemer.",
         "Arbeidsflytautomatisering for repetitive oppgaver.",
         "Tilpassede rapporter og analyser.",
       ],
       en: [
         "Custom forms: Digitalization of patient surveys.",
-        "Inventory management: Automatic ordering of dental equipment and materials.",
+        "Inventory management: Automatic ordering of equipment and consumables.",
         "API integrations: Connecting billing systems and record systems.",
         "Workflow automation for repetitive tasks.",
         "Custom reports and analytics.",
@@ -356,7 +432,7 @@ export const services: Service[] = [
   {
     slug: "kurs-kompetanse",
     icon: "🎓",
-    image: "/dental-technology-team.png",
+    image: "/img/team.svg",
     title: {
       no: "Kurs og Kompetanseutvikling",
       en: "Courses and Competence Development",

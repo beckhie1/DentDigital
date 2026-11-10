@@ -42,6 +42,8 @@ export interface CapiEvent {
   userAgent?: string;
   fbp?: string;
   fbc?: string;
+  /** Stable visitor id (advanced matching) — same value the browser pixel sends */
+  externalId?: string;
   /** Monetary value of the event, e.g. the offer price (for Meta ROAS modeling) */
   value?: number;
   /** ISO currency code, e.g. "NOK" */
@@ -73,6 +75,8 @@ export async function sendMetaEvents(datasetId: string, events: CapiEvent[]): Pr
       client_user_agent: e.userAgent || undefined,
       fbp: e.fbp || undefined,
       fbc: e.fbc || undefined,
+      // pixel auto-hashes advanced-matching fields with SHA-256, so hash here to match
+      external_id: e.externalId ? [sha256(e.externalId.trim().toLowerCase())] : undefined,
     },
   }));
 

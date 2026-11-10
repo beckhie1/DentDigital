@@ -1,0 +1,18 @@
+# Only the Next.js site goes to Vercel; working folders, media and secrets stay local.
+GDTS-live-ads
+ad-drafts
+outreach
+scripts
+*.env
+*.env.*
+GDTS-secrets.env
+*.xlsx
+*.pdf
+*.png
+!public/**
+!src/**
+*.jpe
+*.md
+*.command
+report@
+tsconfig.tsbuildinfo

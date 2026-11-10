@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 import { submitLead } from "@/app/actions/submit-lead";
 import { getConsent } from "@/components/shell/ConsentBanner";
 import { getClinicBySlug } from "@/lib/clinics";
+import { getVisitorId } from "@/lib/visitor-id";
 
 const readCookie = (name: string) =>
   document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`))?.[1] ?? "";
 
 const inputCls =
-  "w-full rounded-lg border border-line bg-white px-3.5 py-3 text-base placeholder:text-ink-40 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--l-cta)]";
+  "w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-base placeholder:text-ink-40 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-[var(--l-cta)]";
 
 interface Props {
   clinicSlug: string;
-  kilde: "tilbud" | "tannlegevakt";
+  kilde: "tilbud" | "tannlegevakt" | "invisalign";
 }
 
 declare global {
@@ -38,6 +39,12 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
     utmCampaign: "",
     utmContent: "",
     utmTerm: "",
+    utmContentId: "",
+    metaAge: "",
+    metaGender: "",
+    metaPlacement: "",
+    metaDevice: "",
+    metaAdFormat: "",
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -51,6 +58,12 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
       utmCampaign: p.get("utm_campaign") ?? "",
       utmContent: p.get("utm_content") ?? "",
       utmTerm: p.get("utm_term") ?? "",
+      utmContentId: p.get("utm_content_id") ?? "",
+      metaAge: p.get("age") ?? "",
+      metaGender: p.get("gender") ?? "",
+      metaPlacement: p.get("placement") ?? "",
+      metaDevice: p.get("device_type") ?? "",
+      metaAdFormat: p.get("ad_format") ?? "",
     });
   }, []);
 
@@ -78,13 +91,30 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
         fbp: readCookie("_fbp"),
         fbc,
         pageUrl: window.location.href,
+        externalId: getVisitorId(),
         consent: getConsent() ?? "",
       });
       if (result.success) {
         setSubmitted(true);
         // Standard "Lead" intentionally not fired — Meta flags it for dental/health ads.
+        if (kilde === "invisalign") {
+          window.fbq?.("trackCustom", "invisalign_lead", { value: 0, currency: "NOK" }, { eventID: `${eventId}.invisalign` });
+        }
         if (kilde === "tilbud") {
-          const price = getClinicBySlug(clinicSlug)?.offer.price;
+          const clinic = getClinicBySlug(clinicSlug);
+          const price = clinic?.offer.price;
+          // re-init with the submitted contact details → manual advanced matching
+          if (clinic?.metaPixelId) {
+            const navnParts = form.navn.trim().split(/\s+/);
+            window.fbq?.("init", clinic.metaPixelId, {
+              em: form.epost.trim().toLowerCase(),
+              ph: form.telefon.replace(/\D/g, ""),
+              fn: navnParts[0]?.toLowerCase(),
+              ln: navnParts.length > 1 ? navnParts[navnParts.length - 1].toLowerCase() : undefined,
+              country: "no",
+              external_id: getVisitorId(),
+            });
+          }
           window.fbq?.(
             "trackCustom",
             "exam_lead",
@@ -116,41 +146,44 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-3">
       <div>
-        <label htmlFor="navn" className="mb-1.5 block text-sm font-medium">Navn *</label>
-        <input id="navn" required placeholder="Ditt fulle navn" value={form.navn} onChange={set("navn")} className={inputCls} />
+        <label htmlFor="navn" className="mb-1 block text-sm font-medium">Navn *</label>
+        <input id="navn" required autoComplete="name" placeholder="Ditt fulle navn" value={form.navn} onChange={set("navn")} className={inputCls} />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-2">
         <div>
-          <label htmlFor="epost" className="mb-1.5 block text-sm font-medium">E-post *</label>
-          <input id="epost" type="email" required placeholder="din@epost.no" value={form.epost} onChange={set("epost")} className={inputCls} />
+          <label htmlFor="telefon" className="mb-1 block text-sm font-medium">Telefon *</label>
+          <input id="telefon" type="tel" inputMode="tel" autoComplete="tel" required placeholder="4X XXX XXX" value={form.telefon} onChange={set("telefon")} className={inputCls} />
         </div>
         <div>
-          <label htmlFor="telefon" className="mb-1.5 block text-sm font-medium">Telefon *</label>
-          <input id="telefon" type="tel" inputMode="tel" required placeholder="4X XXX XXX" value={form.telefon} onChange={set("telefon")} className={inputCls} />
+          <label htmlFor="epost" className="mb-1 block text-sm font-medium">E-post{kilde === "invisalign" ? " (valgfritt)" : " *"}</label>
+          <input id="epost" type="email" inputMode="email" autoComplete="email" required={kilde !== "invisalign"} placeholder="din@epost.no" value={form.epost} onChange={set("epost")} className={inputCls} />
         </div>
       </div>
 
       <div>
-        <label htmlFor="onsketDato" className="mb-1.5 block text-sm font-medium">Ønsket dato og tid</label>
-        <input id="onsketDato" placeholder="F.eks. mandag 20. juli kl. 10:00" value={form.onsketDato} onChange={set("onsketDato")} className={inputCls} />
+        <label htmlFor="onsketDato" className="mb-1 block text-sm font-medium">{kilde === "invisalign" ? "Når passer det best? (valgfritt)" : "Ønsket dato og tid for time"}</label>
+        <input id="onsketDato" placeholder={kilde === "invisalign" ? "F.eks. mandag ettermiddag" : "F.eks. mandag 15. juni kl. 10:00"} value={form.onsketDato} onChange={set("onsketDato")} className={inputCls} />
       </div>
 
       {kilde === "tilbud" && (
         <fieldset>
-          <legend className="mb-1.5 block text-sm font-medium">Ønsker du tannbleking?</legend>
-          <div className="flex gap-6">
+          <legend className="mb-1 block text-sm font-medium">Ønsker du tannbleking?</legend>
+          <div className="grid grid-cols-3 gap-2">
             {["Ja", "Nei", "Usikker"].map((v) => (
-              <label key={v} className="flex cursor-pointer items-center gap-2 text-sm">
+              <label
+                key={v}
+                className="flex cursor-pointer items-center justify-center rounded-lg border border-line py-2 text-sm transition-colors has-[:checked]:border-[var(--l-cta)] has-[:checked]:bg-[color-mix(in_srgb,var(--l-cta)_15%,transparent)] has-[:checked]:font-semibold has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[var(--l-cta)]"
+              >
                 <input
                   type="radio"
                   name="tannbleking"
                   value={v}
                   checked={form.tannbleking === v}
                   onChange={() => setForm((f) => ({ ...f, tannbleking: v }))}
-                  className="h-4 w-4 accent-[var(--l-cta)]"
+                  className="sr-only"
                 />
                 {v}
               </label>
@@ -159,9 +192,9 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
         </fieldset>
       )}
 
-      {kilde !== "tilbud" && (
+      {kilde === "tannlegevakt" && (
         <div>
-          <label htmlFor="kommentar" className="mb-1.5 block text-sm font-medium">Kommentar</label>
+          <label htmlFor="kommentar" className="mb-1 block text-sm font-medium">Kommentar</label>
           <textarea id="kommentar" rows={3} placeholder="Er det noe annet klinikken bør vite?" value={form.kommentar} onChange={set("kommentar")} className={`${inputCls} resize-none`} />
         </div>
       )}
@@ -173,7 +206,7 @@ export default function LeadForm({ clinicSlug, kilde }: Props) {
         disabled={submitting}
         className="w-full rounded-xl bg-[var(--l-cta)] py-3.5 text-base font-semibold text-[var(--l-on-cta)] transition-all hover:bg-[var(--l-cta-hover)] active:scale-[0.98] disabled:opacity-50"
       >
-        {submitting ? "Sender…" : "Bestill time nå"}
+        {submitting ? "Sender…" : kilde === "invisalign" ? "Bestill gratis konsultasjon" : "Bestill time nå"}
       </button>
 
       <p className="text-center text-xs text-ink-40">
