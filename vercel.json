@@ -3,6 +3,10 @@
     {
       "path": "/api/crm-sync",
       "schedule": "0 18 * * *"
+    },
+    {
+      "path": "/api/social-weekly",
+      "schedule": "0 17 * * 6"
     }
   ]
 }
